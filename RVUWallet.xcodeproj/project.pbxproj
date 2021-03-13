@@ -1,0 +1,585 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		593ED85225FD5193008BCCF9 /* RVUWalletApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 593ED85125FD5193008BCCF9 /* RVUWalletApp.swift */; };
+		593ED85425FD5193008BCCF9 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 593ED85325FD5193008BCCF9 /* ContentView.swift */; };
+		593ED85625FD5195008BCCF9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 593ED85525FD5195008BCCF9 /* Assets.xcassets */; };
+		593ED85925FD5195008BCCF9 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 593ED85825FD5195008BCCF9 /* Preview Assets.xcassets */; };
+		593ED86425FD5196008BCCF9 /* RVUWalletTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 593ED86325FD5196008BCCF9 /* RVUWalletTests.swift */; };
+		593ED86F25FD5196008BCCF9 /* RVUWalletUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 593ED86E25FD5196008BCCF9 /* RVUWalletUITests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		593ED86025FD5196008BCCF9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 593ED84625FD5193008BCCF9 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 593ED84D25FD5193008BCCF9;
+			remoteInfo = RVUWallet;
+		};
+		593ED86B25FD5196008BCCF9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 593ED84625FD5193008BCCF9 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 593ED84D25FD5193008BCCF9;
+			remoteInfo = RVUWallet;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		593ED84E25FD5193008BCCF9 /* RVUWallet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RVUWallet.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		593ED85125FD5193008BCCF9 /* RVUWalletApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RVUWalletApp.swift; sourceTree = "<group>"; };
+		593ED85325FD5193008BCCF9 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		593ED85525FD5195008BCCF9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		593ED85825FD5195008BCCF9 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		593ED85A25FD5195008BCCF9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		593ED85F25FD5196008BCCF9 /* RVUWalletTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RVUWalletTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		593ED86325FD5196008BCCF9 /* RVUWalletTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RVUWalletTests.swift; sourceTree = "<group>"; };
+		593ED86525FD5196008BCCF9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		593ED86A25FD5196008BCCF9 /* RVUWalletUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RVUWalletUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		593ED86E25FD5196008BCCF9 /* RVUWalletUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RVUWalletUITests.swift; sourceTree = "<group>"; };
+		593ED87025FD5196008BCCF9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		593ED84B25FD5193008BCCF9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		593ED85C25FD5196008BCCF9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		593ED86725FD5196008BCCF9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		593ED84525FD5193008BCCF9 = {
+			isa = PBXGroup;
+			children = (
+				593ED85025FD5193008BCCF9 /* RVUWallet */,
+				593ED86225FD5196008BCCF9 /* RVUWalletTests */,
+				593ED86D25FD5196008BCCF9 /* RVUWalletUITests */,
+				593ED84F25FD5193008BCCF9 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		593ED84F25FD5193008BCCF9 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				593ED84E25FD5193008BCCF9 /* RVUWallet.app */,
+				593ED85F25FD5196008BCCF9 /* RVUWalletTests.xctest */,
+				593ED86A25FD5196008BCCF9 /* RVUWalletUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		593ED85025FD5193008BCCF9 /* RVUWallet */ = {
+			isa = PBXGroup;
+			children = (
+				593ED85125FD5193008BCCF9 /* RVUWalletApp.swift */,
+				593ED85325FD5193008BCCF9 /* ContentView.swift */,
+				593ED85525FD5195008BCCF9 /* Assets.xcassets */,
+				593ED85A25FD5195008BCCF9 /* Info.plist */,
+				593ED85725FD5195008BCCF9 /* Preview Content */,
+			);
+			path = RVUWallet;
+			sourceTree = "<group>";
+		};
+		593ED85725FD5195008BCCF9 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				593ED85825FD5195008BCCF9 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		593ED86225FD5196008BCCF9 /* RVUWalletTests */ = {
+			isa = PBXGroup;
+			children = (
+				593ED86325FD5196008BCCF9 /* RVUWalletTests.swift */,
+				593ED86525FD5196008BCCF9 /* Info.plist */,
+			);
+			path = RVUWalletTests;
+			sourceTree = "<group>";
+		};
+		593ED86D25FD5196008BCCF9 /* RVUWalletUITests */ = {
+			isa = PBXGroup;
+			children = (
+				593ED86E25FD5196008BCCF9 /* RVUWalletUITests.swift */,
+				593ED87025FD5196008BCCF9 /* Info.plist */,
+			);
+			path = RVUWalletUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		593ED84D25FD5193008BCCF9 /* RVUWallet */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 593ED87325FD5196008BCCF9 /* Build configuration list for PBXNativeTarget "RVUWallet" */;
+			buildPhases = (
+				593ED84A25FD5193008BCCF9 /* Sources */,
+				593ED84B25FD5193008BCCF9 /* Frameworks */,
+				593ED84C25FD5193008BCCF9 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = RVUWallet;
+			productName = RVUWallet;
+			productReference = 593ED84E25FD5193008BCCF9 /* RVUWallet.app */;
+			productType = "com.apple.product-type.application";
+		};
+		593ED85E25FD5196008BCCF9 /* RVUWalletTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 593ED87625FD5196008BCCF9 /* Build configuration list for PBXNativeTarget "RVUWalletTests" */;
+			buildPhases = (
+				593ED85B25FD5196008BCCF9 /* Sources */,
+				593ED85C25FD5196008BCCF9 /* Frameworks */,
+				593ED85D25FD5196008BCCF9 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				593ED86125FD5196008BCCF9 /* PBXTargetDependency */,
+			);
+			name = RVUWalletTests;
+			productName = RVUWalletTests;
+			productReference = 593ED85F25FD5196008BCCF9 /* RVUWalletTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		593ED86925FD5196008BCCF9 /* RVUWalletUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 593ED87925FD5196008BCCF9 /* Build configuration list for PBXNativeTarget "RVUWalletUITests" */;
+			buildPhases = (
+				593ED86625FD5196008BCCF9 /* Sources */,
+				593ED86725FD5196008BCCF9 /* Frameworks */,
+				593ED86825FD5196008BCCF9 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				593ED86C25FD5196008BCCF9 /* PBXTargetDependency */,
+			);
+			name = RVUWalletUITests;
+			productName = RVUWalletUITests;
+			productReference = 593ED86A25FD5196008BCCF9 /* RVUWalletUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		593ED84625FD5193008BCCF9 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1240;
+				LastUpgradeCheck = 1240;
+				TargetAttributes = {
+					593ED84D25FD5193008BCCF9 = {
+						CreatedOnToolsVersion = 12.4;
+					};
+					593ED85E25FD5196008BCCF9 = {
+						CreatedOnToolsVersion = 12.4;
+						TestTargetID = 593ED84D25FD5193008BCCF9;
+					};
+					593ED86925FD5196008BCCF9 = {
+						CreatedOnToolsVersion = 12.4;
+						TestTargetID = 593ED84D25FD5193008BCCF9;
+					};
+				};
+			};
+			buildConfigurationList = 593ED84925FD5193008BCCF9 /* Build configuration list for PBXProject "RVUWallet" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 593ED84525FD5193008BCCF9;
+			productRefGroup = 593ED84F25FD5193008BCCF9 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				593ED84D25FD5193008BCCF9 /* RVUWallet */,
+				593ED85E25FD5196008BCCF9 /* RVUWalletTests */,
+				593ED86925FD5196008BCCF9 /* RVUWalletUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		593ED84C25FD5193008BCCF9 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				593ED85925FD5195008BCCF9 /* Preview Assets.xcassets in Resources */,
+				593ED85625FD5195008BCCF9 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		593ED85D25FD5196008BCCF9 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		593ED86825FD5196008BCCF9 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		593ED84A25FD5193008BCCF9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				593ED85425FD5193008BCCF9 /* ContentView.swift in Sources */,
+				593ED85225FD5193008BCCF9 /* RVUWalletApp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		593ED85B25FD5196008BCCF9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				593ED86425FD5196008BCCF9 /* RVUWalletTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		593ED86625FD5196008BCCF9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				593ED86F25FD5196008BCCF9 /* RVUWalletUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		593ED86125FD5196008BCCF9 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 593ED84D25FD5193008BCCF9 /* RVUWallet */;
+			targetProxy = 593ED86025FD5196008BCCF9 /* PBXContainerItemProxy */;
+		};
+		593ED86C25FD5196008BCCF9 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 593ED84D25FD5193008BCCF9 /* RVUWallet */;
+			targetProxy = 593ED86B25FD5196008BCCF9 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		593ED87125FD5196008BCCF9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		593ED87225FD5196008BCCF9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		593ED87425FD5196008BCCF9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_ASSET_PATHS = "\"RVUWallet/Preview Content\"";
+				DEVELOPMENT_TEAM = 683TFS9M7K;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = RVUWallet/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.prototype.RVUWallet;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		593ED87525FD5196008BCCF9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_ASSET_PATHS = "\"RVUWallet/Preview Content\"";
+				DEVELOPMENT_TEAM = 683TFS9M7K;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = RVUWallet/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.prototype.RVUWallet;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		593ED87725FD5196008BCCF9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 683TFS9M7K;
+				INFOPLIST_FILE = RVUWalletTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.prototype.RVUWalletTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/RVUWallet.app/RVUWallet";
+			};
+			name = Debug;
+		};
+		593ED87825FD5196008BCCF9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 683TFS9M7K;
+				INFOPLIST_FILE = RVUWalletTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.prototype.RVUWalletTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/RVUWallet.app/RVUWallet";
+			};
+			name = Release;
+		};
+		593ED87A25FD5196008BCCF9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 683TFS9M7K;
+				INFOPLIST_FILE = RVUWalletUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.prototype.RVUWalletUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = RVUWallet;
+			};
+			name = Debug;
+		};
+		593ED87B25FD5196008BCCF9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 683TFS9M7K;
+				INFOPLIST_FILE = RVUWalletUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.prototype.RVUWalletUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = RVUWallet;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		593ED84925FD5193008BCCF9 /* Build configuration list for PBXProject "RVUWallet" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				593ED87125FD5196008BCCF9 /* Debug */,
+				593ED87225FD5196008BCCF9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		593ED87325FD5196008BCCF9 /* Build configuration list for PBXNativeTarget "RVUWallet" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				593ED87425FD5196008BCCF9 /* Debug */,
+				593ED87525FD5196008BCCF9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		593ED87625FD5196008BCCF9 /* Build configuration list for PBXNativeTarget "RVUWalletTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				593ED87725FD5196008BCCF9 /* Debug */,
+				593ED87825FD5196008BCCF9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		593ED87925FD5196008BCCF9 /* Build configuration list for PBXNativeTarget "RVUWalletUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				593ED87A25FD5196008BCCF9 /* Debug */,
+				593ED87B25FD5196008BCCF9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 593ED84625FD5193008BCCF9 /* Project object */;
+}
