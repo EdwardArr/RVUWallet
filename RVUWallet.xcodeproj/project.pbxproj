@@ -13,6 +13,11 @@
 		593ED85925FD5195008BCCF9 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 593ED85825FD5195008BCCF9 /* Preview Assets.xcassets */; };
 		593ED86425FD5196008BCCF9 /* RVUWalletTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 593ED86325FD5196008BCCF9 /* RVUWalletTests.swift */; };
 		593ED86F25FD5196008BCCF9 /* RVUWalletUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 593ED86E25FD5196008BCCF9 /* RVUWalletUITests.swift */; };
+		593ED88025FD78A9008BCCF9 /* ProcedureEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 593ED87F25FD78A9008BCCF9 /* ProcedureEditView.swift */; };
+		593ED88525FD9E57008BCCF9 /* ProcedureDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 593ED88425FD9E57008BCCF9 /* ProcedureDetailView.swift */; };
+		593ED89225FDAEFC008BCCF9 /* SearchBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 593ED89125FDAEFC008BCCF9 /* SearchBarView.swift */; };
+		593ED89725FDDA41008BCCF9 /* SearchCPTView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 593ED89625FDDA41008BCCF9 /* SearchCPTView.swift */; };
+		593ED8C82600FC55008BCCF9 /* Procedure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 593ED8C72600FC55008BCCF9 /* Procedure.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,6 +50,11 @@
 		593ED86A25FD5196008BCCF9 /* RVUWalletUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RVUWalletUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		593ED86E25FD5196008BCCF9 /* RVUWalletUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RVUWalletUITests.swift; sourceTree = "<group>"; };
 		593ED87025FD5196008BCCF9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		593ED87F25FD78A9008BCCF9 /* ProcedureEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProcedureEditView.swift; sourceTree = "<group>"; };
+		593ED88425FD9E57008BCCF9 /* ProcedureDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProcedureDetailView.swift; sourceTree = "<group>"; };
+		593ED89125FDAEFC008BCCF9 /* SearchBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBarView.swift; sourceTree = "<group>"; };
+		593ED89625FDDA41008BCCF9 /* SearchCPTView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCPTView.swift; sourceTree = "<group>"; };
+		593ED8C72600FC55008BCCF9 /* Procedure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Procedure.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +107,11 @@
 			children = (
 				593ED85125FD5193008BCCF9 /* RVUWalletApp.swift */,
 				593ED85325FD5193008BCCF9 /* ContentView.swift */,
+				593ED8C72600FC55008BCCF9 /* Procedure.swift */,
+				593ED87F25FD78A9008BCCF9 /* ProcedureEditView.swift */,
+				593ED89625FDDA41008BCCF9 /* SearchCPTView.swift */,
+				593ED89125FDAEFC008BCCF9 /* SearchBarView.swift */,
+				593ED88425FD9E57008BCCF9 /* ProcedureDetailView.swift */,
 				593ED85525FD5195008BCCF9 /* Assets.xcassets */,
 				593ED85A25FD5195008BCCF9 /* Info.plist */,
 				593ED85725FD5195008BCCF9 /* Preview Content */,
@@ -259,8 +274,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				593ED89225FDAEFC008BCCF9 /* SearchBarView.swift in Sources */,
 				593ED85425FD5193008BCCF9 /* ContentView.swift in Sources */,
+				593ED89725FDDA41008BCCF9 /* SearchCPTView.swift in Sources */,
+				593ED88025FD78A9008BCCF9 /* ProcedureEditView.swift in Sources */,
 				593ED85225FD5193008BCCF9 /* RVUWalletApp.swift in Sources */,
+				593ED88525FD9E57008BCCF9 /* ProcedureDetailView.swift in Sources */,
+				593ED8C82600FC55008BCCF9 /* Procedure.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
