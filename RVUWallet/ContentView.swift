@@ -16,9 +16,6 @@ struct ContentView: View {
         NavigationView{
             
             VStack(alignment: .leading){
-//                ScrollView{
-                
-//                StatsMiniDashboard().padding(.horizontal)
 //
                 List{
                     Section(header:HStack{
