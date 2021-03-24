@@ -21,7 +21,7 @@ struct ContentView: View {
                     Section(header:HStack{
                                 Text("March 2021").font(.title3).bold()
                         Spacer()
-                        Text("123.2").font(.title2).bold()
+                        Text("124.2").font(.title2).bold()
                         
                     }.padding(.vertical,10)
                     ){

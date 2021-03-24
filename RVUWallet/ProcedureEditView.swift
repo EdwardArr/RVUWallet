@@ -15,8 +15,6 @@ struct TextFile: FileDocument {
     
     var text = ""
     
-    
-    
     init(configuration: ReadConfiguration) throws {
             if let data = configuration.file.regularFileContents {
                 text = String(decoding: data, as: UTF8.self)
