@@ -57,15 +57,25 @@ struct ProcedureEditView: View {
                 Section{
                 DatePicker("Procedure date", selection: $date, displayedComponents: .date)
                 }
-               
+                .padding(.vertical,1)
+                
+                Section{
+                NavigationLink(destination: SearchCPTView(text: $cpt)){
+                    HStack{
+                        Text("CPT")
+                        Spacer()
+                        Text("\(self.cpt)")
+                    }
+                }.padding(.vertical,1)
+                }
                 
                 NavigationLink(destination: SearchCPTView(text: $cpt)){
-                        HStack{
-                            Text("CPT")
-                            Spacer()
-                            Text("\(self.cpt)")
-                        }
+                    HStack{
+                        Text("ICD-10")
+                        Spacer()
+                        Text("\(self.cpt)")
                     }
+                }.padding(.vertical,1)
     
             Section {
                 Button(
@@ -81,12 +91,9 @@ struct ProcedureEditView: View {
                             Image(systemName: "doc.circle.fill").font(.system(size: 20))
                             Text("Add document").font(.system(size: 15))
                         }
-                    })
+                    }).padding(.vertical,1)
             }
                 
-                Section{
-                    TextEditor(text: $document.text)
-                }
         }
         .navigationBarTitle("New Procedure",displayMode: .inline)
         .navigationBarItems(
@@ -96,7 +103,7 @@ struct ProcedureEditView: View {
                 Text("Save").font(.body)
             })
         )
-        .listStyle(InsetGroupedListStyle())
+        .listStyle(GroupedListStyle())
         }
     }
     

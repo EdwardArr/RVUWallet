@@ -10,55 +10,91 @@ import SwiftUI
 struct ContentView: View {
     @State private var presentNewProcedureScreen = false
     
-    
-    
     var body: some View {
         NavigationView{
-            
-            VStack(alignment: .leading){
-//
-                List{
-                    Section(header:HStack{
-                                Text("March 2021").font(.title3).bold()
+            ZStack{
+                Rectangle()
+                    .foregroundColor(Color(UIColor.systemGroupedBackground))
+                    .edgesIgnoringSafeArea(.all)
+            VStack{
+                ScrollView{
+                    HStack{
+                    VStack(alignment:.leading){
+                        Text("March 2021").font(.subheadline).foregroundColor(.secondary)
+                        Text("Summary").font(.largeTitle).bold()}.padding(.top)
                         Spacer()
-                        Text("124.2").font(.title2).bold()
-                        
-                    }.padding(.vertical,10)
-                    ){
+                    }.padding(.bottom,5)
+                    
+                    StatsMiniDashboard()
+                    StatsMiniDashboard()
+                    StatsMiniDashboard()
+                    StatsMiniDashboard()
+                    StatsMiniDashboard()
+                    StatsMiniDashboard()
+                    StatsMiniDashboard()
+                    StatsMiniDashboard()
+                 
+                    LazyVStack{
                         ForEach(0..<proceduresList.count) { item in
-                            ZStack{
-                                NavigationLink(destination: ProcedureDetailView()){}
-                                .opacity(0.0)
-                                .buttonStyle(PlainButtonStyle())
-                                HStack{
-                                Image(systemName: "\((proceduresList.count+13)-item).square").font(.title)
-                                RVURow()
-                                
-                            }.padding(.vertical,10)
+                            Section(
+                                header:
+                                    HStack{
+                                        Text(proceduresList[item].date).font(.title3).bold()
+                                                                            Spacer()
+                                    }.padding(.vertical,10)
+                            ){
+                                // Code below should actually be an if statement
+                                ForEach(0..<proceduresList.count) { item in
+                                    ZStack{
+                                        NavigationLink(destination: ProcedureDetailView()){}
+                                            .opacity(0.0)
+                                            .buttonStyle(PlainButtonStyle())
+                                        HStack(alignment:.top){
+                                            RVURow()
+                                            Spacer()
+                                    Text("3/31/21")
+                            }
+                                        .padding(.vertical,10)
                             }
                         }
                     }.textCase(nil).foregroundColor(.primary)
+                    }
                     
-                }.listStyle(PlainListStyle())
-
+                }
+                .sheet(isPresented: $presentNewProcedureScreen){
+                    ProcedureEditView(document: .constant(TextFile()))
+                }
                 
-            
-              
+                }.padding(EdgeInsets(top: 0, leading: 20, bottom: 0, trailing: 20))
+                
+                .navigationBarTitle("", displayMode: .inline)
+                .navigationBarItems(trailing: Text("This month").foregroundColor(.blue))
+                HStack{
                 Button(action: {
                     print("Adding new procedure")
                     presentNewProcedureScreen.toggle()
                 }, label: {
                     HStack{
-                        Image(systemName: "plus.circle.fill").font(.system(size: 30))
+                        Image(systemName: "plus.circle.fill").font(.system(size: 25))
                         Text("New Procedure").font(.title3).bold()
-                        Spacer()
-                    }.padding(.vertical,5)
+                       
+                    }.padding(EdgeInsets(top: 0, leading: 20, bottom: 0, trailing: 00))
                 })
-                .padding(.horizontal)
-                .sheet(isPresented: $presentNewProcedureScreen){
-                    ProcedureEditView(document: .constant(TextFile()))
-                }
-            }.navigationTitle("Procedures")
+                    Spacer()
+                    Button(action: {
+                        print("Adding new procedure")
+                        presentNewProcedureScreen.toggle()
+                    }, label: {
+                        HStack{
+                            
+                            Text("Add CPT").font(.body)
+                           
+                        }.padding(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 20))
+                    })
+            }
+            }
+            }
+            
         }
         
     }
@@ -66,9 +102,9 @@ struct ContentView: View {
 
 struct StatsMiniDashboard: View {
     var body: some View{
-        HStack{
+        HStack(spacing:10){
             SingleStat()
-            Spacer()
+//            Spacer()
             SingleStat()
         }
     }
@@ -77,16 +113,20 @@ struct StatsMiniDashboard: View {
 struct SingleStat: View {
     var body: some View{
         ZStack{
-            Rectangle().foregroundColor(.gray).cornerRadius(8)
+            Rectangle().foregroundColor(Color(UIColor.secondarySystemGroupedBackground)).cornerRadius(8)
             HStack(alignment: .top){
-                VStack(spacing:1){
-                    Image(systemName: "plus").padding()
-                    Text("All").padding(.bottom, /*@START_MENU_TOKEN@*/10/*@END_MENU_TOKEN@*/)
+                VStack(alignment:.center, spacing:1){
+//                    Image(systemName: "plus").padding(EdgeInsets(top: 10, leading: 10, bottom: 0, trailing: 0))
+//                    Spacer()
+                    Text("Procedure")
+                        .font(.headline)
+                        .padding(EdgeInsets(top: 10, leading: 10, bottom: 0, trailing: 0))
+                    Text("104.18").font(.title2).foregroundColor(.primary).bold().padding(EdgeInsets(top: 0, leading: 10, bottom: 10, trailing: 0))
                 }
-                Spacer()
-                Text("34.18").font(.title2).foregroundColor(.white).bold().padding()
+//                Spacer()
+//                Text("104.18").font(.title2).foregroundColor(.primary).bold().padding(EdgeInsets(top: 10, leading: 0, bottom: 0, trailing: 10))
             }
-        }.frame(height:80)
+        }.frame(height:70)
     }
 }
 
@@ -95,12 +135,13 @@ struct RVURow: View {
     let number = [1,2,3,4,5,6,7,8,9]
     
     var body: some View{
-        VStack(alignment: .leading){
-            HStack{
-                Text("Lap gastric bypass").font(.title3)
-                Spacer()
-                Text("14.98").font(.title3)
-            }
+        VStack(alignment: .leading, spacing:5){
+            
+                Text("Lap gastric bypass")
+                    .font(.headline)
+//                Spacer()
+                Text("14.98").font(.subheadline)
+            
         }
     }
 }
