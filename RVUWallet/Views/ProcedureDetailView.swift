@@ -23,54 +23,54 @@ struct ProcedureDetailView: View {
         
         VStack{
             List{
-                Section{
-                    HStack{
-                        Spacer()
-                        Text("14.98").font(.largeTitle).bold()
-                        Spacer()
-                    }
-                }.listRowBackground(Color(UIColor.systemGroupedBackground))
+//                Section{
+//                    HStack{
+//                        Spacer()
+//                        Text("14.98").font(.largeTitle).bold()
+//                        Spacer()
+//                    }
+//                }.listRowBackground(Color(UIColor.systemGroupedBackground))
                 Section{
                     VStack(alignment:.leading){
                         Text("Procedure date")
-                            .font(.callout)
+                            .font(.subheadline)
 
                         Text("March 16, 2021")
-                            .font(.title3)
+                            .font(.body)
                         
                     }.padding(.vertical,10)
                 
                 }
                 VStack(alignment:.leading){
                     Text("CPT")
-                        .font(.callout)
+                        .font(.subheadline)
                     Text("34644")
-                        .font(.title3)
+                        .font(.body)
                 }
                 
                 VStack(alignment:.leading){
                     Text("Description")
-                        .font(.callout)
+                        .font(.subheadline)
                         
                     Spacer()
                     Text("Lap Gastric Bypass")
-                        .font(.title3)
+                        .font(.body)
                 }
                 VStack(alignment:.leading){
                     
                     Text("RVU")
-                        .font(.callout)
+                        .font(.subheadline)
                        
                     Spacer()
                     Text("14.98")
-                        .font(.title3)
+                        .font(.body)
                        
                     
                 }
                 Section{
                     VStack(alignment:.leading){
                         Text("Photo")
-                            .font(.callout)
+                            .font(.subheadline)
                         
                     }
                 }
@@ -85,9 +85,7 @@ struct ProcedureDetailView: View {
             Text("Edit").font(.body)
         }))
         .listStyle(InsetGroupedListStyle())
-        .onAppear(perform: {
-            UITableView.appearance().sectionHeaderHeight = .zero
-        })
+        
         
     }
 }
