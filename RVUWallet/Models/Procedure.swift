@@ -21,9 +21,9 @@ struct Procedure: Identifiable, Codable {
 
 #if DEBUG
 let proceduresList = [
-    Procedure(cpt: "43644", description: "Lap gastric bypass", icd10:"A15", diagnosis: "Obesity", rvu: 14.98, documentList: [], procedureDate: 0.0, date: "4/3/21"),
-    Procedure(cpt: "43646", description: "Lap gastric bypass", icd10:"A15", diagnosis: "Obesity", rvu: 14.98, documentList: [], procedureDate: 0.0, date: "4/2/21"),
-    Procedure(cpt: "43645", description: "Broken Bone Repair", icd10:"A15", diagnosis: "Tear in ligaments", rvu: 14.98, documentList: [], procedureDate: 0.0, date: "4/1/21")
+    Procedure(cpt: "43644", description: "Lap gastric bypass", icd10:"A15", diagnosis: "G00569256681", rvu: 14.98, documentList: [], procedureDate: 0.0, date: "4/3/21"),
+    Procedure(cpt: "43646", description: "Lap gastric bypass", icd10:"A15", diagnosis: "G00569256682", rvu: 14.98, documentList: [], procedureDate: 0.0, date: "4/2/21"),
+    Procedure(cpt: "43645", description: "Broken Bone Repair", icd10:"A15", diagnosis: "G00569256683", rvu: 14.98, documentList: [], procedureDate: 0.0, date: "4/1/21")
 ]
 
 #endif

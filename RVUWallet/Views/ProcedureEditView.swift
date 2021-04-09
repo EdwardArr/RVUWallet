@@ -103,8 +103,8 @@ struct ProcedureEditView: View {
                 })
                 
                 
-                Section{
-                    AddPatientRowView()
+                Section(footer:Text("Button is disabled until app is HIPAA compliant.")){
+                    AddPatientRowView().disabled(true)
                 }
                 
                

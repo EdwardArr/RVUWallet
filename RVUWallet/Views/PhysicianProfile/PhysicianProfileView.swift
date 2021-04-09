@@ -55,12 +55,17 @@ struct PhysicianProfileView: View {
                             })
                     }
                     .textCase(nil)
+                    
+                    Section(header:Text("Privacy").foregroundColor(.primary).font(.title3).bold()){
+                        Button(action: {
+                            print("User pressed on export prcoedure data button")
+                        }, label: {
+                            Text("Export Procedure Data")
+                        })
+                    }.textCase(nil)
                 
                 }
-//                .padding(.top,-20)
-//                Spacer()
             }
-//            .padding(.top)
             .navigationBarTitle("", displayMode: .inline)
             .navigationBarBackButtonHidden(true)
             .navigationBarItems(trailing:

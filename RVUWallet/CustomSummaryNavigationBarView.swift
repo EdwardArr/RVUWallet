@@ -50,7 +50,7 @@ struct RVUWalletTitleView: View {
         VStack(alignment:.leading, spacing:1){
             HStack{
                 
-                Text("RVU Wallet").font(.title).fontWeight(.heavy).foregroundColor(.gray)
+                Text("Summary").font(.largeTitle).bold().foregroundColor(.primary)
                 
                 Spacer()
                 
@@ -78,14 +78,14 @@ struct RVUWalletTitleView: View {
                 PhysicianProfileView()
             }
 //
-//            Spacer()
-            HStack(alignment:.lastTextBaseline){
-                Text("Summary").font(.title).fontWeight(.heavy).foregroundColor(.primary)
-                Spacer()
-//                Button(action: {}, label: {
-//                        Text("Edit")})
-                
-            }.padding(.horizontal,20)
+            Spacer()
+//            HStack(alignment:.lastTextBaseline){
+//                Text("Summary").font(.title).fontWeight(.heavy).foregroundColor(.primary)
+//                Spacer()
+////                Button(action: {}, label: {
+////                        Text("Edit")})
+//                
+//            }.padding(.horizontal,20)
             Divider().padding([.horizontal,.bottom])
         }
     }

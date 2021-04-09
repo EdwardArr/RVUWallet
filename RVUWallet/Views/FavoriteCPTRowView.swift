@@ -12,7 +12,7 @@ struct FavoriteCPTRowView: View {
     var cpt:CPT
     
     var body: some View {
-        VStack(alignment:.leading){
+        VStack(alignment:.leading, spacing:5){
             
             Text(cpt.description)
                 .font(.subheadline)

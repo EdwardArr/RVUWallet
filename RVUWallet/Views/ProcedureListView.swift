@@ -41,13 +41,18 @@ struct ProcedureListView: View {
 struct AllProceduresListView: View{
     var body: some View {
         List{
-            Section(header:Text("April 2021").foregroundColor(.primary).font(.title3).bold()){
+            Section(header:SummaryView( isFilterButtonHidden: true)){
                 ForEach(proceduresList){ procedure in
-                    ProcedureRowWithoutBackgroundView(procedure: procedure).background(NavigationLink(                                 destination: ProcedureDetailView(),                                   label: { EmptyView() }))
+                    ProcedureRowWithoutBackgroundView(procedure: procedure)
+                        .background(NavigationLink(                                 destination: ProcedureDetailView(),                                   label: { EmptyView() }).hidden())
+                        .buttonStyle(PlainButtonStyle())
+                        
                 }
             }.textCase(nil)
         }
     }
+    
+     
 }
 
 struct ProcedureList_Previews: PreviewProvider {

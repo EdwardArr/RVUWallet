@@ -36,7 +36,7 @@ struct FavoriteCPTCodeListView: View {
                     if isEditing == true{
                         Image(systemName: "info.circle").font(.title2).foregroundColor(.blue)
                     }
-                }
+                }.padding(.vertical,5)
             }
 //        }
 //        }

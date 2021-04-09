@@ -54,7 +54,7 @@ struct ProcedureRowWithoutBackgroundView: View {
         
    
             HStack(alignment: .top) {
-                VStack(alignment:.leading){
+                VStack(alignment:.leading, spacing:5){
                     
                     Text(procedure.description)
 
@@ -73,7 +73,10 @@ struct ProcedureRowWithoutBackgroundView: View {
                 Spacer()
                 HStack{
                     Text(procedure.date).font(.footnote).foregroundColor(.secondary)
-                    Image(systemName: "chevron.right").font(.footnote).foregroundColor(.secondary)
+                    Image(systemName: "chevron.right")
+                        .font(.footnote)
+                        .foregroundColor(.secondary)
+                        
                 }
             }.padding(.vertical,5)
       

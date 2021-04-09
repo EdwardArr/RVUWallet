@@ -11,7 +11,22 @@ import SwiftUI
 struct ParentView: View {
     var body: some View{
         NavigationView{
+           
             ContentView(bgColor: .blue)
+                .navigationBarHidden(true)
+//                .navigationBarTitleDisplayMode(.automatic)
+//                .navigationTitle(Text("Summary"))
+//                .navigationBarItems(trailing: Text("hello"))
+//                .toolbar {
+//                    ToolbarItem(placement: .principal) {
+//                        VStack {
+//                            Text("Title").font(.headline)
+//                            Button("Subtitle") {
+//
+//                            }
+//                        }
+//                    }
+//                }
         }
     }
 }
@@ -23,19 +38,17 @@ struct ContentView: View {
     var body: some View {
 
 
-            VStack{
+        ZStack(alignment:.bottom){
                 ScrollView(.vertical, showsIndicators: false){
                     
                     RVUWalletTitleView()
                     
-                    SummaryView()
+                    SummaryView(isFilterButtonHidden: false)
+                        .padding(EdgeInsets(top: 10, leading: 20, bottom: 0, trailing: 20))
 
                     NavigationLink(
                         destination:
-                            AllProceduresListView()
-                            .navigationTitle("All Procedures")
-                            .navigationBarItems(trailing: Text("Export Data").font(.body).foregroundColor(.blue))
-                            .listStyle(InsetGroupedListStyle())
+                            ProceduresMainView()
                         ,
                      label: {
                          SeeAllProcedureDataButton()
@@ -53,7 +66,7 @@ struct ContentView: View {
 
             }
             
-            .navigationBarHidden(true)
+//            .navigationBarHidden(true)
 //            .navigationBarTitle("Summary")
 //            .navigationBarItems(trailing: menuButton())
             .background(Color(UIColor.systemGroupedBackground).edgesIgnoringSafeArea(.all))

@@ -44,7 +44,7 @@ struct PersonalPhysicianDetails: View {
                 }
             }
             
-            Section{
+            Section(footer:Text("Revenue is used to calculate total revenue.")){
                 
                 HStack{
                     Text("Revenue per RVU")

@@ -16,6 +16,7 @@ struct AddCPTCodeView: View {
     @State var isFavorite = false
     
     var body: some View {
+        NavigationView {
         List{
             Section{
                 TextField("CPT Code", text: $cptCode)
@@ -48,7 +49,15 @@ struct AddCPTCodeView: View {
                 
                 
             }
-        }.listStyle(GroupedListStyle())
+        
+        }
+        .listStyle(GroupedListStyle())
+        .navigationBarTitle(Text("Add New CPT"),displayMode:.inline)
+        .navigationBarItems(leading: Text("Cancel")
+                                .foregroundColor(.blue)
+                            , trailing: Text("Done")
+                                .foregroundColor(.blue))
+        }
     }
 }
 

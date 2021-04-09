@@ -6,19 +6,24 @@
 //
 
 import SwiftUI
+import SwiftUIPlus
 
 struct SummaryView: View {
     
     @State var stats = ["revenue":50000,"RVU":2300]
+    @State var isFilterButtonHidden:Bool
     
     var body: some View {
         VStack{
             HStack{
                 Text("April 2021")
                     .font(.title2)
+                    .foregroundColor(.primary)
                     .bold()
                 Spacer()
-                Text("Change date").foregroundColor(.blue)
+//                Text("Change date")
+//                    .foregroundColor(.blue)
+//                    .isHidden(isFilterButtonHidden)
             }.padding(.bottom,-1)
             HStack(){
 //            ForEach(0..<stats.keys.count){stat in
@@ -26,9 +31,17 @@ struct SummaryView: View {
                     Rectangle().foregroundColor(Color(UIColor.secondarySystemGroupedBackground)).cornerRadius(8)
                     HStack{
                     VStack(alignment:.leading){
-                        Text("Revenue").font(.subheadline)
-                        Text("$50,000").font(.title).fontWeight(.medium)
-                        Text("2,832.19 RVUs").font(.subheadline).foregroundColor(.secondary).fontWeight(.medium)
+                        Text("Total RVUs")
+                            .font(.subheadline)
+                            .foregroundColor(.primary)
+                        Text(" 2,832.19")
+                            .font(.title)
+                            .fontWeight(.medium)
+                            .foregroundColor(.primary)
+                        Text("$153,476.38")
+                            .font(.subheadline)
+                            .foregroundColor(.secondary)
+                            .fontWeight(.medium)
                     }.padding(.leading)
                         Spacer()
                     }
@@ -38,10 +51,17 @@ struct SummaryView: View {
                     Rectangle().foregroundColor(Color(UIColor.secondarySystemGroupedBackground)).cornerRadius(8)
                     HStack{
                     VStack(alignment:.leading){
-                        Text("Performed").font(.subheadline)
+                        Text("Performed")
+                            .font(.subheadline)
+                            .foregroundColor(.primary)
                         HStack(alignment:.firstTextBaseline, spacing:5){
-                        Text("80").font(.largeTitle).fontWeight(.medium)
-                            Text("Procedures").fontWeight(.medium)
+                        Text("80")
+                            .font(.largeTitle)
+                            .fontWeight(.medium)
+                            .foregroundColor(.primary)
+                            Text("Procedures")
+                                .fontWeight(.medium)
+                                .foregroundColor(.primary)
                         }
 //                        Text("See all data").font(.subheadline).foregroundColor(.blue)
                     }.padding(.leading)
@@ -52,7 +72,7 @@ struct SummaryView: View {
               Spacer()
 //            }
             }
-        }.padding(.horizontal,20)
+        }
     }
 }
 
@@ -121,7 +141,7 @@ struct TotalStatsView: View{
 
 struct SummaryView_Previews: PreviewProvider {
     static var previews: some View {
-        SummaryView()
+        SummaryView(isFilterButtonHidden: false)
             .background(Color(UIColor.systemGroupedBackground)).ignoresSafeArea(.all)
     }
 }

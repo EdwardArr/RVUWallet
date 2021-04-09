@@ -43,6 +43,9 @@
 		593ED89225FDAEFC008BCCF9 /* SearchBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 593ED89125FDAEFC008BCCF9 /* SearchBarView.swift */; };
 		593ED89725FDDA41008BCCF9 /* SearchCPTView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 593ED89625FDDA41008BCCF9 /* SearchCPTView.swift */; };
 		593ED8C82600FC55008BCCF9 /* Procedure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 593ED8C72600FC55008BCCF9 /* Procedure.swift */; };
+		59639178261FE4A1005A0AED /* SwiftUIPlus in Frameworks */ = {isa = PBXBuildFile; productRef = 59639177261FE4A1005A0AED /* SwiftUIPlus */; };
+		59639180261FF52A005A0AED /* ProceduresMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5963917F261FF52A005A0AED /* ProceduresMainView.swift */; };
+		59639188261FF7E9005A0AED /* DateSegementedControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59639187261FF7E9005A0AED /* DateSegementedControlView.swift */; };
 		598F98A026143F6F0063EFB0 /* PhysicianProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 598F989F26143F6F0063EFB0 /* PhysicianProfileView.swift */; };
 /* End PBXBuildFile section */
 
@@ -105,6 +108,8 @@
 		593ED89125FDAEFC008BCCF9 /* SearchBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBarView.swift; sourceTree = "<group>"; };
 		593ED89625FDDA41008BCCF9 /* SearchCPTView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCPTView.swift; sourceTree = "<group>"; };
 		593ED8C72600FC55008BCCF9 /* Procedure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Procedure.swift; sourceTree = "<group>"; };
+		5963917F261FF52A005A0AED /* ProceduresMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProceduresMainView.swift; sourceTree = "<group>"; };
+		59639187261FF7E9005A0AED /* DateSegementedControlView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateSegementedControlView.swift; sourceTree = "<group>"; };
 		598F989F26143F6F0063EFB0 /* PhysicianProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhysicianProfileView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -113,6 +118,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				59639178261FE4A1005A0AED /* SwiftUIPlus in Frameworks */,
 				5910E91126192998003C3ACA /* CodeScanner in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -147,7 +153,7 @@
 			isa = PBXGroup;
 			children = (
 				5910E9BA261CDA65003C3ACA /* Summary */,
-				5910E9C2261E0946003C3ACA /* Procedures */,
+				5910E9C2261E0946003C3ACA /* All Procedures */,
 				5910E9A9261CB2CE003C3ACA /* CPT */,
 				5910E9AD261CB312003C3ACA /* PhysicianProfile */,
 				5910E9C6261E1334003C3ACA /* TextRecognition */,
@@ -203,16 +209,18 @@
 			name = FutureFeatures;
 			sourceTree = "<group>";
 		};
-		5910E9C2261E0946003C3ACA /* Procedures */ = {
+		5910E9C2261E0946003C3ACA /* All Procedures */ = {
 			isa = PBXGroup;
 			children = (
+				5963917F261FF52A005A0AED /* ProceduresMainView.swift */,
 				592609762616066600083303 /* ProcedureListView.swift */,
 				5926097E261606AB00083303 /* ProcedureRowView.swift */,
 				593ED87F25FD78A9008BCCF9 /* ProcedureEditView.swift */,
 				593ED88425FD9E57008BCCF9 /* ProcedureDetailView.swift */,
 				5910E9CA261E1825003C3ACA /* AddPatientRowView.swift */,
+				59639187261FF7E9005A0AED /* DateSegementedControlView.swift */,
 			);
-			name = Procedures;
+			name = "All Procedures";
 			sourceTree = "<group>";
 		};
 		5910E9C6261E1334003C3ACA /* TextRecognition */ = {
@@ -305,6 +313,7 @@
 			name = RVUWallet;
 			packageProductDependencies = (
 				5910E91026192998003C3ACA /* CodeScanner */,
+				59639177261FE4A1005A0AED /* SwiftUIPlus */,
 			);
 			productName = RVUWallet;
 			productReference = 593ED84E25FD5193008BCCF9 /* RVUWallet.app */;
@@ -379,6 +388,7 @@
 			mainGroup = 593ED84525FD5193008BCCF9;
 			packageReferences = (
 				5910E90F26192998003C3ACA /* XCRemoteSwiftPackageReference "CodeScanner" */,
+				59639176261FE4A0005A0AED /* XCRemoteSwiftPackageReference "SwiftUIPlus" */,
 			);
 			productRefGroup = 593ED84F25FD5193008BCCF9 /* Products */;
 			projectDirPath = "";
@@ -437,6 +447,7 @@
 				593ED89725FDDA41008BCCF9 /* SearchCPTView.swift in Sources */,
 				5910E8EF2618DEC0003C3ACA /* ProcedureTypeGalleryView.swift in Sources */,
 				5910E923261B5A07003C3ACA /* VisionViewController.swift in Sources */,
+				59639180261FF52A005A0AED /* ProceduresMainView.swift in Sources */,
 				5910E9DD261E6129003C3ACA /* SummaryView.swift in Sources */,
 				5910E9D8261E4C39003C3ACA /* FavoriteCPTRowView.swift in Sources */,
 				5910E928261B5A23003C3ACA /* StringUtils.swift in Sources */,
@@ -444,6 +455,7 @@
 				5910E8DD2616BEC9003C3ACA /* FavoriteCPTCodeListView.swift in Sources */,
 				5910E8F42618E692003C3ACA /* CustomSummaryNavigationBarView.swift in Sources */,
 				5926097F261606AB00083303 /* ProcedureRowView.swift in Sources */,
+				59639188261FF7E9005A0AED /* DateSegementedControlView.swift in Sources */,
 				5910E9E8261EA66A003C3ACA /* PhysiciansFavoriteCPTCodeListView.swift in Sources */,
 				593ED88025FD78A9008BCCF9 /* ProcedureEditView.swift in Sources */,
 				592609722615181900083303 /* CPT.swift in Sources */,
@@ -783,6 +795,14 @@
 				minimumVersion = 1.0.7;
 			};
 		};
+		59639176261FE4A0005A0AED /* XCRemoteSwiftPackageReference "SwiftUIPlus" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/rebeloper/SwiftUIPlus.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.0.163;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -790,6 +810,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 5910E90F26192998003C3ACA /* XCRemoteSwiftPackageReference "CodeScanner" */;
 			productName = CodeScanner;
+		};
+		59639177261FE4A1005A0AED /* SwiftUIPlus */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 59639176261FE4A0005A0AED /* XCRemoteSwiftPackageReference "SwiftUIPlus" */;
+			productName = SwiftUIPlus;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
