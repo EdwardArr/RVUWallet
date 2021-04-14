@@ -7,7 +7,47 @@
 
 import SwiftUI
 
+enum personalDetailsMode {
+    case view, edit
+}
+
 struct PersonalPhysicianDetails: View {
+    
+    @State var mode:personalDetailsMode = .view
+    
+    @State var descriptor = ["First Name", "Last Name", "Phone Number"]
+    @State var personalInfo = ["Michael", "Blaney", "+1 (706) 285-3186"]
+    
+    @State var counter = 0
+    
+    
+    var isBackButtonHidden: Bool {
+        switch(self.mode) {
+        case .edit:
+            return true
+        case .view:
+                return false
+            }
+    }
+    
+    var leadingNavItem: some View {
+        switch(self.mode) {
+        case .edit:
+            return Text("Cancel")
+        case .view:
+                return Text("")
+        }
+    }
+    
+    var trailingNavItem: some View {
+        switch(self.mode) {
+        case .edit:
+            return AnyView(Text("Done"))
+        case .view:
+                return AnyView(Text("Edit"))
+        }
+    }
+    
     var body: some View {
         List{
             Section{
@@ -24,44 +64,43 @@ struct PersonalPhysicianDetails: View {
                 }.padding(.vertical,30)
                     Spacer()
                 }
-//                Divider().edgesIgnoringSafeArea(.horizontal)
-                HStack{
-                    Text("First Name")
-                    Spacer()
-                    Text("Michael")
-                }
-//                Divider().padding(EdgeInsets(top: 0, leading: 20, bottom: 0, trailing: 0))
-                HStack{
-                    Text("Last Name")
-                    Spacer()
-                    Text("Blaney")
-                }
                 
-                HStack{
-                    Text("Phone Number")
-                    Spacer()
-                    Text("+1 (706) 284-3185")
+                ForEach(Array(zip(descriptor, personalInfo)), id:\.0){ text in
+
+            
+                    PhysicianPersonalDetailRow(descriptor:text.0, personalInfo:text.1, keyboardType: .namePhonePad, mode:mode)
+                    
                 }
+
             }
             
             Section(footer:Text("Revenue is used to calculate total revenue.")){
                 
-                HStack{
-                    Text("Revenue per RVU")
-                    Spacer()
-                    Text("$54.00")
-                }
+                PhysicianPersonalDetailRow(descriptor:"Revenue per RVU", personalInfo:"$54.00", keyboardType: .decimalPad, mode:mode)
+        
             }
             
         }
         .offset(y:-40)
         .listStyle(GroupedListStyle())
         .navigationBarTitle(Text("Personal Details"), displayMode: .inline)
-        .navigationBarItems(trailing:
+        .navigationBarBackButtonHidden(isBackButtonHidden)
+        .navigationBarItems(leading:
                                 Button(action: {
-                                    print("User pressed on edit profile")
+                                    mode = .view
                                 }, label: {
-                                    Text("Edit").font(.body)
+                                    leadingNavItem.font(.body)
+                                })
+                                
+                                ,trailing:
+                                Button(action: {
+                                    if mode == .edit{
+                                        mode = .view
+                                    }else if mode == .view{
+                                    mode = .edit
+                                    }
+                                }, label: {
+                                    trailingNavItem.font(.body)
                                 }))
         .background(Color(UIColor.systemGroupedBackground)).ignoresSafeArea()
                                 
@@ -71,6 +110,6 @@ struct PersonalPhysicianDetails: View {
 
 struct PersonalPhysicianDetails_Previews: PreviewProvider {
     static var previews: some View {
-        PersonalPhysicianDetails()
+        PersonalPhysicianDetails(mode: .view)
     }
 }
