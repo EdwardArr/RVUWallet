@@ -24,7 +24,7 @@ struct CPT: Identifiable{
     }
 }
 
-#if DEBUG
+//#if DEBUG
 var cptList = [
     CPT(id: 1, code: "43644", description: "Lap Gastric Bypass", rvu: 423.95, color: .purple),
     CPT(id: 2, code: "43644", description: "Appendectomy", rvu: 104.95, color: .green),
@@ -40,4 +40,4 @@ var cptList = [
     CPT(id: 12, code: "43645", description: "Broken Bone Repair", rvu: 104.95, color: .green),
     CPT(id: 13, code: "43646", description: "Circumcision", rvu: 142.95, color: .red)
 ]
-#endif
+//#endif

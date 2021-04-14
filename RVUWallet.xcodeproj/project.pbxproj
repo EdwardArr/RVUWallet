@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		5910E8DD2616BEC9003C3ACA /* FavoriteCPTCodeListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5910E8DC2616BEC9003C3ACA /* FavoriteCPTCodeListView.swift */; };
+		5910E8DD2616BEC9003C3ACA /* FavoritesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5910E8DC2616BEC9003C3ACA /* FavoritesView.swift */; };
 		5910E8E22617612E003C3ACA /* UINavigationExtenions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5910E8E12617612E003C3ACA /* UINavigationExtenions.swift */; };
 		5910E8E72618D5FC003C3ACA /* RecentProceduresList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5910E8E62618D5FC003C3ACA /* RecentProceduresList.swift */; };
 		5910E8EF2618DEC0003C3ACA /* ProcedureTypeGalleryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5910E8EE2618DEC0003C3ACA /* ProcedureTypeGalleryView.swift */; };
@@ -17,35 +17,29 @@
 		5910E906261900A7003C3ACA /* SearchICD10CodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5910E905261900A7003C3ACA /* SearchICD10CodeView.swift */; };
 		5910E90B261906DB003C3ACA /* FavoriteICD10CodesList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5910E90A261906DB003C3ACA /* FavoriteICD10CodesList.swift */; };
 		5910E91126192998003C3ACA /* CodeScanner in Frameworks */ = {isa = PBXBuildFile; productRef = 5910E91026192998003C3ACA /* CodeScanner */; };
-		5910E916261B4F99003C3ACA /* SwiftUIwithUIKitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5910E915261B4F98003C3ACA /* SwiftUIwithUIKitView.swift */; };
-		5910E91E261B59EA003C3ACA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5910E91D261B59EA003C3ACA /* ViewController.swift */; };
-		5910E923261B5A07003C3ACA /* VisionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5910E922261B5A07003C3ACA /* VisionViewController.swift */; };
-		5910E928261B5A23003C3ACA /* StringUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5910E927261B5A23003C3ACA /* StringUtils.swift */; };
-		5910E936261B5BA9003C3ACA /* PreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5910E935261B5BA8003C3ACA /* PreviewView.swift */; };
+		5910E91E261B59EA003C3ACA /* OCR in Sources */ = {isa = PBXBuildFile; fileRef = 5910E91D261B59EA003C3ACA /* OCR */; };
+		5910E923261B5A07003C3ACA /* OCR in Sources */ = {isa = PBXBuildFile; fileRef = 5910E922261B5A07003C3ACA /* OCR */; };
+		5910E928261B5A23003C3ACA /* OCR in Sources */ = {isa = PBXBuildFile; fileRef = 5910E927261B5A23003C3ACA /* OCR */; };
 		5910E993261CAE4F003C3ACA /* PersonalPhysicianDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5910E992261CAE4F003C3ACA /* PersonalPhysicianDetails.swift */; };
 		5910E9B2261CBE6D003C3ACA /* SelectCPTView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5910E9B1261CBE6D003C3ACA /* SelectCPTView.swift */; };
-		5910E9CB261E1825003C3ACA /* AddPatientRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5910E9CA261E1825003C3ACA /* AddPatientRowView.swift */; };
-		5910E9D0261E4443003C3ACA /* AddCPTCodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5910E9CF261E4442003C3ACA /* AddCPTCodeView.swift */; };
+		5910E9D0261E4443003C3ACA /* CPTCodeEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5910E9CF261E4442003C3ACA /* CPTCodeEditView.swift */; };
 		5910E9D8261E4C39003C3ACA /* FavoriteCPTRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5910E9D7261E4C39003C3ACA /* FavoriteCPTRowView.swift */; };
 		5910E9DD261E6129003C3ACA /* SummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5910E9DC261E6129003C3ACA /* SummaryView.swift */; };
 		5910E9E8261EA66A003C3ACA /* PhysiciansFavoriteCPTCodeListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5910E9E7261EA66A003C3ACA /* PhysiciansFavoriteCPTCodeListView.swift */; };
 		592609722615181900083303 /* CPT.swift in Sources */ = {isa = PBXBuildFile; fileRef = 592609712615181900083303 /* CPT.swift */; };
-		592609772616066600083303 /* ProcedureListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 592609762616066600083303 /* ProcedureListView.swift */; };
-		5926097F261606AB00083303 /* ProcedureRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5926097E261606AB00083303 /* ProcedureRowView.swift */; };
 		593ED85225FD5193008BCCF9 /* RVUWalletApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 593ED85125FD5193008BCCF9 /* RVUWalletApp.swift */; };
 		593ED85425FD5193008BCCF9 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 593ED85325FD5193008BCCF9 /* ContentView.swift */; };
 		593ED85625FD5195008BCCF9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 593ED85525FD5195008BCCF9 /* Assets.xcassets */; };
 		593ED85925FD5195008BCCF9 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 593ED85825FD5195008BCCF9 /* Preview Assets.xcassets */; };
 		593ED86425FD5196008BCCF9 /* RVUWalletTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 593ED86325FD5196008BCCF9 /* RVUWalletTests.swift */; };
 		593ED86F25FD5196008BCCF9 /* RVUWalletUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 593ED86E25FD5196008BCCF9 /* RVUWalletUITests.swift */; };
-		593ED88025FD78A9008BCCF9 /* ProcedureEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 593ED87F25FD78A9008BCCF9 /* ProcedureEditView.swift */; };
-		593ED88525FD9E57008BCCF9 /* ProcedureDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 593ED88425FD9E57008BCCF9 /* ProcedureDetailView.swift */; };
 		593ED89225FDAEFC008BCCF9 /* SearchBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 593ED89125FDAEFC008BCCF9 /* SearchBarView.swift */; };
 		593ED89725FDDA41008BCCF9 /* SearchCPTView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 593ED89625FDDA41008BCCF9 /* SearchCPTView.swift */; };
 		593ED8C82600FC55008BCCF9 /* Procedure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 593ED8C72600FC55008BCCF9 /* Procedure.swift */; };
 		59639178261FE4A1005A0AED /* SwiftUIPlus in Frameworks */ = {isa = PBXBuildFile; productRef = 59639177261FE4A1005A0AED /* SwiftUIPlus */; };
-		59639180261FF52A005A0AED /* ProceduresMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5963917F261FF52A005A0AED /* ProceduresMainView.swift */; };
-		59639188261FF7E9005A0AED /* DateSegementedControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59639187261FF7E9005A0AED /* DateSegementedControlView.swift */; };
+		5963918D2620B5B3005A0AED /* AllProcedures in Sources */ = {isa = PBXBuildFile; fileRef = 5963918C2620B5B3005A0AED /* AllProcedures */; };
+		596391B7262407E4005A0AED /* FavoritesWithNavBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 596391B6262407E4005A0AED /* FavoritesWithNavBarView.swift */; };
+		596391BF2624B748005A0AED /* PhysicianPersonalDetailRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 596391BE2624B748005A0AED /* PhysicianPersonalDetailRow.swift */; };
 		598F98A026143F6F0063EFB0 /* PhysicianProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 598F989F26143F6F0063EFB0 /* PhysicianProfileView.swift */; };
 /* End PBXBuildFile section */
 
@@ -67,30 +61,25 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		5910E8DC2616BEC9003C3ACA /* FavoriteCPTCodeListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteCPTCodeListView.swift; sourceTree = "<group>"; };
+		5910E8DC2616BEC9003C3ACA /* FavoritesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesView.swift; sourceTree = "<group>"; };
 		5910E8E12617612E003C3ACA /* UINavigationExtenions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UINavigationExtenions.swift; sourceTree = "<group>"; };
-		5910E8E62618D5FC003C3ACA /* RecentProceduresList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentProceduresList.swift; sourceTree = "<group>"; };
+		5910E8E62618D5FC003C3ACA /* RecentProceduresList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RecentProceduresList.swift; path = RVUWallet/Views/FutureFeatures/RecentProceduresList.swift; sourceTree = SOURCE_ROOT; };
 		5910E8EE2618DEC0003C3ACA /* ProcedureTypeGalleryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProcedureTypeGalleryView.swift; sourceTree = "<group>"; };
 		5910E8F32618E692003C3ACA /* CustomSummaryNavigationBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSummaryNavigationBarView.swift; sourceTree = "<group>"; };
 		5910E8F82618F64C003C3ACA /* RecentCPTCodesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentCPTCodesView.swift; sourceTree = "<group>"; };
-		5910E9002618FABC003C3ACA /* RecentICD10CodesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentICD10CodesView.swift; sourceTree = "<group>"; };
-		5910E905261900A7003C3ACA /* SearchICD10CodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchICD10CodeView.swift; sourceTree = "<group>"; };
-		5910E90A261906DB003C3ACA /* FavoriteICD10CodesList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteICD10CodesList.swift; sourceTree = "<group>"; };
-		5910E915261B4F98003C3ACA /* SwiftUIwithUIKitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIwithUIKitView.swift; sourceTree = "<group>"; };
-		5910E91D261B59EA003C3ACA /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		5910E922261B5A07003C3ACA /* VisionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VisionViewController.swift; sourceTree = "<group>"; };
-		5910E927261B5A23003C3ACA /* StringUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringUtils.swift; sourceTree = "<group>"; };
-		5910E935261B5BA8003C3ACA /* PreviewView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreviewView.swift; sourceTree = "<group>"; };
+		5910E9002618FABC003C3ACA /* RecentICD10CodesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RecentICD10CodesView.swift; path = RVUWallet/Views/FutureFeatures/RecentICD10CodesView.swift; sourceTree = SOURCE_ROOT; };
+		5910E905261900A7003C3ACA /* SearchICD10CodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SearchICD10CodeView.swift; path = RVUWallet/Views/FutureFeatures/SearchICD10CodeView.swift; sourceTree = SOURCE_ROOT; };
+		5910E90A261906DB003C3ACA /* FavoriteICD10CodesList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FavoriteICD10CodesList.swift; path = RVUWallet/Views/FutureFeatures/FavoriteICD10CodesList.swift; sourceTree = SOURCE_ROOT; };
+		5910E91D261B59EA003C3ACA /* OCR */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = folder; name = OCR; path = RVUWallet/Views/OCR; sourceTree = SOURCE_ROOT; };
+		5910E922261B5A07003C3ACA /* OCR */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = folder; name = OCR; path = RVUWallet/Views/OCR; sourceTree = SOURCE_ROOT; };
+		5910E927261B5A23003C3ACA /* OCR */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = folder; name = OCR; path = RVUWallet/Views/OCR; sourceTree = SOURCE_ROOT; };
 		5910E992261CAE4F003C3ACA /* PersonalPhysicianDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalPhysicianDetails.swift; sourceTree = "<group>"; };
 		5910E9B1261CBE6D003C3ACA /* SelectCPTView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectCPTView.swift; sourceTree = "<group>"; };
-		5910E9CA261E1825003C3ACA /* AddPatientRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPatientRowView.swift; sourceTree = "<group>"; };
-		5910E9CF261E4442003C3ACA /* AddCPTCodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCPTCodeView.swift; sourceTree = "<group>"; };
+		5910E9CF261E4442003C3ACA /* CPTCodeEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CPTCodeEditView.swift; sourceTree = "<group>"; };
 		5910E9D7261E4C39003C3ACA /* FavoriteCPTRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteCPTRowView.swift; sourceTree = "<group>"; };
 		5910E9DC261E6129003C3ACA /* SummaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryView.swift; sourceTree = "<group>"; };
 		5910E9E7261EA66A003C3ACA /* PhysiciansFavoriteCPTCodeListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhysiciansFavoriteCPTCodeListView.swift; sourceTree = "<group>"; };
 		592609712615181900083303 /* CPT.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CPT.swift; sourceTree = "<group>"; };
-		592609762616066600083303 /* ProcedureListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProcedureListView.swift; sourceTree = "<group>"; };
-		5926097E261606AB00083303 /* ProcedureRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProcedureRowView.swift; sourceTree = "<group>"; };
 		593ED84E25FD5193008BCCF9 /* RVUWallet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RVUWallet.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		593ED85125FD5193008BCCF9 /* RVUWalletApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RVUWalletApp.swift; sourceTree = "<group>"; };
 		593ED85325FD5193008BCCF9 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -103,13 +92,12 @@
 		593ED86A25FD5196008BCCF9 /* RVUWalletUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RVUWalletUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		593ED86E25FD5196008BCCF9 /* RVUWalletUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RVUWalletUITests.swift; sourceTree = "<group>"; };
 		593ED87025FD5196008BCCF9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		593ED87F25FD78A9008BCCF9 /* ProcedureEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProcedureEditView.swift; sourceTree = "<group>"; };
-		593ED88425FD9E57008BCCF9 /* ProcedureDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProcedureDetailView.swift; sourceTree = "<group>"; };
-		593ED89125FDAEFC008BCCF9 /* SearchBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBarView.swift; sourceTree = "<group>"; };
+		593ED89125FDAEFC008BCCF9 /* SearchBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SearchBarView.swift; path = RVUWallet/Views/FutureFeatures/SearchBarView.swift; sourceTree = SOURCE_ROOT; };
 		593ED89625FDDA41008BCCF9 /* SearchCPTView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCPTView.swift; sourceTree = "<group>"; };
 		593ED8C72600FC55008BCCF9 /* Procedure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Procedure.swift; sourceTree = "<group>"; };
-		5963917F261FF52A005A0AED /* ProceduresMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProceduresMainView.swift; sourceTree = "<group>"; };
-		59639187261FF7E9005A0AED /* DateSegementedControlView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateSegementedControlView.swift; sourceTree = "<group>"; };
+		5963918C2620B5B3005A0AED /* AllProcedures */ = {isa = PBXFileReference; lastKnownFileType = folder; name = AllProcedures; path = RVUWallet/Views/AllProcedures; sourceTree = SOURCE_ROOT; };
+		596391B6262407E4005A0AED /* FavoritesWithNavBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesWithNavBarView.swift; sourceTree = "<group>"; };
+		596391BE2624B748005A0AED /* PhysicianPersonalDetailRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhysicianPersonalDetailRow.swift; sourceTree = "<group>"; };
 		598F989F26143F6F0063EFB0 /* PhysicianProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhysicianProfileView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -140,23 +128,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		5910E99A261CB16D003C3ACA /* Models */ = {
-			isa = PBXGroup;
-			children = (
-				593ED8C72600FC55008BCCF9 /* Procedure.swift */,
-				592609712615181900083303 /* CPT.swift */,
-			);
-			path = Models;
-			sourceTree = "<group>";
-		};
 		5910E9A1261CB18A003C3ACA /* Views */ = {
 			isa = PBXGroup;
 			children = (
 				5910E9BA261CDA65003C3ACA /* Summary */,
-				5910E9C2261E0946003C3ACA /* All Procedures */,
+				5963918C2620B5B3005A0AED /* AllProcedures */,
 				5910E9A9261CB2CE003C3ACA /* CPT */,
 				5910E9AD261CB312003C3ACA /* PhysicianProfile */,
-				5910E9C6261E1334003C3ACA /* TextRecognition */,
+				5910E927261B5A23003C3ACA /* OCR */,
+				5910E91D261B59EA003C3ACA /* OCR */,
+				5910E922261B5A07003C3ACA /* OCR */,
 				5910E9C1261E0909003C3ACA /* FutureFeatures */,
 			);
 			path = Views;
@@ -167,19 +148,22 @@
 			children = (
 				5910E8F82618F64C003C3ACA /* RecentCPTCodesView.swift */,
 				593ED89625FDDA41008BCCF9 /* SearchCPTView.swift */,
-				5910E8DC2616BEC9003C3ACA /* FavoriteCPTCodeListView.swift */,
+				5910E8DC2616BEC9003C3ACA /* FavoritesView.swift */,
+				596391B6262407E4005A0AED /* FavoritesWithNavBarView.swift */,
 				5910E9D7261E4C39003C3ACA /* FavoriteCPTRowView.swift */,
 				5910E9B1261CBE6D003C3ACA /* SelectCPTView.swift */,
-				5910E9CF261E4442003C3ACA /* AddCPTCodeView.swift */,
+				5910E9CF261E4442003C3ACA /* CPTCodeEditView.swift */,
 			);
 			name = CPT;
-			sourceTree = "<group>";
+			path = RVUWallet/Views/CPT;
+			sourceTree = SOURCE_ROOT;
 		};
 		5910E9AD261CB312003C3ACA /* PhysicianProfile */ = {
 			isa = PBXGroup;
 			children = (
 				598F989F26143F6F0063EFB0 /* PhysicianProfileView.swift */,
 				5910E992261CAE4F003C3ACA /* PersonalPhysicianDetails.swift */,
+				596391BE2624B748005A0AED /* PhysicianPersonalDetailRow.swift */,
 				5910E9E7261EA66A003C3ACA /* PhysiciansFavoriteCPTCodeListView.swift */,
 			);
 			path = PhysicianProfile;
@@ -194,8 +178,8 @@
 				5910E8EE2618DEC0003C3ACA /* ProcedureTypeGalleryView.swift */,
 			);
 			name = Summary;
-			path = ..;
-			sourceTree = "<group>";
+			path = RVUWallet/Views/Summary;
+			sourceTree = SOURCE_ROOT;
 		};
 		5910E9C1261E0909003C3ACA /* FutureFeatures */ = {
 			isa = PBXGroup;
@@ -207,33 +191,8 @@
 				5910E8E62618D5FC003C3ACA /* RecentProceduresList.swift */,
 			);
 			name = FutureFeatures;
-			sourceTree = "<group>";
-		};
-		5910E9C2261E0946003C3ACA /* All Procedures */ = {
-			isa = PBXGroup;
-			children = (
-				5963917F261FF52A005A0AED /* ProceduresMainView.swift */,
-				592609762616066600083303 /* ProcedureListView.swift */,
-				5926097E261606AB00083303 /* ProcedureRowView.swift */,
-				593ED87F25FD78A9008BCCF9 /* ProcedureEditView.swift */,
-				593ED88425FD9E57008BCCF9 /* ProcedureDetailView.swift */,
-				5910E9CA261E1825003C3ACA /* AddPatientRowView.swift */,
-				59639187261FF7E9005A0AED /* DateSegementedControlView.swift */,
-			);
-			name = "All Procedures";
-			sourceTree = "<group>";
-		};
-		5910E9C6261E1334003C3ACA /* TextRecognition */ = {
-			isa = PBXGroup;
-			children = (
-				5910E927261B5A23003C3ACA /* StringUtils.swift */,
-				5910E935261B5BA8003C3ACA /* PreviewView.swift */,
-				5910E91D261B59EA003C3ACA /* ViewController.swift */,
-				5910E922261B5A07003C3ACA /* VisionViewController.swift */,
-				5910E915261B4F98003C3ACA /* SwiftUIwithUIKitView.swift */,
-			);
-			name = TextRecognition;
-			sourceTree = "<group>";
+			path = RVUWallet/Views/FutureFeatures;
+			sourceTree = SOURCE_ROOT;
 		};
 		593ED84525FD5193008BCCF9 = {
 			isa = PBXGroup;
@@ -260,7 +219,7 @@
 			children = (
 				593ED85125FD5193008BCCF9 /* RVUWalletApp.swift */,
 				5910E8E12617612E003C3ACA /* UINavigationExtenions.swift */,
-				5910E99A261CB16D003C3ACA /* Models */,
+				596391952620E32F005A0AED /* Models */,
 				5910E9A1261CB18A003C3ACA /* Views */,
 				593ED85525FD5195008BCCF9 /* Assets.xcassets */,
 				593ED85A25FD5195008BCCF9 /* Info.plist */,
@@ -293,6 +252,15 @@
 				593ED87025FD5196008BCCF9 /* Info.plist */,
 			);
 			path = RVUWalletUITests;
+			sourceTree = "<group>";
+		};
+		596391952620E32F005A0AED /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				593ED8C72600FC55008BCCF9 /* Procedure.swift */,
+				592609712615181900083303 /* CPT.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -436,33 +404,27 @@
 				593ED89225FDAEFC008BCCF9 /* SearchBarView.swift in Sources */,
 				5910E90B261906DB003C3ACA /* FavoriteICD10CodesList.swift in Sources */,
 				598F98A026143F6F0063EFB0 /* PhysicianProfileView.swift in Sources */,
-				5910E91E261B59EA003C3ACA /* ViewController.swift in Sources */,
+				5910E91E261B59EA003C3ACA /* OCR in Sources */,
 				5910E993261CAE4F003C3ACA /* PersonalPhysicianDetails.swift in Sources */,
 				593ED85425FD5193008BCCF9 /* ContentView.swift in Sources */,
 				5910E8F92618F64C003C3ACA /* RecentCPTCodesView.swift in Sources */,
-				592609772616066600083303 /* ProcedureListView.swift in Sources */,
 				5910E9B2261CBE6D003C3ACA /* SelectCPTView.swift in Sources */,
-				5910E9D0261E4443003C3ACA /* AddCPTCodeView.swift in Sources */,
-				5910E916261B4F99003C3ACA /* SwiftUIwithUIKitView.swift in Sources */,
+				5910E9D0261E4443003C3ACA /* CPTCodeEditView.swift in Sources */,
 				593ED89725FDDA41008BCCF9 /* SearchCPTView.swift in Sources */,
 				5910E8EF2618DEC0003C3ACA /* ProcedureTypeGalleryView.swift in Sources */,
-				5910E923261B5A07003C3ACA /* VisionViewController.swift in Sources */,
-				59639180261FF52A005A0AED /* ProceduresMainView.swift in Sources */,
+				5910E923261B5A07003C3ACA /* OCR in Sources */,
 				5910E9DD261E6129003C3ACA /* SummaryView.swift in Sources */,
 				5910E9D8261E4C39003C3ACA /* FavoriteCPTRowView.swift in Sources */,
-				5910E928261B5A23003C3ACA /* StringUtils.swift in Sources */,
+				596391BF2624B748005A0AED /* PhysicianPersonalDetailRow.swift in Sources */,
+				5910E928261B5A23003C3ACA /* OCR in Sources */,
 				5910E8E22617612E003C3ACA /* UINavigationExtenions.swift in Sources */,
-				5910E8DD2616BEC9003C3ACA /* FavoriteCPTCodeListView.swift in Sources */,
+				596391B7262407E4005A0AED /* FavoritesWithNavBarView.swift in Sources */,
+				5910E8DD2616BEC9003C3ACA /* FavoritesView.swift in Sources */,
 				5910E8F42618E692003C3ACA /* CustomSummaryNavigationBarView.swift in Sources */,
-				5926097F261606AB00083303 /* ProcedureRowView.swift in Sources */,
-				59639188261FF7E9005A0AED /* DateSegementedControlView.swift in Sources */,
 				5910E9E8261EA66A003C3ACA /* PhysiciansFavoriteCPTCodeListView.swift in Sources */,
-				593ED88025FD78A9008BCCF9 /* ProcedureEditView.swift in Sources */,
 				592609722615181900083303 /* CPT.swift in Sources */,
+				5963918D2620B5B3005A0AED /* AllProcedures in Sources */,
 				593ED85225FD5193008BCCF9 /* RVUWalletApp.swift in Sources */,
-				5910E936261B5BA9003C3ACA /* PreviewView.swift in Sources */,
-				5910E9CB261E1825003C3ACA /* AddPatientRowView.swift in Sources */,
-				593ED88525FD9E57008BCCF9 /* ProcedureDetailView.swift in Sources */,
 				593ED8C82600FC55008BCCF9 /* Procedure.swift in Sources */,
 				5910E8E72618D5FC003C3ACA /* RecentProceduresList.swift in Sources */,
 				5910E906261900A7003C3ACA /* SearchICD10CodeView.swift in Sources */,
@@ -623,6 +585,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_ASSET_PATHS = "\"RVUWallet/Preview Content\"";
 				DEVELOPMENT_TEAM = 683TFS9M7K;
 				ENABLE_PREVIEWS = YES;
@@ -632,6 +595,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 0.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.prototype.RVUWallet;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -645,6 +609,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_ASSET_PATHS = "\"RVUWallet/Preview Content\"";
 				DEVELOPMENT_TEAM = 683TFS9M7K;
 				ENABLE_PREVIEWS = YES;
@@ -654,6 +619,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 0.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.prototype.RVUWallet;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
