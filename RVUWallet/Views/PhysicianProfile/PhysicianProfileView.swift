@@ -49,7 +49,7 @@ struct PhysicianProfileView: View {
                                 Text("Favorites").foregroundColor(.primary).font(.title3).bold())
                     {
                         NavigationLink(
-                            destination: PhysiciansFavoriteCPTCodeListView()
+                            destination: FavoritesView(mode:.view)
                             ,label: {
                                 Text("CPT Codes")
                             })
@@ -66,7 +66,7 @@ struct PhysicianProfileView: View {
                 
                 }
             }
-            .navigationBarTitle("", displayMode: .inline)
+            .navigationBarTitle("Profile", displayMode: .inline)
             .navigationBarBackButtonHidden(true)
             .navigationBarItems(trailing:
                                     Button("Done", action: {
