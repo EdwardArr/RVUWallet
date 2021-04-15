@@ -66,7 +66,7 @@ struct PhysicianProfileView: View {
                 
                 }
             }
-            .navigationBarTitle("Profile", displayMode: .inline)
+            .navigationBarTitle("", displayMode: .inline)
             .navigationBarBackButtonHidden(true)
             .navigationBarItems(trailing:
                                     Button("Done", action: {
