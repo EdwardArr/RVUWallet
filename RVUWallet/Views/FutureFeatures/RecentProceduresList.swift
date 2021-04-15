@@ -19,7 +19,7 @@ struct RecentProceduresList: View {
             
             ForEach(proceduresList.prefix(3)){procedure in
                 NavigationLink(
-                    destination: ProcedureDetailView(),
+                    destination: ProcedureDetailView(procedure: procedure),
                     label: {
                         ProcedureRowView(procedure: procedure)
                             .padding(.vertical,20)
