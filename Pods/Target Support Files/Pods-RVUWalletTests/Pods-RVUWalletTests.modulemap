@@ -1,0 +1,6 @@
+framework module Pods_RVUWalletTests {
+  umbrella header "Pods-RVUWalletTests-umbrella.h"
+
+  export *
+  module * { export * }
+}
