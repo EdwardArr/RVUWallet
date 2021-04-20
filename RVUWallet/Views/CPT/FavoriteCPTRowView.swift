@@ -9,7 +9,13 @@ import SwiftUI
 
 struct FavoriteCPTRowView: View {
     
+    @Environment(\.presentationMode) var presentationMode
+    
     @State var presentCPTCodeEditScreen = false
+    
+    @Binding var selected: CPT?
+    
+    @Binding var isSelected:Bool
     
     var cpt:CPT
     
@@ -17,6 +23,7 @@ struct FavoriteCPTRowView: View {
     
     var body: some View {
         HStack{
+            
             if mode == .edit {
                 Button(action:{
                     print("\(cpt.description) is in process to be deleted.")
@@ -24,21 +31,41 @@ struct FavoriteCPTRowView: View {
                 Image(systemName: "minus.circle.fill").font(.body).foregroundColor(.red)
                 }).buttonStyle(BorderlessButtonStyle())
             }
+            
+            else if mode == .select {
+                Button(action:{
+                    
+                    self.selected = cpt
+                    self.isSelected = false
+                    print("The selected bool is \(isSelected)")
+                    
+                    print("\(self.selected!.description) was selected.")
+                    
+                }, label:{
+                    Image(systemName:
+                            //                            self.selected!.code == cpt.code ? "largecircle.fill.circle":"circle"
+                            checkedTheSelection()
+                    )
+                        .font(.title2)
+                        .foregroundColor(.blue)
+                }).buttonStyle(BorderlessButtonStyle())
+            }
+            
             VStack(alignment:.leading, spacing:1){
                 
                 Text(cpt.description)
                     .font(.subheadline)
-                    .foregroundColor(cpt.color)
+                    .foregroundColor(.secondary)
+//                    .foregroundColor(cpt.color)
                     .fontWeight(.medium)
                 
                 Text(cpt.code)
                     .font(.title3)
                     .foregroundColor(.primary)
                     .fontWeight(.medium)
-                
-                Text("\(cpt.rvu, specifier: "%.2f") RVUs")
-                    .font(.subheadline)
-                    .foregroundColor(.secondary)
+//                Text("\(cpt.rvu, specifier: "%.2f") RVUs")
+//                    .font(.subheadline)
+//                    .foregroundColor(.secondary)
             }
             Spacer()
             if mode == .edit {
@@ -50,17 +77,35 @@ struct FavoriteCPTRowView: View {
                 .sheet(isPresented: $presentCPTCodeEditScreen){
                     CPTCodeEditView(cptColor:.blue, cptCodeEditMode:.edit)
                 }
-            }else if mode == .select {
-                Button(action:{}, label:{
-                    Image(systemName:"circle").font(.title2).foregroundColor(.blue)
-                }).buttonStyle(BorderlessButtonStyle())
+                
             }
-        }.padding(.vertical,1)
+        }
+        .padding(.vertical,1)
+//        .onTapGesture {
+//            self.selected = cpt
+//        }
+    }
+    
+    
+    func checkedTheSelection() -> String {
+        if self.selected?.code != nil{
+            if self.selected!.code == cpt.code {
+                return "checkmark.circle"
+            }else{
+                return "circle"
+            }
+//            return "largecircle.fill.circle"
+        }else {
+            return "circle"
+            
+        }
     }
 }
 
-struct CPTRowView_Previews: PreviewProvider {
-    static var previews: some View {
-        FavoriteCPTRowView(cpt: cptList[0], mode: .edit)
-    }
-}
+//struct CPTRowView_Previews: PreviewProvider {
+//    @State var selection:CPT?
+//    
+//    static var previews: some View {
+//        FavoriteCPTRowView(selected: selection, cpt: cptList[0], mode: .edit)
+//    }
+//}

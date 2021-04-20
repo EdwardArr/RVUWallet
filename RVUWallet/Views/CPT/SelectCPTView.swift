@@ -9,15 +9,24 @@ import SwiftUI
 
 struct SelectCPTView: View {
     
+    @Environment(\.presentationMode) var presentationMode
+    
+    @ObservedObject var cptsVM = CPTsViewModel()
     
     @State var presentAddCPTCodeScreen = false
+    
     @State var presentEditFavoritesScreen = false
+    
+    @Binding var isSelected:Bool
+    
+    @Binding var selection: CPT?
     
     var mode:FavoritesViewMode = .select
     
     var body: some View {
         
         List{
+            
             Section(header:
                         HStack(alignment:.bottom){
                             Text("Favorites")
@@ -33,15 +42,17 @@ struct SelectCPTView: View {
                                 label: {
                                     Text("Edit")
                                         .font(.body)
-                                }).sheet(isPresented: $presentEditFavoritesScreen){
+                                })
+                                .disabled(true)
+                                .sheet(isPresented: $presentEditFavoritesScreen){
                                     FavoritesWithNavBarView(mode:.edit)
                                 }
                         })
             {
                 //        FavoritesView(mode:.select)
-                ForEach(cptList) {cpt in
+                ForEach(cptsVM.cpts) {cpt in
                     HStack{
-                        FavoriteCPTRowView(cpt: cpt, mode: mode)
+                        FavoriteCPTRowView(selected: $selection, isSelected: $isSelected, cpt: cpt, mode: mode)
                     }.padding(.vertical,5)
                 }
                 
@@ -53,22 +64,41 @@ struct SelectCPTView: View {
         
         .listStyle(GroupedListStyle())
         .navigationBarTitle("Select CPT Code", displayMode: .inline)
-        .navigationBarItems(trailing:
+//        .navigationBarBackButtonHidden(true)
+        .navigationBarItems(leading:
+                                Button(action: {
+                                        }, label: {
+            EmptyView()
+        })
+                                ,trailing:
                                 
                                 Button {
                                     presentAddCPTCodeScreen.toggle()
                                 } label: {
                                     Image(systemName: "plus").font(.body)
                                 })
+        .onAppear(perform: {
+            cptsVM.subscribe()
+            print(isSelected)
+//            dismiss()
+        })
         .sheet(isPresented: $presentAddCPTCodeScreen){
             CPTCodeEditView(cptColor: .blue)
         }
         
     }
+    
+    
+    func dismiss(){
+        if self.isSelected == false{
+        presentationMode.wrappedValue.dismiss()
+        }
+    }
+    
 }
 
-struct SelectCPTView_Previews: PreviewProvider {
-    static var previews: some View {
-        SelectCPTView()
-    }
-}
+//struct SelectCPTView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        SelectCPTView()
+//    }
+//}

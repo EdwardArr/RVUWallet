@@ -10,77 +10,71 @@ import SwiftUIPlus
 
 struct SummaryView: View {
     
-    @State var stats = ["revenue":50000,"RVU":2300]
-    @State var isFilterButtonHidden:Bool
+    var proceduresList:[Procedure]
+    
+    var totalRVU:Double
+    
+    var revenuePerRVU:Double
     
     var body: some View {
-        GeometryReader{ geometry in
+        
+       
         VStack{
-            HStack{
-                Text("April 2021")
-                    .font(.title2)
-                    .foregroundColor(.primary)
-                    .bold()
-                Spacer()
-//                Text("Change date")
-//                    .foregroundColor(.blue)
-//                    .isHidden(isFilterButtonHidden)
-            }.padding(.bottom,-1)
-            
-            HStack(){
-                ZStack{
-                    Rectangle().foregroundColor(Color(UIColor.secondarySystemGroupedBackground)).cornerRadius(8)
-                    HStack{
-                    VStack(alignment:.leading){
-                        Text("Total RVUs")
-                            .font(.subheadline)
-                            .foregroundColor(.primary)
-                        Text(" 2,832.19")
-                            .font(.title)
-                            .fontWeight(.medium)
-                            .foregroundColor(.primary)
-                        Text("$153,476.38")
-                            .font(.subheadline)
-                            .foregroundColor(.secondary)
-                            .fontWeight(.medium)
-                    }.padding(.leading)
-                        Spacer()
-                    }
-                }
-                .frame(width:geometry.size.width * 0.5,height:85)
-                
-                ZStack{
-                    Rectangle().foregroundColor(Color(UIColor.secondarySystemGroupedBackground)).cornerRadius(8)
-                    HStack{
-                    VStack(alignment:.leading){
-                        Text("Performed")
-                            .font(.subheadline)
-                            .foregroundColor(.primary)
-                        HStack(alignment:.firstTextBaseline, spacing:5){
-                        Text("80")
-                            .font(.largeTitle)
-                            .fontWeight(.medium)
-                            .foregroundColor(.primary)
-                            Text("Procedures")
-                                .fontWeight(.medium)
-                                .foregroundColor(.primary)
+            GeometryReader{ geometry in
+                HStack(){
+                    ZStack(alignment:.center){
+                        RoundedRectangle(cornerRadius: 12, style: .continuous)
+                            .foregroundColor(Color(UIColor.secondarySystemGroupedBackground))
+                        //                            .cornerRadius(8)
+                        HStack{
+                            VStack(alignment:.leading){
+                                Text("Total RVUs")
+                                    .font(.subheadline)
+                                    .foregroundColor(.primary)
+                                Text("\(totalRVU, specifier: "%.2f")")
+                                    .font(.title)
+                                    .fontWeight(.medium)
+                                    .foregroundColor(.primary)
+                                Text("$\(revenuePerRVU*totalRVU, specifier: "%.2f")")
+                                    .font(.subheadline)
+                                    .foregroundColor(.secondary)
+                                    .fontWeight(.medium)
+                            }.padding(.leading)
+                            Spacer()
                         }
                     }
-                    .padding(.leading)
-                        Spacer()
+                    .frame(width:geometry.size.width
+                            * 0.475, height:85)
+                    
+                    Spacer()
+                    
+                    ZStack{
+                        RoundedRectangle(cornerRadius: 12, style: .continuous)
+                            .foregroundColor(Color(UIColor.secondarySystemGroupedBackground))
+                        HStack{
+                            VStack(alignment:.leading){
+                                Text("Performed")
+                                    .font(.subheadline)
+                                    .foregroundColor(.primary)
+                                HStack(alignment:.firstTextBaseline, spacing:5){
+                                    Text("\(proceduresList.count)")
+                                        .font(.largeTitle)
+                                        .fontWeight(.medium)
+                                        .foregroundColor(.primary)
+                                    Text("Procedures")
+                                        .fontWeight(.medium)
+                                        .foregroundColor(.primary)
+                                }
+                            }
+                            .padding(.leading)
+                            Spacer()
+                        }
                     }
+                    .frame(width:geometry.size.width * 0.475, height:85)
                 }
-                .frame(width:geometry.size.width * 0.5, height:85)
-                
-                Spacer()
-                
             }
             
-        }
-//        .frame(height:geometry.size.height*0.7)
-       
-        }
-        
+        }.frame(height:85)
     }
 }
 
@@ -149,7 +143,8 @@ struct TotalStatsView: View{
 
 struct SummaryView_Previews: PreviewProvider {
     static var previews: some View {
-        SummaryView(isFilterButtonHidden: false)
+        SummaryView(proceduresList: proceduresList, totalRVU: 201.35, revenuePerRVU: 54.19)
+            .padding()
             .background(Color(UIColor.systemGroupedBackground)).ignoresSafeArea(.all)
     }
 }

@@ -11,8 +11,14 @@ struct FavoritesWithNavBarView: View {
    
     @Environment(\.presentationMode) var presentationMode
     
+    @ObservedObject var cptsVM = CPTsViewModel()
+    
+    @State var selection: CPT?
+    
     @State var text = ""
     @State var isEditing = false
+    
+    @State var isSelected = false
     
     @State private var presentAddCPTCodeScreen = false
     @State var presentFavoriteCPTCodeListScreen = false
@@ -103,15 +109,19 @@ struct FavoritesWithNavBarView: View {
                                                                 
                             }}.padding(.top)
             ){
-                ForEach(cptList) {cpt in
+                ForEach(cptsVM.cpts) {cpt in
 //                    HStack{
-                        FavoriteCPTRowView(cpt: cpt, mode: mode)
+                    FavoriteCPTRowView(selected: $selection, isSelected: $isSelected, cpt: cpt, mode: mode)
+                        
 //                    }.padding(.vertical,5)
                 }
             }.textCase(nil)
         }
         .navigationBarTitle(navigationTitle)
         .navigationBarTitleDisplayMode(.inline)
+        .onAppear(perform: {
+            cptsVM.subscribe()
+        })
         .navigationBarBackButtonHidden(isBackButtonHidden)
         .navigationBarItems(leading: Button(
                                 action: {

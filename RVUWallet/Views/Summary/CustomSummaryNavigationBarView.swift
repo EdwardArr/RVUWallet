@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct CustomSummaryNavigationBarView: View {
+    
     @State private var presentPhysicianProfileScreen = false
     
     var body: some View {
@@ -47,38 +48,42 @@ struct RVUWalletTitleView: View {
     
     var body: some View {
         
-        VStack(alignment:.leading, spacing:1){
+        VStack(alignment:.leading, spacing:0){
+            Text("APRIL 2021")
+                .font(.title2)
+                .foregroundColor(.secondary)
+                .fontWeight(.bold)
             HStack{
                 
-                Text("Summary").font(.largeTitle).bold().foregroundColor(.primary)
+                Text("Summary").font(.largeTitle).bold().foregroundColor(.clear)
                 
                 Spacer()
                 
-                Button(action: {
-                    print("User profile button pressed")
-                    presentPhysicianProfileScreen.toggle()
-                },
-                label: {
-                    
-                    ZStack {
-                        Circle()
-                            .frame(width:35)
-                            .foregroundColor(.gray)
-                        Text("MB")
-                            .font(.system(size: 17.5))
-                            .foregroundColor(.white)
-                            .bold()
-                    }
-                    
-                })
+//                Button(action: {
+//                    print("User profile button pressed")
+//                    presentPhysicianProfileScreen.toggle()
+//                },
+//                label: {
+//                    
+//                    ZStack {
+//                        Circle()
+//                            .frame(width:35)
+//                            .foregroundColor(.gray)
+//                        Text("MB")
+//                            .font(.system(size: 17.5))
+//                            .foregroundColor(.white)
+//                            .bold()
+//                    }
+//                    
+//                })
             }
             
-            .padding(EdgeInsets(top: 20, leading: 20, bottom: -1, trailing: 20))
+            
             .sheet(isPresented: $presentPhysicianProfileScreen){
                 PhysicianProfileView()
             }
 //
-            Spacer()
+//            Spacer()
 //            HStack(alignment:.lastTextBaseline){
 //                Text("Summary").font(.title).fontWeight(.heavy).foregroundColor(.primary)
 //                Spacer()
@@ -86,8 +91,9 @@ struct RVUWalletTitleView: View {
 ////                        Text("Edit")})
 //                
 //            }.padding(.horizontal,20)
-            Divider().padding([.horizontal,.bottom])
+//            Divider().padding([.horizontal,.bottom])
         }
+        .padding(EdgeInsets(top: 20, leading: 20, bottom: -1, trailing: 20))
     }
 }
 

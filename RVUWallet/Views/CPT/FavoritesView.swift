@@ -13,8 +13,18 @@ enum FavoritesViewMode {
 
 struct FavoritesView: View {
     
+    @ObservedObject var physiciansVM = PhysiciansViewModel()
+    @ObservedObject var cptsVM = CPTsViewModel()
+    
+    @State var physician:Physician = Physician(id: "dTsn2jWAdrtAMj4N1zYn", first_name: "Michael", last_name: "Blaney", phone_number: "+1(706)285-3186", email: "mike.blaney@bcofa.com", revenue_per_rvu: 54.19, favorite_cpts: ["12","122"], procedures: [])
+    
     @State var text = ""
     @State var isEditing = false
+    
+    @State var isSelected = false
+    
+    @State var selection: CPT?
+    
     @State private var presentAddCPTCodeScreen = false
     
     @State var presentFavoriteCPTCodeListScreen = false
@@ -70,7 +80,7 @@ struct FavoritesView: View {
         case .edit:
             return AnyView(Text("Done"))
         case .view:
-                return AnyView(Text("Edit"))
+            return AnyView(Text("Edit"))
         case .select:
             return AnyView(Image(systemName: "plus"))
         }
@@ -91,6 +101,9 @@ struct FavoritesView: View {
     var body: some View {
 //        NavigationView{
         List{
+            
+//            Text(getFavoriteCPTIDs())
+            
             if mode == .edit{
                 Button (action:{
                     
@@ -106,7 +119,10 @@ struct FavoritesView: View {
             
             Section(header:
                         HStack{
-                            sectionHeader.font(.title3).foregroundColor(.primary).bold()
+                            sectionHeader
+                                .font(.title3)
+                                .foregroundColor(.primary)
+                                .bold()
                             Spacer()
                             if mode == .select{
                                 Button(action: {
@@ -118,22 +134,27 @@ struct FavoritesView: View {
                                                                 
                             }}.padding(.top)
             ){
-                ForEach(cptList) {cpt in
+                ForEach(cptsVM.cpts) {cpt in
 //                    HStack{
-                        FavoriteCPTRowView(cpt: cpt, mode: mode)
+                    FavoriteCPTRowView(selected: $selection, isSelected: $isSelected, cpt: cpt, mode: mode)
 //                    }
 //                    .padding(.vertical,5)
                 }
-            }.textCase(nil)
+            }
+            .textCase(nil)
         }
         .navigationBarTitle(navigationTitle)
+        .onAppear(perform: {
+            physiciansVM.subscribe()
+            cptsVM.subscribe()
+        })
         .navigationBarBackButtonHidden(isBackButtonHidden)
         .navigationBarTitleDisplayMode(navDisplayMode)
         .navigationBarItems(leading: Button(
                                 action: {
                                     
                                     mode = .view
-                                    
+                                   
                                 },
                                 label: {
                                     leadingNavItem.font(.body)}), trailing:
@@ -144,10 +165,11 @@ struct FavoritesView: View {
                                         }else if mode == .view{
                                         mode = .edit
                                         }
+                                        
         }, label: {
             trailingNavItem.font(.body)
 //            Text(mode == .view ? "Edit" : "Done")
-        })
+        }).disabled(true)
 //                                .sheet(isPresented: $presentFavoriteCPTCodeListScreen){
 //                                    FavoriteCPTCodeListView(mode:.edit)
 //                                                }
@@ -155,10 +177,23 @@ struct FavoritesView: View {
         .listStyle(InsetGroupedListStyle())
 //    }
     }
+    
+//    func getFavoriteCPTIDs() -> String{
+//        var favorite_cpts = [String]()
+//        
+//        for i in physiciansVM.physicians{
+//            for x in i.favorite_cpts{
+//                favorite_cpts.append(x)
+//            }
+//        }
+//        print(favorite_cpts)
+//        return favorite_cpts[0]
+//    }
+    
 }
 
 struct FavoriteCPTCodeListView_Previews: PreviewProvider {
     static var previews: some View {
-        FavoritesView()
+        FavoritesView(selection: cptList[0])
     }
 }

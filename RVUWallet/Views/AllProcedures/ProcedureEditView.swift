@@ -43,25 +43,36 @@ struct TextFile: FileDocument {
     }
 }
 
+enum ProcedureViewMode {
+  case new, edit
+}
+
 struct ProcedureEditView: View {
-    @Environment(\.presentationMode) var presentationMode
-//    @Binding var document: TextFile
     
-    @State var hospitalRecord = ""
+    @Environment(\.presentationMode) var presentationMode
+    
+//    let dg = DragGesture()
+//    @Binding var document: TextFile
+    @ObservedObject var procedureVM = ProcedureViewModel()
+    
+    @ObservedObject var physicianVM = PhysicianViewModel()
+
+    @State var barcode = ""
     @State var cpt = ""
-    @State var cptDescription = ""
-    @State var icd10 = ""
-    @State var diagnosis = ""
-    @State var rvu = ""
-    @State var bgColor: Color
     @State var date: Date = Date()
+    
+    @State var selection: CPT? = CPT(id: "", code: "", description: "", rvu: 0.0)
+    
+    var mode: ProcedureViewMode = .new
+    
+    @State var physician:Physician = Physician(id: "dTsn2jWAdrtAMj4N1zYn", first_name: "Michael", last_name: "Blaney", phone_number: "+1(706)285-3186", email: "mike.blaney@bcofa.com", revenue_per_rvu: 54.19, favorite_cpts: [], procedures: [])
+    
     @State private var isShowingScanner = false
     @State private var patientName:String = ""
     @State private var addPatient = false
-//    @State var clasificationIdentifier: String = ""
     @State private var isShowingTextScanner = false
-
-    let names = ["Raju", "Ghanshyam", "Baburao Ganpatrao Apte", "Anuradha", "Kabira", "Chaman Jhinga", "Devi Prasad", "Khadak Singh"]
+    
+    @State var showCPTList:Bool = false
     
     var body: some View {
        
@@ -77,7 +88,8 @@ struct ProcedureEditView: View {
                 
                 Section {
                     HStack{
-                        TextField("Hospital Code", text: $hospitalRecord)
+                        TextField("Hospital Code", text: $procedureVM.procedure.hospital_barcode)
+//                            .highPriorityGesture(dg)
                         Button(
                             action: {
                                 print("User is scanning a barcode.")
@@ -93,23 +105,19 @@ struct ProcedureEditView: View {
                                 }
                             }).padding(.vertical,1)
                     }
-                }
+                }.textCase(nil)
                 .sheet(isPresented: $isShowingScanner, content: {
                     CodeScannerView(codeTypes: [.code39], simulatedData: "Edward Arribasplata\n770-298-9996", completion: self.handleScan)
                 })
                 
                 Section{
                     DatePicker("Procedure Date", selection: $date, displayedComponents: .date)
-                }
+                }.textCase(nil)
                 
                 Section(footer:Text("Button is disabled until app is HIPAA compliant.")){
                     AddPatientRowView().disabled(true)
-                }
-                
-               
-                
-                
-                
+                }.textCase(nil)
+            
                 Section{
                     
 //                    Picker("CPT Code", selection: $cpt) {
@@ -118,17 +126,26 @@ struct ProcedureEditView: View {
 //                        }
 //                    }
                     
-                    NavigationLink(destination: SelectCPTView()
-                    ){
+                    NavigationLink(destination: SelectCPTView(isSelected:$showCPTList, selection:$selection), isActive:$showCPTList){
                         HStack{
                             Text("CPT Code")
                             Spacer()
-                            Text("\(self.cpt)")
+                            Text("\(self.selection?.code ?? "")")
                                 .foregroundColor(.blue)
                         }
-                    }.padding(.vertical,1)
-//                    TextField("CPT Description", text: $cptDescription)
-                }
+                    }
+                    .isDetailLink(false)
+                    .padding(.vertical,1)
+                    
+                    if self.selection?.description != nil && self.selection?.description != ""{
+                        Text(self.selection?.description ?? "")
+                    }
+                    if self.selection?.rvu != nil && self.selection?.rvu != 0.0 {
+                        Text("\(self.selection?.rvu ?? 0.0, specifier: "%.2f")")
+                    }
+//                    TextField("CPT Description", text: $selection?.code)
+                    
+                }.textCase(nil)
                 
 //                Section{
 //                    NavigationLink(
@@ -149,20 +166,26 @@ struct ProcedureEditView: View {
 //                    HStack{
 //                        Text("RVU")
 //                        Divider()
-//                        TextField("Amount", text:$rvu)
-//                            .keyboardType(.decimalPad)
-//                    }
-//                }
-        }
-        .navigationBarTitle("New Procedure",displayMode: .inline)
-        .navigationBarItems(
-            leading: Button(action: {handleCancelTapped()}, label: {
-                Text("Cancel").font(.body)
-            }), trailing: Button(action: {handleCancelTapped()}, label: {
-                Text("Save").font(.body)
-            }).disabled(true)
-        )
-        .listStyle(GroupedListStyle())
+                //                        TextField("Amount", text:$rvu)
+                //                            .keyboardType(.decimalPad)
+                //                    }
+                //                }
+            }
+            
+            .navigationBarTitle(mode == .new ? "New Procedure" : procedureVM.procedure.hospital_barcode)
+            .navigationBarTitleDisplayMode(mode == .new ? .inline : .large)
+            .navigationBarItems(
+                leading: Button(action: {handleCancelTapped()}, label: {
+                    Text("Cancel").font(.body)
+                }), trailing: Button(action: {
+                    handleDoneTapped()
+                    dismiss()
+                    
+                }, label: {
+                    Text(mode == .new ? "Save" : "Done").font(.body)
+                }).disabled(areVariablesEmpty())
+            )
+            .listStyle(GroupedListStyle())
         }
     }
     
@@ -172,7 +195,7 @@ struct ProcedureEditView: View {
         switch result {
         case  .success(let code):
             let details = code.components(separatedBy: "\n")
-            self.hospitalRecord = details[0]
+            self.procedureVM.procedure.hospital_barcode = details[0]
             print(details[0])
             guard details.count == 2 else{ return}
             print(details[0])
@@ -183,6 +206,26 @@ struct ProcedureEditView: View {
         }
     }
     
+    func handleDoneTapped() {
+        let id = UUID().uuidString
+        
+        if procedureVM.procedure.id == ""{
+        procedureVM.procedure.id = id
+        }
+        
+        physicianVM.physician.procedures.append(id)
+        
+        procedureVM.procedure.cpt_code = self.selection?.code ?? ""
+        procedureVM.procedure.cpt_description = self.selection?.description ?? ""
+        procedureVM.procedure.cpt_rvu = self.selection?.rvu ?? 0.0
+        procedureVM.procedure.procedure_date = date.timeIntervalSince1970
+        procedureVM.procedure.cpt_id = self.selection?.id ?? ""
+        procedureVM.procedure.cpt_description = self.selection?.description ?? ""
+        procedureVM.procedure.primary_md = physician.id ?? ""
+        procedureVM.save()
+        physicianVM.updateProceduresList(physician: physician, procedure: id)
+    }
+    
     func handleCancelTapped() {
         dismiss()
     }
@@ -190,10 +233,28 @@ struct ProcedureEditView: View {
     func dismiss(){
         presentationMode.wrappedValue.dismiss()
     }
-}
-
-struct ProcedureEditView_Previews: PreviewProvider {
-    static var previews: some View {
-        ProcedureEditView(bgColor: .blue)
+    
+    func areVariablesEmpty() -> Bool {
+        if procedureVM.procedure.hospital_barcode != "" && self.selection?.code != "" {
+            return false
+        }else{
+            return true
+        }
+    }
+    
+    func isItTrue() -> Bool {
+        if showCPTList == false {
+            print("Edit procedure page should be in view.")
+            return false
+        }else{
+            print("CPT list page should be in view.")
+            return true
+        }
     }
 }
+
+//struct ProcedureEditView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        ProcedureEditView(selection: cptList[0])
+//    }
+//}

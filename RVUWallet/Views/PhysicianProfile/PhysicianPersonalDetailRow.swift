@@ -11,6 +11,8 @@ struct PhysicianPersonalDetailRow: View {
     
     @State var personal:String = "Michael"
     
+//    var physician:Physician
+    
     var descriptor:String
     
     var personalInfo:String
@@ -29,8 +31,10 @@ struct PhysicianPersonalDetailRow: View {
             
             if mode == .view{
                 Text(personalInfo)
+                    .font(.body)
             }else if mode == .edit {
                 TextField("", text: $personal)
+                    .font(.body)
                     .foregroundColor(.blue)
                     .multilineTextAlignment(.trailing)
                     .keyboardType(keyboardType)

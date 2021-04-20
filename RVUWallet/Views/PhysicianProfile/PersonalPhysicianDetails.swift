@@ -15,10 +15,14 @@ struct PersonalPhysicianDetails: View {
     
     @State var mode:personalDetailsMode = .view
     
+    @ObservedObject var physicianVM = PhysicianViewModel()
+    
     @State var descriptor = ["First Name", "Last Name", "Phone Number"]
     @State var personalInfo = ["Michael", "Blaney", "+1 (706) 285-3186"]
     
     @State var counter = 0
+    
+    @State var name = "Michael"
     
     
     var isBackButtonHidden: Bool {
@@ -65,18 +69,18 @@ struct PersonalPhysicianDetails: View {
                     Spacer()
                 }
                 
+//                TextField("First Name", text: $name).disabled(true)
                 ForEach(Array(zip(descriptor, personalInfo)), id:\.0){ text in
 
-            
-                    PhysicianPersonalDetailRow(descriptor:text.0, personalInfo:text.1, keyboardType: .namePhonePad, mode:mode)
-                    
+                    PhysicianPersonalDetailRow(descriptor:text.0, personalInfo:text.1, keyboardType: .namePhonePad, mode:mode).font(.body)
+
                 }
 
             }
             
             Section(footer:Text("Revenue is used to calculate total revenue.")){
                 
-                PhysicianPersonalDetailRow(descriptor:"Revenue per RVU", personalInfo:"$54.00", keyboardType: .decimalPad, mode:mode)
+                PhysicianPersonalDetailRow(descriptor:"Revenue per RVU", personalInfo:"$54.19", keyboardType: .decimalPad, mode:mode).font(.body)
         
             }
             
@@ -101,7 +105,7 @@ struct PersonalPhysicianDetails: View {
                                     }
                                 }, label: {
                                     trailingNavItem.font(.body)
-                                }))
+                                }).disabled(true))
         .background(Color(UIColor.systemGroupedBackground)).ignoresSafeArea()
                                 
         

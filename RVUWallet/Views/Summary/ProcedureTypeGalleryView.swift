@@ -27,7 +27,8 @@ struct ProcedureTypeGalleryView: View {
                         destination:
                             ScrollView{
                                 HStack{
-                                    Text(procedure.description).foregroundColor(procedure.color)
+                                    Text(procedure.description)
+//                                    .foregroundColor(procedure.color)
                                 .font(.largeTitle)
                                     Spacer()
                                 }
@@ -41,7 +42,10 @@ struct ProcedureTypeGalleryView: View {
             }
 
            NavigationLink(
-            destination: ProcedureListView(),
+            destination:
+//                ProcedureListView(proceduresList: <#[Procedure]#>)
+            Text("Hello World")
+            ,
             label: {
                 SeeAllProcedureDataButton()
             })
@@ -123,7 +127,7 @@ struct SingleStat: View {
                     Text(procedure.description)
                         .font(.subheadline)
                         .fontWeight(.medium)
-                        .foregroundColor(procedure.color)
+//                        .foregroundColor(procedure.color)
                         //                        .foregroundColor(procedure.color)
                         .padding(EdgeInsets(top: 5, leading: 0, bottom: 0, trailing: 0))
                     HStack(alignment:.lastTextBaseline, spacing:1){

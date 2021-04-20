@@ -9,77 +9,120 @@ import SwiftUI
 
 
 struct ParentView: View {
+    
+    @Environment(\.scenePhase) private var scenePhase
+    
+    @ObservedObject var proceduresVM = ProceduresViewModel()
+    
     var body: some View{
-        NavigationView{
-           
-            ContentView(bgColor: .blue)
-            
-//                .navigationBarHidden(true)
-//                .navigationBarTitleDisplayMode(.automatic)
-//                .navigationTitle(Text("Summary"))
-//                .navigationBarItems(trailing: Text("hello"))
-//                .toolbar {
-//                    ToolbarItem(placement: .principal) {
-//                        VStack {
-//                            Text("Title").font(.headline)
-//                            Button("Subtitle") {
-//
-//                            }
-//                        }
-//                    }
-//                }
-        }
+//        ScrollView{
+            ContentView()
+//            AllProceduresListView()
+//        }
+                .onChange(of: scenePhase) { (newScenePhase) in
+                    switch newScenePhase {
+                    case .active:
+                        print("scene is now active!")
+                    case .inactive:
+                        print("scene is now inactive!")
+                        proceduresVM.unsubscribe()
+                    case .background:
+                        print("scene is now in the background!")
+                        proceduresVM.unsubscribe()
+                    @unknown default:
+                        print("Apple must have added something new!")
+                    }
+                }
     }
 }
 
 struct ContentView: View {
 
-    @State var bgColor: Color
-
+    @ObservedObject var proceduresVM = ProceduresViewModel()
+    
+    @ObservedObject var cptsVM = CPTsViewModel()
+    
+    @ObservedObject var cptVM = CPTViewModel()
+    
+    @ObservedObject var physiciansVM = PhysiciansViewModel()
+    
+    @State private var presentPhysicianProfileScreen = false
+    
+//    init() {
+//        UIToolbar.appearance().barTintColor = UIColor.clear
+//        UIToolbar.appearance().backgroundColor = UIColor.clear
+//    }
+    
     var body: some View {
-
-
-        ZStack(alignment:.bottom){
+        NavigationView{
+            
+            ZStack(alignment:.bottom){
+                
                 ScrollView(.vertical, showsIndicators: false){
                     
                     RVUWalletTitleView()
+                        .offset(y:-89)
+                    HStack{
+                        Text("Performance")
+                        .font(.title2)
+                        .bold()
+                        Spacer()
+                    }
+                        .offset(y:-89)
+                        .padding(EdgeInsets(top: 20, leading: 20, bottom: -1, trailing: 20))
+                    SummaryView(proceduresList: proceduresVM.procedures, totalRVU: proceduresVM.totalRVU, revenuePerRVU: 54.19)
+                        .offset(y:-89)
+                        .padding(EdgeInsets(top: 0, leading: 20, bottom: 20, trailing: 20))
                     
-                    SummaryView(isFilterButtonHidden: false)
-                        .padding(EdgeInsets(top: 10, leading: 20, bottom: 115, trailing: 30))
-
-                    NavigationLink(
-                        destination:
-                            ProceduresMainView()
-                        ,
-                     label: {
-                         SeeAllProcedureDataButton()
-                            
-                     }).padding(.bottom,15)
-                    
-                    RecentProceduresList().padding(EdgeInsets(top: 0, leading: 20, bottom: 15, trailing: 20))
-                    
-                    
-//                    ProcedureTypeHGridView()
-                       
+                    RecentProceduresList(proceduresList: proceduresVM.procedures, totalRVU: proceduresVM.totalRVU, revenuePerRVU: 54.19, cpt: cptVM.cpt)
+                        .offset(y:-89)
+                        .padding(EdgeInsets(top: 0, leading: 20, bottom: 0, trailing: 20))
                 }
-
-
-                AddNewProcedureButton(bgColor: bgColor)
-
+                AddNewProcedureButton()
             }
-            
-            .navigationBarHidden(true)
             .navigationBarTitle("Summary")
-//            .navigationBarItems(trailing: menuButton())
+            .onAppear(perform: {proceduresVM.subscribe()})
+            .navigationBarItems(
+                trailing:
+                    Button(action: {
+                        print("User profile button pressed")
+                        presentPhysicianProfileScreen.toggle()
+                    },
+                    label: {
+                        
+                        ZStack {
+                            Circle()
+                                .frame(width:35, height:35)
+                                .foregroundColor(.gray)
+                            Text("MB")
+                                .font(.system(size: 17.5))
+                                .foregroundColor(.white)
+                                .bold()
+                        }.offset(y:-5)
+                    })
+                    .sheet(isPresented: $presentPhysicianProfileScreen){
+                        PhysicianProfileView()
+                    }
+            )
+//            .toolbar(content: {
+//                ToolbarItemGroup(placement: .bottomBar) {
+//
+//                    AddNewProcedureButton()
+//                        .padding(.top,20)
+//                    Spacer()
+//                    }
+//            })
             .background(Color(UIColor.systemGroupedBackground).edgesIgnoringSafeArea(.all))
-
+        }
     }
+    
+//    func hideRecentProcedures()-> 
 }
 
 struct AddNewProcedureButton: View {
+  
     @State private var presentNewProcedureScreen = false
-    @State var bgColor: Color
-    
+
     var body: some View {
         HStack{
             Button(action: {
@@ -90,12 +133,12 @@ struct AddNewProcedureButton: View {
                     Image(systemName: "plus.circle.fill").font(.system(size: 25))
                     Text("New Procedure").font(.title3).bold()
                     
-                }.padding(EdgeInsets(top: 0, leading: 20, bottom: 10, trailing: 00))
-            })
+                }
+            }).padding(EdgeInsets(top: 0, leading: 20, bottom: 20, trailing: 20))
             Spacer()
         }
         .sheet(isPresented: $presentNewProcedureScreen){
-            ProcedureEditView(bgColor: bgColor)
+            ProcedureEditView()
         }
     }
 }

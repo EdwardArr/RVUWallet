@@ -9,32 +9,54 @@ import SwiftUI
 
 struct RecentProceduresList: View {
     
+    var proceduresList:[Procedure]
+    
+    var totalRVU:Double
+    
+    var revenuePerRVU:Double
+    
+    var cpt:CPT
+    
     var body: some View {
         
-        VStack(alignment: .leading){
-            
-            Text("Recent Diagnosis")
-                .font(.title2)
-                .bold()
-            
-            ForEach(proceduresList.prefix(3)){procedure in
+        VStack(alignment: .leading, spacing:5){
+            HStack{
+                Text("Procedures")
+                    .foregroundColor(.primary)
+                    .font(.title2)
+                    .bold()
+                Spacer()
+                Button(action: {}, label: {
+                    NavigationLink(
+                        destination:
+                            ProceduresMainView(proceduresList: proceduresList, totalRVU: totalRVU, revenuePerRVU: revenuePerRVU)
+                        ,
+                        label: {
+                            Text("Show More")
+                        }
+                    )
+                })
+//                .background(
+//                    )
+            }
+            ForEach(proceduresList
+                        .sorted {$0.procedure_date > $1.procedure_date}
+                        .prefix(3))
+            {procedure in
                 NavigationLink(
-                    destination: ProcedureDetailView(procedure: procedure),
+                    destination: ProcedureDetailView(procedure: procedure, cpt: cpt),
                     label: {
                         ProcedureRowView(procedure: procedure)
-                            .padding(.vertical,20)
-                    })
-            
-                
+                    }
+                )
             }
-            
         }
     }
 }
 
-struct SummaryComponentsView_Previews: PreviewProvider {
-    static var previews: some View {
-        RecentProceduresList()
-            .background(Color(UIColor.systemGroupedBackground)).ignoresSafeArea(.all)
-    }
-}
+//struct SummaryComponentsView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        RecentProceduresList(proceduresList: proceduresList, totalRVU: 200.1, revenuePerRVU: 54.19,cpt: cptList[0])
+//            .background(Color(UIColor.systemGroupedBackground)).ignoresSafeArea(.all)
+//    }
+//}

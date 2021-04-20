@@ -21,10 +21,10 @@ struct RecentICD10CodesView: View {
                         HStack(alignment:.center){
                             
                             VStack(alignment:.leading){
-                                Text("\(procedure.icd10)")
-                                    .foregroundColor(.primary)
-                                    .font(.headline)
-                                Text("\(procedure.diagnosis)")
+//                                Text("\(procedure.icd10)")
+//                                    .foregroundColor(.primary)
+//                                    .font(.headline)
+                                Text("\(procedure.hospital_barcode)")
                                     .foregroundColor(.secondary)
                                     .font(.subheadline)
                             }

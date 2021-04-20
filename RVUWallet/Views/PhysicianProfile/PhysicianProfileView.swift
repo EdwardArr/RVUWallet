@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct PhysicianProfileView: View {
+    
     @Environment(\.presentationMode) var presentationMode
     
     var body: some View {
@@ -32,7 +33,9 @@ struct PhysicianProfileView: View {
                                 .foregroundColor(.white)
                                 .bold()
                         }
-                        Text("Mike Blaney").font(.title).bold()
+                        Text("Mike Blaney")
+                            .font(.title)
+                            .bold()
                             
                     }
                         Spacer()
@@ -43,6 +46,7 @@ struct PhysicianProfileView: View {
                         destination: PersonalPhysicianDetails(),
                         label: {
                             Text("Personal Details")
+                                .font(.body)
                         })
                     }
                     Section(header:
@@ -52,21 +56,25 @@ struct PhysicianProfileView: View {
                             destination: FavoritesView(mode:.view)
                             ,label: {
                                 Text("CPT Codes")
+                                    .font(.body)
                             })
                     }
                     .textCase(nil)
                     
-                    Section(header:Text("Privacy").foregroundColor(.primary).font(.title3).bold()){
+                    Section(header:Text("Privacy")
+                                .foregroundColor(.primary)
+                                .font(.title3)
+                                .bold()){
                         Button(action: {
                             print("User pressed on export prcoedure data button")
                         }, label: {
-                            Text("Export Procedure Data")
-                        })
+                            Text("Export Procedure Data").font(.body)
+                        }).disabled(true)
                     }.textCase(nil)
                 
                 }
             }
-            .navigationBarTitle("", displayMode: .inline)
+            .navigationBarTitle("Profile", displayMode: .inline)
             .navigationBarBackButtonHidden(true)
             .navigationBarItems(trailing:
                                     Button("Done", action: {
