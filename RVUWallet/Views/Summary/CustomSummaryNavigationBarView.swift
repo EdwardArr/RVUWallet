@@ -59,23 +59,23 @@ struct RVUWalletTitleView: View {
                 
                 Spacer()
                 
-//                Button(action: {
-//                    print("User profile button pressed")
-//                    presentPhysicianProfileScreen.toggle()
-//                },
-//                label: {
-//                    
-//                    ZStack {
-//                        Circle()
-//                            .frame(width:35)
-//                            .foregroundColor(.gray)
-//                        Text("MB")
-//                            .font(.system(size: 17.5))
-//                            .foregroundColor(.white)
-//                            .bold()
-//                    }
-//                    
-//                })
+                Button(action: {
+                    print("User profile button pressed")
+                    presentPhysicianProfileScreen.toggle()
+                },
+                label: {
+                    
+                    ZStack {
+                        Circle()
+                            .frame(width:35)
+                            .foregroundColor(.gray)
+                        Text("MB")
+                            .font(.system(size: 17.5))
+                            .foregroundColor(.white)
+                            .bold()
+                    }
+                    
+                })
             }
             
             

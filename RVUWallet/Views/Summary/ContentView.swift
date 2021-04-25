@@ -5,39 +5,80 @@
 //  Created by Edward Arribasplata on 3/13/21.
 //
 
+import Foundation
 import SwiftUI
+import NavigationBarLargeTitleItems
+import FirebaseAuth
 
+class UserInfo: ObservableObject {
+    
+    enum AuthState {
+        case undefined, signedOut, signedIn
+    }
+    
+    @Published var isUserAutheticated: AuthState = .undefined
+    
+    var authDidChangeListenerHandle: AuthStateDidChangeListenerHandle?
+    
+    func configureFirebaseStateDidChange() {
+        authDidChangeListenerHandle = Auth.auth().addStateDidChangeListener({ (_, user) in
+            guard let _ = user else{
+                self.isUserAutheticated = .signedOut
+                return
+            }
+            self.isUserAutheticated = .signedIn
+        })
+    }
+    func signOut() {
+        do {
+          try Auth.auth().signOut()
+            print("User signed out.")
+        } catch {
+          print("Sign out error")
+        }
+    }
+}
 
 struct ParentView: View {
     
     @Environment(\.scenePhase) private var scenePhase
     
-    @ObservedObject var proceduresVM = ProceduresViewModel()
+    @EnvironmentObject var userInfo: UserInfo
+    
+//    @EnvironmentObject var userVM: UserViewModel
     
     var body: some View{
-//        ScrollView{
-            ContentView()
-//            AllProceduresListView()
-//        }
-                .onChange(of: scenePhase) { (newScenePhase) in
-                    switch newScenePhase {
-                    case .active:
-                        print("scene is now active!")
-                    case .inactive:
-                        print("scene is now inactive!")
-                        proceduresVM.unsubscribe()
-                    case .background:
-                        print("scene is now in the background!")
-                        proceduresVM.unsubscribe()
-                    @unknown default:
-                        print("Apple must have added something new!")
+        Group{
+            if userInfo.isUserAutheticated == .undefined {
+                Text("Loading...")
+            } else if userInfo.isUserAutheticated == .signedOut{
+                MainAuthView()
+            } else {
+                ContentView()
+                    .onChange(of: scenePhase) { (newScenePhase) in
+                        switch newScenePhase {
+                        case .active:
+                            print("scene is now active!")
+                        case .inactive:
+                            print("scene is now inactive!")
+                        case .background:
+                            print("scene is now in the background!")
+//                            self.userInfo.signOut()
+                        @unknown default:
+                            print("Apple must have added something new!")
+                        }
                     }
-                }
+            }
+        }.onAppear {
+            self.userInfo.configureFirebaseStateDidChange()
+        }
     }
 }
 
 struct ContentView: View {
 
+//    @EnvironmentObject var userVM: UserViewModel
+    
     @ObservedObject var proceduresVM = ProceduresViewModel()
     
     @ObservedObject var cptsVM = CPTsViewModel()
@@ -46,12 +87,13 @@ struct ContentView: View {
     
     @ObservedObject var physiciansVM = PhysiciansViewModel()
     
-    @State private var presentPhysicianProfileScreen = false
+    @ObservedObject var userVM = UserViewModel()
     
-//    init() {
-//        UIToolbar.appearance().barTintColor = UIColor.clear
-//        UIToolbar.appearance().backgroundColor = UIColor.clear
-//    }
+    @State var user_id = ""
+    
+    init() {
+        UIToolbar.appearance().barTintColor = UIColor.systemGroupedBackground
+    }
     
     var body: some View {
         NavigationView{
@@ -60,63 +102,109 @@ struct ContentView: View {
                 
                 ScrollView(.vertical, showsIndicators: false){
                     
-                    RVUWalletTitleView()
-                        .offset(y:-89)
-                    HStack{
-                        Text("Performance")
-                        .font(.title2)
-                        .bold()
-                        Spacer()
-                    }
-                        .offset(y:-89)
-                        .padding(EdgeInsets(top: 20, leading: 20, bottom: -1, trailing: 20))
-                    SummaryView(proceduresList: proceduresVM.procedures, totalRVU: proceduresVM.totalRVU, revenuePerRVU: 54.19)
-                        .offset(y:-89)
-                        .padding(EdgeInsets(top: 0, leading: 20, bottom: 20, trailing: 20))
+                    SummaryView(proceduresList: proceduresVM.procedures, totalRVU: proceduresVM.totalRVU, revenuePerRVU: Double(userVM.user.revenue_per_rvu ?? "") ?? 0.0)
+                        .padding(EdgeInsets(top: 20, leading: 20, bottom: 0, trailing: 20))
                     
-                    RecentProceduresList(proceduresList: proceduresVM.procedures, totalRVU: proceduresVM.totalRVU, revenuePerRVU: 54.19, cpt: cptVM.cpt)
-                        .offset(y:-89)
-                        .padding(EdgeInsets(top: 0, leading: 20, bottom: 0, trailing: 20))
+                    RecentProceduresList(proceduresList: proceduresVM.procedures, totalRVU: proceduresVM.totalRVU, revenuePerRVU: Double(userVM.user.revenue_per_rvu ?? "") ?? 0.0, cpt: cptVM.cpt)
+                        .padding(EdgeInsets(top: 20, leading: 20, bottom: 0, trailing: 20))
+                        .isHidden(hideRecentProcedures())
+                        
+                    FinishSetupView().padding([.horizontal, .top],20)
+                        .isHidden(hideEnterRevenuePerRVU())
+               
                 }
-                AddNewProcedureButton()
+//                AddNewProcedureButton()
             }
             .navigationBarTitle("Summary")
-            .onAppear(perform: {proceduresVM.subscribe()})
-            .navigationBarItems(
-                trailing:
-                    Button(action: {
-                        print("User profile button pressed")
-                        presentPhysicianProfileScreen.toggle()
-                    },
-                    label: {
-                        
-                        ZStack {
-                            Circle()
-                                .frame(width:35, height:35)
-                                .foregroundColor(.gray)
-                            Text("MB")
-                                .font(.system(size: 17.5))
-                                .foregroundColor(.white)
-                                .bold()
-                        }.offset(y:-5)
-                    })
-                    .sheet(isPresented: $presentPhysicianProfileScreen){
-                        PhysicianProfileView()
-                    }
-            )
-//            .toolbar(content: {
-//                ToolbarItemGroup(placement: .bottomBar) {
+            .onAppear(perform: {
+                let userInfo = Auth.auth().currentUser
+                self.user_id = userInfo?.uid ?? ""
+                proceduresVM.subscribe(user_id: user_id)
+                userVM.fetchUser(documentId: self.user_id)
+            })
+            .navigationBarLargeTitleItems(trailing:ProfileIcon())
+            .navigationBarTitleDisplayMode(.automatic)
+            .toolbar(content: {
+                ToolbarItemGroup(placement: .bottomBar) {
+
+                    AddNewProcedureButton()
 //
-//                    AddNewProcedureButton()
-//                        .padding(.top,20)
-//                    Spacer()
-//                    }
-//            })
+                    Spacer()
+                }
+            })
             .background(Color(UIColor.systemGroupedBackground).edgesIgnoringSafeArea(.all))
         }
     }
     
-//    func hideRecentProcedures()-> 
+    func hideRecentProcedures()-> Bool {
+        if proceduresVM.procedures.count == 0 {
+            return true
+        }else{
+            return false
+        }
+    }
+    
+    func hideEnterRevenuePerRVU() -> Bool {
+        if userVM.user.revenue_per_rvu == "" || userVM.user.revenue_per_rvu == nil{
+            return false
+        } else {
+            return true
+        }
+    }
+    
+    func getUser(){
+        let userInfo = Auth.auth().currentUser
+        self.user_id = userInfo?.uid ?? ""
+        userVM.fetchUser(documentId:user_id)
+    }
+    
+}
+
+struct ProfileIcon: View {
+    
+    @State private var presentPhysicianProfileScreen = false
+    
+    @ObservedObject var userVM = UserViewModel()
+    
+    @State var user_id = ""
+    
+    var body: some View {
+        
+        Button(action: {
+            print("User profile button pressed")
+            presentPhysicianProfileScreen.toggle()
+        },
+        label: {
+            
+            ZStack {
+                Circle()
+                    .frame(width:35, height:35)
+                    .foregroundColor(.gray)
+                HStack(spacing:-1){
+                    Text(userVM.user.first_name.prefix(1))
+                        .font(.system(size: 15))
+                        .foregroundColor(.white)
+                        .bold()
+                    Text(userVM.user.last_name.prefix(1))
+                        .font(.system(size: 15))
+                        .foregroundColor(.white)
+                        .bold()
+                }
+            }
+            
+        })
+        .padding(.trailing)
+        .onAppear{
+            let userInfo = Auth.auth().currentUser
+            self.user_id = userInfo?.uid ?? ""
+            userVM.fetchUser(documentId:user_id)
+        }
+        .sheet(isPresented: $presentPhysicianProfileScreen){
+            PhysicianProfileView()
+        }
+        .background(Color(UIColor.systemGroupedBackground).edgesIgnoringSafeArea(.all))
+        
+    }
 }
 
 struct AddNewProcedureButton: View {
@@ -134,7 +222,7 @@ struct AddNewProcedureButton: View {
                     Text("New Procedure").font(.title3).bold()
                     
                 }
-            }).padding(EdgeInsets(top: 0, leading: 20, bottom: 20, trailing: 20))
+            }).padding(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
             Spacer()
         }
         .sheet(isPresented: $presentNewProcedureScreen){

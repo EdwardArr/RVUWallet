@@ -21,7 +21,7 @@ struct RecentProceduresList: View {
         
         VStack(alignment: .leading, spacing:5){
             HStack{
-                Text("Procedures")
+                Text("Recent Procedures")
                     .foregroundColor(.primary)
                     .font(.title2)
                     .bold()
@@ -30,6 +30,7 @@ struct RecentProceduresList: View {
                     NavigationLink(
                         destination:
                             ProceduresMainView(proceduresList: proceduresList, totalRVU: totalRVU, revenuePerRVU: revenuePerRVU)
+                            .navigationBarLargeTitleItems(trailing: EmptyView())
                         ,
                         label: {
                             Text("Show More")

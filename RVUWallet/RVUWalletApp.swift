@@ -14,9 +14,13 @@ struct RVUWalletApp: App {
     // call FirebaseApp.configure()
     @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
     
+    var userInfo = UserInfo()
+//    var userVM = UserViewModel()
+    
     var body: some Scene {
         WindowGroup() {
-            ContentView()
+            ParentView().environmentObject(userInfo)
+//                .environmentObject(userVM)
         }
     }
 }

@@ -93,7 +93,7 @@ struct ProcedureRowWithoutBackgroundView: View {
                     //                    Text(procedure.idc).font(.footnote)
                 }
                 Spacer()
-                HStack{
+                HStack(spacing:0){
                     Text("\(month)/\(day)/\(year)").font(.footnote).foregroundColor(.secondary)
                     Image(systemName: "chevron.right")
                         .font(.footnote)
@@ -101,7 +101,7 @@ struct ProcedureRowWithoutBackgroundView: View {
                         .font(Font.footnote.weight(.medium))
                         
                 }
-            }.padding(.vertical,5)
+            }.padding(.vertical,1)
 //            .padding(.vertical,5)
       
     }

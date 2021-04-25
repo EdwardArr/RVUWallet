@@ -14,6 +14,8 @@ class PhysicianViewModel: ObservableObject {
 //    @Published var date : Date().timeIntervalSince1970
     @Published var physician: Physician
     
+    @Published var errorMessage = ""
+    
     private var db = Firestore.firestore()
     private var listenerRegistration: ListenerRegistration?
     
@@ -32,6 +34,26 @@ class PhysicianViewModel: ObservableObject {
             listenerRegistration = nil
         }
     }
+    
+//    func fetchPhysician(documentId: String) {
+//        let docRef = db.collection("physicians").document(documentId)
+//        
+//        docRef.getDocument { document, error in
+//            if let error = error as NSError? {
+//                self.errorMessage = "Error getting document: \(error.localizedDescription)"
+//            }
+//            else {
+//                if let document = document {
+//                    do {
+//                        self.physician = try document.data(as: Physician.self)
+//                    }
+//                    catch {
+//                        print(error)
+//                    }
+//                }
+//            }
+//        }
+//    }
     
     func addPhysician(physician: Physician) {
         do{

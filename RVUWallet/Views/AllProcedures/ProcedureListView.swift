@@ -29,7 +29,7 @@ struct ProcedureListView: View {
                                     .bold()
                                 Spacer()
                             }.padding(.top)
-                                SummaryView(proceduresList: proceduresList, totalRVU: totalRVU, revenuePerRVU: revenuePerRVU)
+//                                SummaryView(proceduresList: proceduresList, totalRVU: totalRVU, revenuePerRVU: revenuePerRVU)
                             }){
                     ForEach(proceduresList
                                 .sorted {$0.procedure_date > $1.procedure_date}
@@ -55,10 +55,14 @@ struct AllProceduresListView: View{
     
     @ObservedObject var proceduresVM = ProceduresViewModel()
     
+    var procedures_list:[Procedure]
+    
     var body: some View {
         List{
             Section(header:SummaryView(proceduresList: proceduresVM.procedures, totalRVU: proceduresVM.totalRVU, revenuePerRVU: 54.19).padding(EdgeInsets(top: 10, leading: 0, bottom: 20, trailing: 10))){
-                ForEach(proceduresVM.procedures.sorted {$0.procedure_date > $1.procedure_date}){ procedure in
+                ForEach(procedures_list
+                            .sorted {$0.procedure_date > $1.procedure_date})
+                { procedure in
                     ProcedureRowWithoutBackgroundView(procedure: procedure)
                         .background(NavigationLink(
                                         destination:
@@ -70,10 +74,10 @@ struct AllProceduresListView: View{
             }
             .textCase(nil)
         }.onAppear {
-            proceduresVM.subscribe()
+//            proceduresVM.subscribe()
         }
         .onDisappear {
-            proceduresVM.unsubscribe()
+//            proceduresVM.unsubscribe()
         }
     }
     

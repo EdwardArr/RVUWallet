@@ -72,6 +72,7 @@ struct ProcedureDetailView: View {
         }
         .listRowBackground(Color.red)
         .navigationBarTitle(procedure.hospital_barcode, displayMode:.large)
+        .navigationBarLargeTitleItems(trailing: Text(""))
         .navigationBarItems(trailing: Button(action: {
             print("Editing procedure")
             presentEditProcedureScreen.toggle()

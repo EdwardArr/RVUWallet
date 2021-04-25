@@ -20,6 +20,8 @@ class ProceduresViewModel: ObservableObject {
     @Published var totalRVU = 0.0
     @Published var rvus = [Double]()
     
+//    var user_id:String = ""
+    
     private var db = Firestore.firestore()
     private var listenerRegistration: ListenerRegistration?
     
@@ -93,7 +95,7 @@ class ProceduresViewModel: ObservableObject {
     }
 
     
-    func subscribe() {
+    func subscribe(user_id:String) {
 
         let date = Date() // current date or replace with a specific date
         let calendar = Calendar.current
@@ -102,7 +104,7 @@ class ProceduresViewModel: ObservableObject {
 //        let yesterday = calendar.date(byAdding: .day, value: -1, to: Date())!.timeIntervalSince1970
 
         listenerRegistration = db.collection("procedures")
-            .whereField("primary_md", isEqualTo: "dTsn2jWAdrtAMj4N1zYn")
+            .whereField("primary_md", isEqualTo: user_id)
 //            .whereField("start_epoch_timestamp", isLessThanOrEqualTo: endTime!)
             .addSnapshotListener { [self] (QuerySnapshot, Error) in
                 guard let documents = QuerySnapshot?.documents else {

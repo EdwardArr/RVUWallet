@@ -8,14 +8,10 @@
 import SwiftUI
 
 struct PhysicianPersonalDetailRow: View {
-    
-    @State var personal:String = "Michael"
-    
-//    var physician:Physician
-    
+
     var descriptor:String
     
-    var personalInfo:String
+    @Binding var personalInfo:String
     
     var keyboardType: UIKeyboardType
     
@@ -33,20 +29,18 @@ struct PhysicianPersonalDetailRow: View {
                 Text(personalInfo)
                     .font(.body)
             }else if mode == .edit {
-                TextField("", text: $personal)
+                TextField("", text: $personalInfo)
                     .font(.body)
                     .foregroundColor(.blue)
                     .multilineTextAlignment(.trailing)
                     .keyboardType(keyboardType)
-                
             }
-            
         }
     }
 }
 
-struct PhysicianPersonalDetailRow_Previews: PreviewProvider {
-    static var previews: some View {
-        PhysicianPersonalDetailRow(descriptor:"First Name", personalInfo: "Michael", keyboardType: .namePhonePad, mode:.edit)
-    }
-}
+//struct PhysicianPersonalDetailRow_Previews: PreviewProvider {
+//    static var previews: some View {
+//        PhysicianPersonalDetailRow(descriptor:"First Name", personalInfo: "Michael", keyboardType: .namePhonePad, mode:.edit)
+//    }
+//}

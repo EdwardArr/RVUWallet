@@ -8,6 +8,7 @@
 import SwiftUI
 import UniformTypeIdentifiers
 import CodeScanner
+import Firebase
 
 struct TextFile: FileDocument {
     
@@ -73,6 +74,8 @@ struct ProcedureEditView: View {
     @State private var isShowingTextScanner = false
     
     @State var showCPTList:Bool = false
+    
+    @State var user_id = ""
     
     var body: some View {
        
@@ -207,6 +210,10 @@ struct ProcedureEditView: View {
     }
     
     func handleDoneTapped() {
+        
+        let userInfo = Auth.auth().currentUser
+        self.user_id = userInfo?.uid ?? ""
+        
         let id = UUID().uuidString
         
         if procedureVM.procedure.id == ""{
@@ -221,7 +228,7 @@ struct ProcedureEditView: View {
         procedureVM.procedure.procedure_date = date.timeIntervalSince1970
         procedureVM.procedure.cpt_id = self.selection?.id ?? ""
         procedureVM.procedure.cpt_description = self.selection?.description ?? ""
-        procedureVM.procedure.primary_md = physician.id ?? ""
+        procedureVM.procedure.primary_md = self.user_id
         procedureVM.save()
         physicianVM.updateProceduresList(physician: physician, procedure: id)
     }

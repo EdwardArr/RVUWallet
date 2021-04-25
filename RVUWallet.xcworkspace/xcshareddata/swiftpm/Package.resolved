@@ -11,6 +11,15 @@
         }
       },
       {
+        "package": "NavigationBarLargeTitleItems",
+        "repositoryURL": "https://github.com/markvanwijnen/NavigationBarLargeTitleItems.git",
+        "state": {
+          "branch": "master",
+          "revision": "b475956395b3188bd77a003a8b0f8d7753d9f9ea",
+          "version": null
+        }
+      },
+      {
         "package": "SwiftUIPlus",
         "repositoryURL": "https://github.com/rebeloper/SwiftUIPlus.git",
         "state": {
