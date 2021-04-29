@@ -82,16 +82,6 @@ struct RVUWalletTitleView: View {
             .sheet(isPresented: $presentPhysicianProfileScreen){
                 PhysicianProfileView()
             }
-//
-//            Spacer()
-//            HStack(alignment:.lastTextBaseline){
-//                Text("Summary").font(.title).fontWeight(.heavy).foregroundColor(.primary)
-//                Spacer()
-////                Button(action: {}, label: {
-////                        Text("Edit")})
-//                
-//            }.padding(.horizontal,20)
-//            Divider().padding([.horizontal,.bottom])
         }
         .padding(EdgeInsets(top: 20, leading: 20, bottom: -1, trailing: 20))
     }

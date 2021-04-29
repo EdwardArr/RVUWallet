@@ -8,7 +8,8 @@
 import SwiftUI
 
 struct MainAuthView: View {
-    
+
+//    @EnvironmentObject var userInfo:UserInfo
     @State var picker = true
 
     var body: some View {

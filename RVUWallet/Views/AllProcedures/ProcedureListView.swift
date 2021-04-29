@@ -16,11 +16,7 @@ struct ProcedureListView: View {
     var revenuePerRVU:Double
     
     var body: some View {
-//        ZStack{
-//            Rectangle()
-//                .foregroundColor(Color(UIColor.systemGroupedBackground))
-//                .edgesIgnoringSafeArea(.all)
-//            ScrollView(showsIndicators: false){
+
                 Section(header:
                             VStack{
                             HStack{
@@ -28,26 +24,20 @@ struct ProcedureListView: View {
                                     .font(.title3)
                                     .bold()
                                 Spacer()
-                            }.padding(.top)
-//                                SummaryView(proceduresList: proceduresList, totalRVU: totalRVU, revenuePerRVU: revenuePerRVU)
+                            }
+                            .padding(.top)
                             }){
                     ForEach(proceduresList
                                 .sorted {$0.procedure_date > $1.procedure_date}
                     ){ procedure in
-                        
-//                        if procedure.procedure_date == 0.0 {
                         NavigationLink(
                             destination: ProcedureDetailView(procedure: procedure, cpt: cptList[0]),
                             label: {
-                                ProcedureRowView(procedure: procedure).padding(.vertical,-1)
+                                ProcedureRowView(procedure: procedure)
                             })
-//                        }
                     }
                 }
-//            }.listStyle(InsetGroupedListStyle())
-//            .navigationBarTitle(Text("All Procedures"), displayMode: .large)
             .padding(EdgeInsets(top: 0, leading: 20, bottom: 0, trailing: 20))
-//        }
     }
 }
 
@@ -73,15 +63,8 @@ struct AllProceduresListView: View{
                 }
             }
             .textCase(nil)
-        }.onAppear {
-//            proceduresVM.subscribe()
         }
-        .onDisappear {
-//            proceduresVM.unsubscribe()
-        }
-    }
-    
-     
+    }  
 }
 
 struct ProcedureList_Previews: PreviewProvider {

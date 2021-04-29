@@ -18,16 +18,15 @@ struct SummaryView: View {
     
     var body: some View {
         
-        
         VStack{
-//            VStack{
             HStack{
-                Text("April 2021")
+                Text(currentMonth())
                     .foregroundColor(.primary)
                     .font(.title2)
                     .fontWeight(.bold)
                 Spacer()
-            }.padding(.bottom,-1)
+            }
+            .padding(.bottom,-1)
             
             GeometryReader{ geometry in
                 
@@ -91,10 +90,16 @@ struct SummaryView: View {
                     .frame(width:geometry.size.width * 0.475, height:85)
                 }
             }
-//        }
         }
         .frame(height:115)
         .textCase(nil)
+    }
+    
+    func currentMonth()->String{
+        let now = Date()
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MMMM yyyy"
+        return dateFormatter.string(from: now)
     }
 }
 

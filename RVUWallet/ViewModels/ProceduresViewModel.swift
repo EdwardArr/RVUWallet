@@ -27,9 +27,9 @@ class ProceduresViewModel: ObservableObject {
     
     typealias CompletionHandler = (_ success:Bool) -> Void
     
-    deinit {
-        self.unsubscribe()
-    }
+//    deinit {
+//        self.unsubscribe()
+//    }
     
     func unsubscribe() {
         if listenerRegistration != nil {
@@ -37,49 +37,17 @@ class ProceduresViewModel: ObservableObject {
             listenerRegistration = nil
             print("Unsubscribed from Procedures collection.")
         }else{
-//            print("Unsubscribed function called when Today collection is already unsubscribed.")
+            print("Unsubscribed function called when Today collection is already unsubscribed.")
         }
-    }
-    
-    func fetchProceduresByPhysician(){
-        
-        let date = Date()
-        let calendar = Calendar.current
-        let this_month = calendar.component(.month, from: date) == 1
-        let three_weeks_ago = calendar.date(byAdding: .day, value: -21, to: date)!
-        let startTime = calendar.startOfDay(for: three_weeks_ago).timeIntervalSince1970
-        let endTime = calendar.date(bySettingHour: 23, minute: 59, second: 59, of: three_weeks_ago)?.timeIntervalSince1970
-        
-        db.collection("procedures")
-            .whereField("primary_md", isEqualTo: "dTsn2jWAdrtAMj4N1zYn")
-//            .whereField("procedure_date", isGreaterThan: <#T##Any#>)
-            .getDocuments() { (querysnapshot, err) in
-                if let err = err {
-                    print("Error getting documents: \(err)")
-                } else {
-                    for document in querysnapshot!.documents {
-//                        print("\(document.documentID) => \(document.data())")
-                    }
-                }
-                
-                self.procedures = (querysnapshot?.documents.compactMap { (querysnapshot) -> Procedure? in
-                    return try? querysnapshot.data(as: Procedure.self)
-                })!
-                
-                self.cptIDFromProcedureDoc()
-            }
-        
     }
     
     func cptIDFromProcedureDoc() {
         
         self.performedCPTS = []
-//        print(performedCPTS)
+
         for i in self.procedures {
             performedCPTS.append(i.cpt_id)
         }
-        
-//        print("This user has performed \(procedures.count) and there codes are: \(performedCPTS)")
     }
     
     func rvusFromCPTDoc() {
@@ -89,23 +57,19 @@ class ProceduresViewModel: ObservableObject {
         for i in self.procedures {
             rvus.append(i.cpt_rvu)
         }
-//        print(self.rvus)
         self.totalRVU = rvus.reduce(0, +)
-//        print(self.totalRVU)
     }
 
     
     func subscribe(user_id:String) {
 
-        let date = Date() // current date or replace with a specific date
-        let calendar = Calendar.current
-        let startTime = calendar.startOfDay(for: date).timeIntervalSince1970
-        let endTime = calendar.date(bySettingHour: 23, minute: 59, second: 59, of: date)?.timeIntervalSince1970
-//        let yesterday = calendar.date(byAdding: .day, value: -1, to: Date())!.timeIntervalSince1970
+        let startOfMonth = Date().startOfMonth.timeIntervalSince1970
+        let endOfMonth = Date().endOfMonth.timeIntervalSince1970
 
         listenerRegistration = db.collection("procedures")
             .whereField("primary_md", isEqualTo: user_id)
-//            .whereField("start_epoch_timestamp", isLessThanOrEqualTo: endTime!)
+            .whereField("procedure_date", isGreaterThanOrEqualTo: startOfMonth)
+            .whereField("procedure_date", isLessThanOrEqualTo: endOfMonth)
             .addSnapshotListener { [self] (QuerySnapshot, Error) in
                 guard let documents = QuerySnapshot?.documents else {
                     print("No documents in the procedure collection")
@@ -116,7 +80,6 @@ class ProceduresViewModel: ObservableObject {
                     self.fetchedOn = Date().timeIntervalSince1970
                     return try? QuerySnapshot.data(as: Procedure.self)
                 }
-//                Home.carsByHour(arrival: self.arrivals)
                 print("\(self.procedures.count) procedures were found.")
                 print("Subscribed to procedures collection.")
                 

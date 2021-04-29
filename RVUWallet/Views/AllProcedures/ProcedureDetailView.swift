@@ -19,8 +19,7 @@ struct ProcedureDetailView: View {
     var cpt:CPT
     
     var body: some View {
-        
-        
+
         VStack{
             List{
                 Section{

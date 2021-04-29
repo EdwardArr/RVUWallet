@@ -20,17 +20,9 @@ struct ProceduresMainView: View {
         ZStack(alignment:.bottom){
             ScrollView{
                 ProcedureListView(proceduresList: proceduresList, totalRVU:totalRVU, revenuePerRVU:revenuePerRVU)
-            }
-//            .listStyle(PlainListStyle())
-            
+            }  
         }
-        .navigationBarTitle("All Procedures", displayMode: .automatic)
-        .navigationBarItems(trailing: Button(action: {
-            print("Button pressed to filter all procedures by date range")
-            presentDateListFilterScreen.toggle()
-        }, label: {
-            Text("This month").font(.body)
-        }).disabled(true))
+        .navigationBarTitle("All Procedures", displayMode: .inline)
         .background(Color(UIColor.systemGroupedBackground).edgesIgnoringSafeArea(.all))
         .sheet(isPresented: $presentDateListFilterScreen){
             DateListFilterView()
@@ -38,22 +30,6 @@ struct ProceduresMainView: View {
         .background(Color(UIColor.systemGroupedBackground).edgesIgnoringSafeArea(.all))
     }
 }
-
-
-//struct ProcedureMainBackgroundView: View {
-//    @State var dateSelected: Int
-//
-//    var body: some View {
-//        ZStack(alignment:.bottom){
-//            ProcedureListView()
-//            SegmentedPicker(items: ["Years","Months", "Days"], selection: $dateSelected)
-//                            .padding(EdgeInsets(top: 0, leading: 10, bottom: 40, trailing: 10))
-//        }
-
-//        .background(Color(UIColor.systemGroupedBackground).edgesIgnoringSafeArea(.all))
-        
-//    }
-//}
 
 struct ProceduresMainView_Previews: PreviewProvider {
     static var previews: some View {

@@ -32,17 +32,16 @@ struct SignupView: View {
                 VStack {
                     HStack(alignment: .center){
                         TextField("First Name", text: $first_name)
+                            .textContentType(.givenName)
                             .padding(.horizontal)
                     }
                     Divider().padding(.leading)
                     HStack(alignment: .center){
                         TextField("Last Name", text: $last_name)
+                            .textContentType(.familyName)
                         Spacer()
-                        
                     }
                     .padding(.horizontal)
-                    
-                    
                 }
             }
             .frame(height:89)
@@ -55,6 +54,8 @@ struct SignupView: View {
                         HStack{
                             TextField("Email", text:$email)
                                 .keyboardType(.emailAddress)
+                                .autocapitalization(.none)
+                                .textContentType(.emailAddress)
                                 .padding(.horizontal)
                         }
                     }
@@ -77,12 +78,13 @@ struct SignupView: View {
                     VStack {
                         HStack{
                             SecureField("Password", text:$password)
-                                .keyboardType(.default)
+                                .textContentType(.password)
                                 .padding(.horizontal)
                         }
                         Divider().padding(.leading)
                         HStack(alignment: .bottom){
                             SecureField("Re-enter Password", text:$second_password)
+                                .textContentType(.password)
                             Spacer()
                         }
                         .padding(.horizontal)
@@ -91,6 +93,7 @@ struct SignupView: View {
                     }
                 }
                 .frame(height:88)
+                
                 if isValidPassword(password) == false{
                     HStack{
                         Text("Password must be 6 or more charaters long.")
@@ -100,8 +103,8 @@ struct SignupView: View {
                     }
                     .padding(.leading)
                 }
-                HStack{
-                    Text("Password matches")
+                HStack(spacing:1){
+                    Text("Passwords match")
                         .font(.footnote)
                         .foregroundColor(.primary)
                     Image(systemName: "checkmark.circle")

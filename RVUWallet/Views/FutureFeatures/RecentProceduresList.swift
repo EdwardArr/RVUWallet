@@ -37,9 +37,7 @@ struct RecentProceduresList: View {
                         }
                     )
                 })
-//                .background(
-//                    )
-            }
+            }.padding(.bottom,1)
             ForEach(proceduresList
                         .sorted {$0.procedure_date > $1.procedure_date}
                         .prefix(3))

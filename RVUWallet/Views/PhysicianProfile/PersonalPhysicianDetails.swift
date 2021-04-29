@@ -78,7 +78,7 @@ struct PersonalPhysicianDetails: View {
             
             }
             
-            Section(footer:Text("Revenue is used to calculate total revenue.")){
+            Section(footer:Text("Revenue is used to calculate total revenue in Summary page.")){
                 
                 // Future -- convert back revenue_per_rvu from User back to Double type
                 // using String because it is easy to bind to textfield

@@ -43,21 +43,25 @@ class UserViewModel: ObservableObject {
     }
     
     func fetchUser(documentId: String) {
-        let docRef = db.collection("users").document(documentId)
         
-        docRef.addSnapshotListener { document, error in
-            if let error = error as NSError? {
-                self.errorMessage = "Error getting document: \(error.localizedDescription)"
-            }
-            else {
-                if let document = document {
-                    do {
-                        self.user = try document.data(as: User.self) ?? User(email: "", first_name: "", last_name: "", revenue_per_rvu: "", favorite_cpts: [])
-                        print("Fetching one user")
-                        print(self.user)
-                    }
-                    catch {
-                        print(error)
+        if documentId == nil || documentId == ""{
+            return
+        }else{
+            let docRef = db.collection("users").document(documentId)
+            
+            docRef.addSnapshotListener { document, error in
+                if let error = error as NSError? {
+                    self.errorMessage = "Error getting document: \(error.localizedDescription)"
+                }
+                else {
+                    if let document = document {
+                        do {
+                            self.user = try document.data(as: User.self) ?? User(email: "", first_name: "", last_name: "", revenue_per_rvu: "", favorite_cpts: [])
+                            print("Fetching user:\(documentId)")
+                        }
+                        catch {
+                            print(error)
+                        }
                     }
                 }
             }
@@ -88,17 +92,16 @@ class UserViewModel: ObservableObject {
     func updateOrAddUser() { // (1)
         if let _ = user.id {
             
-            self.updateUser(self.user ?? User(email: "", first_name: "", last_name: "", revenue_per_rvu: "", favorite_cpts: [])) // (2)
+            self.updateUser(self.user ) // (2)
         }
         else {
-            addUser(user:user ?? User(email: "", first_name: "", last_name: "", revenue_per_rvu: "", favorite_cpts: [])) // (3)
+            addUser(user:user) // (3)
         }
-      }
+    }
     
     func save(){
         updateOrAddUser()
     }
-    
     
     func signOut() {
         do {

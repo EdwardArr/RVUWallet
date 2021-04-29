@@ -15,12 +15,13 @@ struct RVUWalletApp: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
     
     var userInfo = UserInfo()
+//    var proceduresVM = ProceduresViewModel()
 //    var userVM = UserViewModel()
     
     var body: some Scene {
         WindowGroup() {
             ParentView().environmentObject(userInfo)
-//                .environmentObject(userVM)
+//                .environmentObject(proceduresVM)
         }
     }
 }

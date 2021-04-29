@@ -10,8 +10,9 @@ import Firebase
 
 struct LoginView: View {
     
+    @StateObject var userInfo = UserInfo()
+    
     @ObservedObject var physicianVM = PhysicianViewModel()
-    @ObservedObject var userVM = UserViewModel()
     
     @State var user_id = ""
     @State var email = ""
@@ -23,6 +24,10 @@ struct LoginView: View {
     
     @State private var presentResetPasswordScreen = false
     
+    @State var showAlert = false
+    
+//    @State private var authError: EmailAuthError?
+    
     var body: some View {
 //        NavigationView{
         ScrollView {
@@ -33,16 +38,18 @@ struct LoginView: View {
                 VStack {
                     HStack{
                         TextField("Email", text:$email)
+                            .autocapitalization(.none)
+                            .keyboardType(.emailAddress)
+                            .textContentType(.emailAddress)
                             .padding(.horizontal)
                     }
                     Divider().padding(.leading)
                     HStack(alignment: .bottom){
                         SecureField("Password", text:$password)
+                            .textContentType(.password)
                         Spacer()
                         Button(action: {
-                            
-                            signIn()
-                            
+                            userInfo.signIn(email: email, password: password)
                         }, label: {
                             Image(systemName: "arrow.forward.circle")
                                 .font(.title)
@@ -95,7 +102,14 @@ struct LoginView: View {
             Spacer()
         }
         .navigationTitle(Text("Login"))
-
+//        .alert(isPresented: $showAlert){
+//            Alert(title: Text("Login Error"), message: Text(self.authError?.localizedDescription ?? "Unknown error"), dismissButton: .default(Text("OK")) {
+//                if self.authError == .incorrectPassword {
+//                    self.user.password = ""
+//                    self.user.email = ""
+//                }
+//            })
+//        }
         .background(Color(UIColor.systemGroupedBackground).edgesIgnoringSafeArea(.all))
     }
     //    }
@@ -124,31 +138,31 @@ struct LoginView: View {
         }
     }
     
-    func signIn(){
-        Auth.auth().signIn(withEmail: email, password: password) { (authResult, error) in
-          if let error = error as? NSError {
-            switch AuthErrorCode(rawValue: error.code) {
-            case .operationNotAllowed:
-              print("Indicates that email and password accounts are not enabled. Enable them in the Auth section of the Firebase console.")
-            case .userDisabled:
-              print("Error: The user account has been disabled by an administrator.")
-            case .wrongPassword:
-              print("The password is invalid or the user does not have a password.")
-            case .invalidEmail:
-              print("Indicates the email address is malformed.")
-            default:
-                print("Error: \(error.localizedDescription)")
-            }
-          } else {
-            print("User signs in successfully")
-            let userInfo = Auth.auth().currentUser
-            self.user_id = userInfo?.uid ?? ""
-            self.email = userInfo?.email ?? ""
-            userVM.id = self.user_id
-            userVM.fetchUser(documentId: String(self.user_id))
-          }
-        }
-    }
+//    func signIn(email:String, password:String){
+//        Auth.auth().signIn(withEmail: email, password: password) { (authResult, error) in
+//          if let error = error as? NSError {
+//            switch AuthErrorCode(rawValue: error.code) {
+//            case .operationNotAllowed:
+//              print("Indicates that email and password accounts are not enabled. Enable them in the Auth section of the Firebase console.")
+//            case .userDisabled:
+//              print("Error: The user account has been disabled by an administrator.")
+//            case .wrongPassword:
+//              print("The password is invalid or the user does not have a password.")
+//            case .invalidEmail:
+//              print("Indicates the email address is malformed.")
+//            default:
+//                print("Error: \(error.localizedDescription)")
+//            }
+//          } else {
+//            print("User signs in successfully")
+//            let userInfo = Auth.auth().currentUser
+//            self.user_id = userInfo?.uid ?? ""
+//            self.email = userInfo?.email ?? ""
+//            userVM.id = self.user_id
+//            userVM.fetchUser(documentId: String(self.user_id))
+//          }
+//        }
+//    }
     
     func mergeUser() {
         physicianVM.physician.id = self.user_id

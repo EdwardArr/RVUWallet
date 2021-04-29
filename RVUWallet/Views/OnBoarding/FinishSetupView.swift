@@ -32,7 +32,8 @@ struct FinishSetupView: View {
                     HStack{
                         Spacer()
                         Button {
-                            // Toggle isHidden variable here
+                            // Toggle isHidden variable here and
+                            // save to user defaults
                         } label: {
                             Image(systemName: "xmark")
                                 .foregroundColor(Color(UIColor.systemGray))
@@ -75,8 +76,7 @@ struct FinishSetupView: View {
     }
     
     func saveRevenuePerRVU() {
-        userVM.user.id = self.user_id
-        userVM.updateUser(userVM.user)
+        userVM.save()
     }
     
     func areVariableEmpty()-> Bool{

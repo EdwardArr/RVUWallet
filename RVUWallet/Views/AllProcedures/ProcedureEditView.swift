@@ -51,9 +51,7 @@ enum ProcedureViewMode {
 struct ProcedureEditView: View {
     
     @Environment(\.presentationMode) var presentationMode
-    
-//    let dg = DragGesture()
-//    @Binding var document: TextFile
+
     @ObservedObject var procedureVM = ProcedureViewModel()
     
     @ObservedObject var physicianVM = PhysicianViewModel()
@@ -84,21 +82,13 @@ struct ProcedureEditView: View {
             
             List{
 //                TextScanner(identifier: $patientName)
-                
-                
-                
-//                .padding(.vertical,1)
-                
                 Section {
                     HStack{
                         TextField("Hospital Code", text: $procedureVM.procedure.hospital_barcode)
-//                            .highPriorityGesture(dg)
                         Button(
                             action: {
                                 print("User is scanning a barcode.")
                                 self.isShowingScanner.toggle()
-                                
-                                
                             },
                             label: {
                                 HStack{
@@ -123,12 +113,6 @@ struct ProcedureEditView: View {
             
                 Section{
                     
-//                    Picker("CPT Code", selection: $cpt) {
-//                        ForEach(cptList, id: \.self){
-//                            $0
-//                        }
-//                    }
-                    
                     NavigationLink(destination: SelectCPTView(isSelected:$showCPTList, selection:$selection), isActive:$showCPTList){
                         HStack{
                             Text("CPT Code")
@@ -146,33 +130,8 @@ struct ProcedureEditView: View {
                     if self.selection?.rvu != nil && self.selection?.rvu != 0.0 {
                         Text("\(self.selection?.rvu ?? 0.0, specifier: "%.2f")")
                     }
-//                    TextField("CPT Description", text: $selection?.code)
                     
                 }.textCase(nil)
-                
-//                Section{
-//                    NavigationLink(
-//                        destination: SearchICD10CodeView(text: $icd10, bgColor: bgColor))
-//                    {
-//                        HStack{
-//                            Text("ICD-10 Code")
-//                            Spacer()
-//                            Text("\(self.icd10)")
-//                                .foregroundColor(.blue)
-//                        }
-//
-//                    }.padding(.vertical,1)
-//                    TextField("ICD-10 Description", text: $diagnosis)
-//                }
-                
-//                Section{
-//                    HStack{
-//                        Text("RVU")
-//                        Divider()
-                //                        TextField("Amount", text:$rvu)
-                //                            .keyboardType(.decimalPad)
-                //                    }
-                //                }
             }
             
             .navigationBarTitle(mode == .new ? "New Procedure" : procedureVM.procedure.hospital_barcode)
@@ -217,20 +176,16 @@ struct ProcedureEditView: View {
         let id = UUID().uuidString
         
         if procedureVM.procedure.id == ""{
-        procedureVM.procedure.id = id
+            procedureVM.procedure.id = id
         }
         
-        physicianVM.physician.procedures.append(id)
-        
         procedureVM.procedure.cpt_code = self.selection?.code ?? ""
-        procedureVM.procedure.cpt_description = self.selection?.description ?? ""
         procedureVM.procedure.cpt_rvu = self.selection?.rvu ?? 0.0
         procedureVM.procedure.procedure_date = date.timeIntervalSince1970
         procedureVM.procedure.cpt_id = self.selection?.id ?? ""
         procedureVM.procedure.cpt_description = self.selection?.description ?? ""
         procedureVM.procedure.primary_md = self.user_id
         procedureVM.save()
-        physicianVM.updateProceduresList(physician: physician, procedure: id)
     }
     
     func handleCancelTapped() {

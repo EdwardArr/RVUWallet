@@ -10,6 +10,41 @@ import SwiftUI
 import NavigationBarLargeTitleItems
 import FirebaseAuth
 
+
+extension Date {
+    var startOfDay: Date {
+        return Calendar.current.startOfDay(for: self)
+    }
+
+    var startOfMonth: Date {
+
+        let calendar = Calendar(identifier: .gregorian)
+        let components = calendar.dateComponents([.year, .month], from: self)
+
+        return  calendar.date(from: components)!
+    }
+
+    var endOfDay: Date {
+        var components = DateComponents()
+        components.day = 1
+        components.second = -1
+        return Calendar.current.date(byAdding: components, to: startOfDay)!
+    }
+
+    var endOfMonth: Date {
+        var components = DateComponents()
+        components.month = 1
+        components.second = -1
+        return Calendar(identifier: .gregorian).date(byAdding: components, to: startOfMonth)!
+    }
+
+    func isMonday() -> Bool {
+        let calendar = Calendar(identifier: .gregorian)
+        let components = calendar.dateComponents([.weekday], from: self)
+        return components.weekday == 2
+    }
+}
+
 class UserInfo: ObservableObject {
     
     enum AuthState {
@@ -17,6 +52,8 @@ class UserInfo: ObservableObject {
     }
     
     @Published var isUserAutheticated: AuthState = .undefined
+    
+    @Published var user_id = ""
     
     var authDidChangeListenerHandle: AuthStateDidChangeListenerHandle?
     
@@ -29,6 +66,28 @@ class UserInfo: ObservableObject {
             self.isUserAutheticated = .signedIn
         })
     }
+    
+    func signIn(email:String, password:String){
+        Auth.auth().signIn(withEmail: email, password: password) { (authResult, error) in
+            if let error = error as? NSError {
+                switch AuthErrorCode(rawValue: error.code) {
+                case .operationNotAllowed:
+                    print("Indicates that email and password accounts are not enabled. Enable them in the Auth section of the Firebase console.")
+                case .userDisabled:
+                    print("Error: The user account has been disabled by an administrator.")
+                case .wrongPassword:
+                    print("The password is invalid or the user does not have a password.")
+                case .invalidEmail:
+                    print("Indicates the email address is malformed.")
+                default:
+                    print("Error: \(error.localizedDescription)")
+                }
+            } else {
+                self.user_id = Auth.auth().currentUser?.uid ?? ""
+            }
+        }
+    }
+    
     func signOut() {
         do {
           try Auth.auth().signOut()
@@ -43,9 +102,11 @@ struct ParentView: View {
     
     @Environment(\.scenePhase) private var scenePhase
     
-    @EnvironmentObject var userInfo: UserInfo
+    @ObservedObject var userInfo = UserInfo()
     
-//    @EnvironmentObject var userVM: UserViewModel
+    @ObservedObject var proceduresVM = ProceduresViewModel()
+    
+    @ObservedObject var userVM = UserViewModel()
     
     var body: some View{
         Group{
@@ -53,8 +114,12 @@ struct ParentView: View {
                 Text("Loading...")
             } else if userInfo.isUserAutheticated == .signedOut{
                 MainAuthView()
+                    .onAppear {
+//                        proceduresVM.unsubscribe()
+//                        proceduresVM.procedures = []
+                    }
             } else {
-                ContentView()
+                ContentView(proceduresVM:proceduresVM, userVM: userVM)
                     .onChange(of: scenePhase) { (newScenePhase) in
                         switch newScenePhase {
                         case .active:
@@ -63,7 +128,6 @@ struct ParentView: View {
                             print("scene is now inactive!")
                         case .background:
                             print("scene is now in the background!")
-//                            self.userInfo.signOut()
                         @unknown default:
                             print("Apple must have added something new!")
                         }
@@ -71,13 +135,16 @@ struct ParentView: View {
             }
         }.onAppear {
             self.userInfo.configureFirebaseStateDidChange()
+            let user_id = Auth.auth().currentUser?.uid
+            proceduresVM.subscribe(user_id: user_id ?? "")
+            userVM.fetchUser(documentId: user_id ?? "")
         }
     }
 }
 
 struct ContentView: View {
 
-//    @EnvironmentObject var userVM: UserViewModel
+    @EnvironmentObject var userInfo: UserInfo
     
     @ObservedObject var proceduresVM = ProceduresViewModel()
     
@@ -91,9 +158,9 @@ struct ContentView: View {
     
     @State var user_id = ""
     
-    init() {
-        UIToolbar.appearance().barTintColor = UIColor.systemGroupedBackground
-    }
+//    init() {
+//        UIToolbar.appearance().barTintColor = UIColor.systemGroupedBackground
+//    }
     
     var body: some View {
         NavigationView{
@@ -102,33 +169,30 @@ struct ContentView: View {
                 
                 ScrollView(.vertical, showsIndicators: false){
                     
-                    SummaryView(proceduresList: proceduresVM.procedures, totalRVU: proceduresVM.totalRVU, revenuePerRVU: Double(userVM.user.revenue_per_rvu ?? "") ?? 0.0)
+                    SummaryView(proceduresList: proceduresVM.procedures, totalRVU: proceduresVM.totalRVU, revenuePerRVU: Double(userVM.user.revenue_per_rvu ) ?? 0.0)
                         .padding(EdgeInsets(top: 20, leading: 20, bottom: 0, trailing: 20))
                     
-                    RecentProceduresList(proceduresList: proceduresVM.procedures, totalRVU: proceduresVM.totalRVU, revenuePerRVU: Double(userVM.user.revenue_per_rvu ?? "") ?? 0.0, cpt: cptVM.cpt)
+                    RecentProceduresList(proceduresList: proceduresVM.procedures, totalRVU: proceduresVM.totalRVU, revenuePerRVU: Double(userVM.user.revenue_per_rvu ) ?? 0.0, cpt: cptVM.cpt)
                         .padding(EdgeInsets(top: 20, leading: 20, bottom: 0, trailing: 20))
                         .isHidden(hideRecentProcedures())
-                        
-                    FinishSetupView().padding([.horizontal, .top],20)
-                        .isHidden(hideEnterRevenuePerRVU())
-               
-                }
+
+                        FinishSetupView().padding([.horizontal, .top],20)
+                            .isHidden(hideEnterRevenuePerRVU())
+                    }
+                
 //                AddNewProcedureButton()
             }
             .navigationBarTitle("Summary")
             .onAppear(perform: {
-                let userInfo = Auth.auth().currentUser
-                self.user_id = userInfo?.uid ?? ""
-                proceduresVM.subscribe(user_id: user_id)
-                userVM.fetchUser(documentId: self.user_id)
+                self.user_id = Auth.auth().currentUser?.uid ?? ""
+                self.proceduresVM.subscribe(user_id: user_id)
+                self.userVM.fetchUser(documentId: user_id)
             })
             .navigationBarLargeTitleItems(trailing:ProfileIcon())
-            .navigationBarTitleDisplayMode(.automatic)
+            .navigationBarTitleDisplayMode(.large)
             .toolbar(content: {
                 ToolbarItemGroup(placement: .bottomBar) {
-
                     AddNewProcedureButton()
-//
                     Spacer()
                 }
             })
@@ -151,13 +215,6 @@ struct ContentView: View {
             return true
         }
     }
-    
-    func getUser(){
-        let userInfo = Auth.auth().currentUser
-        self.user_id = userInfo?.uid ?? ""
-        userVM.fetchUser(documentId:user_id)
-    }
-    
 }
 
 struct ProfileIcon: View {
