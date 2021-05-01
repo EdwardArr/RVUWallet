@@ -53,7 +53,9 @@
 		59639178261FE4A1005A0AED /* SwiftUIPlus in Frameworks */ = {isa = PBXBuildFile; productRef = 59639177261FE4A1005A0AED /* SwiftUIPlus */; };
 		596391B7262407E4005A0AED /* FavoritesWithNavBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 596391B6262407E4005A0AED /* FavoritesWithNavBarView.swift */; };
 		596391BF2624B748005A0AED /* PhysicianPersonalDetailRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 596391BE2624B748005A0AED /* PhysicianPersonalDetailRow.swift */; };
+		59821B3F263A69B4000C3EC7 /* Auth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59821B3E263A69B4000C3EC7 /* Auth.swift */; };
 		598F98A026143F6F0063EFB0 /* PhysicianProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 598F989F26143F6F0063EFB0 /* PhysicianProfileView.swift */; };
+		59CE0002263D893C0082B220 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59CE0001263D893C0082B220 /* LoadingView.swift */; };
 		59E43EAC262F6F0A00352F15 /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59E43EAB262F6F0A00352F15 /* WelcomeView.swift */; };
 		59E43EDB2630D38B00352F15 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59E43EDA2630D38B00352F15 /* LoginView.swift */; };
 		59E43EE32631056100352F15 /* SignupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59E43EE22631056100352F15 /* SignupView.swift */; };
@@ -140,7 +142,9 @@
 		593ED8C72600FC55008BCCF9 /* Procedure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Procedure.swift; sourceTree = "<group>"; };
 		596391B6262407E4005A0AED /* FavoritesWithNavBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesWithNavBarView.swift; sourceTree = "<group>"; };
 		596391BE2624B748005A0AED /* PhysicianPersonalDetailRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhysicianPersonalDetailRow.swift; sourceTree = "<group>"; };
+		59821B3E263A69B4000C3EC7 /* Auth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Auth.swift; sourceTree = "<group>"; };
 		598F989F26143F6F0063EFB0 /* PhysicianProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhysicianProfileView.swift; sourceTree = "<group>"; };
+		59CE0001263D893C0082B220 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		59E43EAB262F6F0A00352F15 /* WelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeView.swift; sourceTree = "<group>"; };
 		59E43EDA2630D38B00352F15 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		59E43EE22631056100352F15 /* SignupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupView.swift; sourceTree = "<group>"; };
@@ -308,6 +312,7 @@
 		593ED85025FD5193008BCCF9 /* RVUWallet */ = {
 			isa = PBXGroup;
 			children = (
+				59821B3D263A691E000C3EC7 /* Auth */,
 				593896BC26289E2E002E4F32 /* ViewModels */,
 				593ED85125FD5193008BCCF9 /* RVUWalletApp.swift */,
 				596391952620E32F005A0AED /* Models */,
@@ -357,6 +362,14 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
+		59821B3D263A691E000C3EC7 /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				59821B3E263A69B4000C3EC7 /* Auth.swift */,
+			);
+			path = Auth;
+			sourceTree = "<group>";
+		};
 		59E43ED92630D35E00352F15 /* Authentication */ = {
 			isa = PBXGroup;
 			children = (
@@ -364,6 +377,7 @@
 				59E43EE22631056100352F15 /* SignupView.swift */,
 				59E43EE72631172400352F15 /* MainAuthView.swift */,
 				59E43EEC26311C0A00352F15 /* ResetPasswordView.swift */,
+				59CE0001263D893C0082B220 /* LoadingView.swift */,
 			);
 			path = Authentication;
 			sourceTree = "<group>";
@@ -679,6 +693,7 @@
 				596391BF2624B748005A0AED /* PhysicianPersonalDetailRow.swift in Sources */,
 				5910E8E22617612E003C3ACA /* UINavigationExtenions.swift in Sources */,
 				59E43EE82631172400352F15 /* MainAuthView.swift in Sources */,
+				59821B3F263A69B4000C3EC7 /* Auth.swift in Sources */,
 				596391B7262407E4005A0AED /* FavoritesWithNavBarView.swift in Sources */,
 				593897062628CADE002E4F32 /* ProceduresViewModel.swift in Sources */,
 				5910E8DD2616BEC9003C3ACA /* FavoritesView.swift in Sources */,
@@ -689,6 +704,7 @@
 				5938966726287A3A002E4F32 /* ProcedureEditView.swift in Sources */,
 				593ED85225FD5193008BCCF9 /* RVUWalletApp.swift in Sources */,
 				5938966926287A3A002E4F32 /* ExportDataView.swift in Sources */,
+				59CE0002263D893C0082B220 /* LoadingView.swift in Sources */,
 				59E43EDB2630D38B00352F15 /* LoginView.swift in Sources */,
 				593ED8C82600FC55008BCCF9 /* Procedure.swift in Sources */,
 				5910E8E72618D5FC003C3ACA /* RecentProceduresList.swift in Sources */,

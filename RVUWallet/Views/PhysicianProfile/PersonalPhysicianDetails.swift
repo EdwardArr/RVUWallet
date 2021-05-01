@@ -74,7 +74,7 @@ struct PersonalPhysicianDetails: View {
                 
                 PhysicianPersonalDetailRow(descriptor:"First Name", personalInfo:$userVM.user.first_name, keyboardType: .emailAddress, mode:mode).font(.body)
                 PhysicianPersonalDetailRow(descriptor:"Last Name", personalInfo:$userVM.user.last_name, keyboardType: .emailAddress, mode:mode).font(.body)
-                PhysicianPersonalDetailRow(descriptor:"Email", personalInfo:$userVM.user.email, keyboardType: .emailAddress, mode:mode).font(.body)
+                PhysicianPersonalDetailRow(descriptor:"Email", personalInfo:$userVM.user.email, keyboardType: .emailAddress, mode:mode).font(.body).autocapitalization(.none)
             
             }
             

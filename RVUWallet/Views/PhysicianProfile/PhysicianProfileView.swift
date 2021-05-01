@@ -18,6 +18,8 @@ struct PhysicianProfileView: View {
     
     @State var user_id = ""
     
+    @AppStorage("status") var logged = false
+    
     var body: some View {
         
 //        ZStack{
@@ -99,6 +101,7 @@ struct PhysicianProfileView: View {
                         print("User pressed on sign out button")
                         self.presentationMode.wrappedValue.dismiss()
                         signOut()
+                        logged = false
                         
                     }, label: {
                         Text("Sign out")

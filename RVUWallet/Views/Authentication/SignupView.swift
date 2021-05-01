@@ -79,13 +79,14 @@ struct SignupView: View {
                         HStack{
                             SecureField("Password", text:$password)
                                 .textContentType(.password)
+                                .autocapitalization(.none)
                                 .padding(.horizontal)
                         }
                         Divider().padding(.leading)
                         HStack(alignment: .bottom){
                             SecureField("Re-enter Password", text:$second_password)
-                                .textContentType(.password)
-                            Spacer()
+//                                .textContentType(.password)
+                                .autocapitalization(.none)
                         }
                         .padding(.horizontal)
                         

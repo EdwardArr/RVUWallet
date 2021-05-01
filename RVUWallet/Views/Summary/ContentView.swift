@@ -9,6 +9,7 @@ import Foundation
 import SwiftUI
 import NavigationBarLargeTitleItems
 import FirebaseAuth
+import LocalAuthentication
 
 
 extension Date {
@@ -55,6 +56,21 @@ class UserInfo: ObservableObject {
     
     @Published var user_id = ""
     
+    @Published var email = ""
+    @Published var password = ""
+    
+    @Published var alert = false
+    @Published var alert_message = ""
+    
+    @Published var isLoading = false
+    
+    @Published var store_info = false
+    
+    @AppStorage("stored_User") var stored_user = ""
+    @AppStorage("stored_Password") var stored_password = ""
+    
+    @AppStorage("status") var logged = false
+    
     var authDidChangeListenerHandle: AuthStateDidChangeListenerHandle?
     
     func configureFirebaseStateDidChange() {
@@ -67,24 +83,62 @@ class UserInfo: ObservableObject {
         })
     }
     
-    func signIn(email:String, password:String){
-        Auth.auth().signIn(withEmail: email, password: password) { (authResult, error) in
-            if let error = error as? NSError {
-                switch AuthErrorCode(rawValue: error.code) {
-                case .operationNotAllowed:
-                    print("Indicates that email and password accounts are not enabled. Enable them in the Auth section of the Firebase console.")
-                case .userDisabled:
-                    print("Error: The user account has been disabled by an administrator.")
-                case .wrongPassword:
-                    print("The password is invalid or the user does not have a password.")
-                case .invalidEmail:
-                    print("Indicates the email address is malformed.")
-                default:
-                    print("Error: \(error.localizedDescription)")
-                }
-            } else {
-                self.user_id = Auth.auth().currentUser?.uid ?? ""
+    func authenticateUser(){
+        let scanner = LAContext()
+        scanner.evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, localizedReason: "To unlock \(self.email)"){(status, err) in
+            if err != nil {
+                print(err!.localizedDescription)
+                return
             }
+            
+            DispatchQueue.main.async {
+                self.email = self.stored_user
+                self.password = self.stored_password
+                self.signIn(email: self.email, password: self.password)
+            }
+        }
+    }
+    
+    func signIn(email:String, password:String){
+        
+        isLoading = true
+        
+        Auth.auth().signIn(withEmail: email, password: password) { (authResult, error) in
+            
+            self.isLoading = false
+            
+//            if let error = error as? NSError {
+//                switch AuthErrorCode(rawValue: error.code) {
+//                case .operationNotAllowed:
+//                    print("Indicates that email and password accounts are not enabled. Enable them in the Auth section of the Firebase console.")
+//                case .userDisabled:
+//                    print("Error: The user account has been disabled by an administrator.")
+//                case .wrongPassword:
+//                    print("The password is invalid or the user does not have a password.")
+//                case .invalidEmail:
+//                    print("Indicates the email address is malformed.")
+//                default:
+//                    print("Error: \(error.localizedDescription)")
+//                }
+            
+            if let error = error {
+                self.alert_message = error.localizedDescription
+                self.alert.toggle()
+            }
+            
+            if self.stored_user == "" || self.stored_password == ""{
+                self.store_info.toggle()
+                print("Alerting user that they are able to use Face ID.")
+                return
+            }
+            
+            self.user_id = Auth.auth().currentUser?.uid ?? ""
+            
+            self.logged = true
+            
+            print("Username and password for app is as follows:")
+            print(self.stored_user)
+            print(self.stored_password)
         }
     }
     
@@ -95,6 +149,14 @@ class UserInfo: ObservableObject {
         } catch {
           print("Sign out error")
         }
+    }
+    
+    func getBioMetricStatus()-> Bool{
+        let scanner = LAContext()
+        if scanner.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: .none){
+            return true
+        }
+        return false
     }
 }
 
@@ -108,31 +170,36 @@ struct ParentView: View {
     
     @ObservedObject var userVM = UserViewModel()
     
+    @AppStorage("status") var logged = false
+    
     var body: some View{
         Group{
-            if userInfo.isUserAutheticated == .undefined {
-                Text("Loading...")
-            } else if userInfo.isUserAutheticated == .signedOut{
-                MainAuthView()
-                    .onAppear {
-//                        proceduresVM.unsubscribe()
-//                        proceduresVM.procedures = []
-                    }
-            } else {
+            if logged {
                 ContentView(proceduresVM:proceduresVM, userVM: userVM)
-                    .onChange(of: scenePhase) { (newScenePhase) in
-                        switch newScenePhase {
-                        case .active:
-                            print("scene is now active!")
-                        case .inactive:
-                            print("scene is now inactive!")
-                        case .background:
-                            print("scene is now in the background!")
-                        @unknown default:
-                            print("Apple must have added something new!")
-                        }
-                    }
             }
+            else{
+                MainAuthView()
+            }
+            
+//            if userInfo.isUserAutheticated == .undefined {
+//                Text("Loading...")
+//            } else if userInfo.isUserAutheticated == .signedOut{
+//                MainAuthView()
+//            } else {
+//                ContentView(proceduresVM:proceduresVM, userVM: userVM)
+//                    .onChange(of: scenePhase) { (newScenePhase) in
+//                        switch newScenePhase {
+//                        case .active:
+//                            print("scene is now active!")
+//                        case .inactive:
+//                            print("scene is now inactive!")
+//                        case .background:
+//                            print("scene is now in the background!")
+//                        @unknown default:
+//                            print("Apple must have added something new!")
+//                        }
+//                    }
+//            }
         }.onAppear {
             self.userInfo.configureFirebaseStateDidChange()
             let user_id = Auth.auth().currentUser?.uid

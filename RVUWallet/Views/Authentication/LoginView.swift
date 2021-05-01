@@ -7,6 +7,7 @@
 
 import SwiftUI
 import Firebase
+import LocalAuthentication
 
 struct LoginView: View {
     
@@ -26,93 +27,97 @@ struct LoginView: View {
     
     @State var showAlert = false
     
+    // when first user logged in via email store this for future biometric login
+    @AppStorage("stored_User") var stored_user = ""
+    @AppStorage("stored_Password") var stored_password = ""
+    
+    @AppStorage("status") var logged = false
+    
+    @State var startAnimate = false
 //    @State private var authError: EmailAuthError?
     
     var body: some View {
 //        NavigationView{
         ScrollView {
-           
             ZStack{
-                RoundedRectangle(cornerRadius: 12, style:.continuous)
-                    .foregroundColor(Color(UIColor.secondarySystemGroupedBackground))
-                VStack {
-                    HStack{
-                        TextField("Email", text:$email)
-                            .autocapitalization(.none)
-                            .keyboardType(.emailAddress)
-                            .textContentType(.emailAddress)
-                            .padding(.horizontal)
-                    }
-                    Divider().padding(.leading)
-                    HStack(alignment: .bottom){
-                        SecureField("Password", text:$password)
-                            .textContentType(.password)
+                VStack{
+                    VStack{
+                        ZStack{
+                            RoundedRectangle(cornerRadius: 12, style:.continuous)
+                                .foregroundColor(Color(UIColor.secondarySystemGroupedBackground))
+                            VStack {
+                                HStack{
+                                    TextField("Email", text:$userInfo.email)
+                                        .autocapitalization(.none)
+                                        .keyboardType(.emailAddress)
+                                        .textContentType(.emailAddress)
+                                        .padding(.horizontal)
+                                }
+                                Divider().padding(.leading)
+                                HStack(alignment: .bottom){
+                                    SecureField("Password", text:$userInfo.password)
+                                        .textContentType(.password)
+                                        .autocapitalization(.none)
+                                    Spacer()
+                                    if userInfo.getBioMetricStatus(){
+                                        Button(action: {
+                                            userInfo.authenticateUser()
+                                        }, label: {
+                                            Image(systemName: LAContext().biometryType == .faceID ? "faceid" : "touchid")
+                                                .font(.title)
+                                        })
+                                    }
+                                }
+                                .padding(.horizontal)
+                            }
+                        }.frame(height:88)
                         Spacer()
                         Button(action: {
-                            userInfo.signIn(email: email, password: password)
+                            userInfo.signIn(email: self.userInfo.email, password: self.userInfo.password)
                         }, label: {
-                            Image(systemName: "arrow.forward.circle")
-                                .font(.title)
-                                
-                        }).disabled(areVariablesEmpty())
-                    }
-                    .padding(.horizontal)
-                }
-            }.frame(height:88)
-            
-            .padding([.horizontal,.top])
-            
-            VStack{
-            ZStack{
-                RoundedRectangle(cornerRadius: 12, style:.continuous)
-                    .foregroundColor(Color(UIColor.secondarySystemGroupedBackground))
-                Toggle("FaceID", isOn: $loginWithApple)
-                    .padding(.horizontal)
-            }
-            .frame(height:44)
-            }
-            .padding([.horizontal,.top])
-            
-            Button(action: /*@START_MENU_TOKEN@*/{}/*@END_MENU_TOKEN@*/, label: {
                             ZStack{
-                                RoundedRectangle(cornerRadius: 12, style: .continuous)
-                                    .foregroundColor(.primary)
-                                Text("Login wirh FaceID").foregroundColor(Color.systemGray)
+                                RoundedRectangle(cornerRadius: 12)
+                                Text("Sign In")
+                                    .foregroundColor(.white)
                             }
-                            .frame(height:buttonHeight())
-                            .padding(.horizontal)
-            }).isHidden(hideFaceIDButton())
-            
-            ZStack{
-                RoundedRectangle(cornerRadius: 12, style:.continuous)
-                    .foregroundColor(Color(UIColor.secondarySystemGroupedBackground))
-                Button(action: {presentResetPasswordScreen.toggle()}, label: {
-                    HStack{
-                        Text("Forgot Password")
-                        Spacer()
-                    }.padding(.leading)
-                })
+                        }).disabled(areVariablesEmpty()).frame(height:44)
+                    }
+                    .padding([.horizontal,.top])
+                    
+                    ZStack{
+                        RoundedRectangle(cornerRadius: 12, style:.continuous)
+                            .foregroundColor(Color(UIColor.secondarySystemGroupedBackground))
+                        Button(action: {presentResetPasswordScreen.toggle()}, label: {
+                            HStack{
+                                Text("Forgot Password")
+                                Spacer()
+                            }.padding(.leading)
+                        })
+                    }
+                    .frame(height:44)
+                    .padding([.horizontal,.top])
+                    .sheet(isPresented: $presentResetPasswordScreen, content: {
+                        ResetPasswordView(email:$email)
+                    })
+                    Spacer()
+                }
             }
-            .frame(height:44)
-            .padding([.horizontal,.top])
-            .sheet(isPresented: $presentResetPasswordScreen, content: {
-                ResetPasswordView(email:$email)
-            })
-            
-            Spacer()
+            if userInfo.isLoading{
+                LoadingView()
+            }
         }
         .navigationTitle(Text("Login"))
-//        .alert(isPresented: $showAlert){
-//            Alert(title: Text("Login Error"), message: Text(self.authError?.localizedDescription ?? "Unknown error"), dismissButton: .default(Text("OK")) {
-//                if self.authError == .incorrectPassword {
-//                    self.user.password = ""
-//                    self.user.email = ""
-//                }
-//            })
-//        }
+        .alert(isPresented: $userInfo.store_info){
+            Alert(title: Text("Message"), message: Text("Store credentials to use Face ID or Touch ID"), primaryButton: .default(Text("Accept"), action: {
+                stored_user = userInfo.email
+                stored_password = userInfo.password
+                self.logged = true
+            }), secondaryButton: .cancel() {
+                self.logged = true
+            })
+        }
         .background(Color(UIColor.systemGroupedBackground).edgesIgnoringSafeArea(.all))
     }
-    //    }
     
     func hideFaceIDButton()-> Bool {
         if loginWithApple{
@@ -131,7 +136,7 @@ struct LoginView: View {
     }
     
     func areVariablesEmpty() -> Bool {
-        if email != "" && password != "" {
+        if self.userInfo.email != "" && self.userInfo.password != "" {
             return false
         }else{
             return true
