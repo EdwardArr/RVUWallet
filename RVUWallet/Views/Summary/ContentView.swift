@@ -240,11 +240,11 @@ struct ContentView: View {
                         .padding(EdgeInsets(top: 20, leading: 20, bottom: 0, trailing: 20))
                     
                     RecentProceduresList(proceduresList: proceduresVM.procedures, totalRVU: proceduresVM.totalRVU, revenuePerRVU: Double(userVM.user.revenue_per_rvu ) ?? 0.0, cpt: cptVM.cpt)
-                        .padding(EdgeInsets(top: 20, leading: 20, bottom: 0, trailing: 20))
+                        .padding(EdgeInsets(top: padding(), leading: padding(), bottom: 0, trailing: padding()))
                         .isHidden(hideRecentProcedures())
 
-                        FinishSetupView().padding([.horizontal, .top],20)
-                            .isHidden(hideEnterRevenuePerRVU())
+//                        FinishSetupView().padding([.horizontal, .top],20)
+//                            .isHidden(hideEnterRevenuePerRVU())
                     }
                 
 //                AddNewProcedureButton()
@@ -272,6 +272,14 @@ struct ContentView: View {
             return true
         }else{
             return false
+        }
+    }
+    
+    func padding()->CGFloat{
+        if hideRecentProcedures(){
+            return 0
+        }else{
+            return 20
         }
     }
     

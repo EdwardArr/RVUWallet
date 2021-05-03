@@ -25,6 +25,17 @@ struct SummaryView: View {
                     .font(.title2)
                     .fontWeight(.bold)
                 Spacer()
+                Button(action: {}, label: {
+                    NavigationLink(
+                        destination:
+                            PerformanceView()
+                        ,
+                        label: {
+                            Text("Show More")
+                        }
+                    )
+                })
+                
             }
             .padding(.bottom,-1)
             

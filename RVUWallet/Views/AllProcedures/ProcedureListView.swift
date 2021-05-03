@@ -20,7 +20,7 @@ struct ProcedureListView: View {
                 Section(header:
                             VStack{
                             HStack{
-                                Text("April 2021")
+                                Text(currentMonth())
                                     .font(.title3)
                                     .bold()
                                 Spacer()
@@ -38,6 +38,12 @@ struct ProcedureListView: View {
                     }
                 }
             .padding(EdgeInsets(top: 0, leading: 20, bottom: 0, trailing: 20))
+    }
+    func currentMonth()->String{
+        let now = Date()
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MMMM yyyy"
+        return dateFormatter.string(from: now)
     }
 }
 

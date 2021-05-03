@@ -40,8 +40,8 @@ struct ProcedureRowView: View {
                     Text("\(month)/\(day)/\(String(year))").font(.footnote).foregroundColor(.secondary)
                     Image(systemName: "chevron.right").font(.footnote).foregroundColor(.secondary)
                 }
-            }.padding()
-        }
+            }.padding(EdgeInsets(top: 10, leading: 20, bottom: 10, trailing: 20))
+        }.frame(height:55)
     }
 }
 

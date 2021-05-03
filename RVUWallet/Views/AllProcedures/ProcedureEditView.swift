@@ -178,7 +178,6 @@ struct ProcedureEditView: View {
         if procedureVM.procedure.id == ""{
             procedureVM.procedure.id = id
         }
-        
         procedureVM.procedure.cpt_code = self.selection?.code ?? ""
         procedureVM.procedure.cpt_rvu = self.selection?.rvu ?? 0.0
         procedureVM.procedure.procedure_date = date.timeIntervalSince1970

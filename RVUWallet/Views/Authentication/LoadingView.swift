@@ -12,16 +12,16 @@ struct LoadingView: View {
     var body: some View {
 
             Circle()
-                .trim(from: 0, to: 0.8)
-                .stroke(Color.green, lineWidth: 10)
-                .frame(width: 60, height: 60)
+                .trim(from: 0, to: 0.7)
+                .stroke(Color.gray, lineWidth: 6)
+                .frame(width: 30, height: 30)
                 .rotationEffect(.init(degrees: animate ? 360 : 0))
                 .padding(40)
                 .background(Color.white)
                 .cornerRadius(15)
       
         .onAppear(perform: {
-            withAnimation(Animation.linear.speed(0.6).repeatForever(autoreverses: false)){
+            withAnimation(Animation.linear.speed(0.7).repeatForever(autoreverses: false)){
                 animate.toggle()
             }
         })
