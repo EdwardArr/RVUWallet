@@ -7,34 +7,42 @@
 
 import SwiftUI
 
+enum date_selected{
+    case month, quarter, year
+}
+
+extension UIToolbar {
+    var month: UIToolbar {
+        return UIToolbar.init(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
+    }
+}
+
 struct PerformanceView: View {
     
     @State var picker = 0
     
+    var dateSelected: String{
+        if picker == 0{
+            return "May 2021"
+        }else if picker == 1{
+            return ("\(Date.getThisQuarter(Date())())")
+        }else{
+            return ("Year \(Date.getThisYear(Date())())")
+        }
+    }
+    
     var body: some View {
-        NavigationView{
-            ScrollView{
-                VStack{
-                if picker == 0{
-                    Text("May 2021")
-                        .font(.largeTitle)
-                        .bold()
-                }else if picker == 1{
-                    Text("April - June 2021")
-                        .font(.largeTitle)
-                }else{
-                    Text("Year 2021")
-                        .font(.largeTitle)
-                }
-                    Spacer()
-            }
-                
+        
+        ZStack(alignment:.bottom){
+            ScrollView(.vertical, showsIndicators: false){
+                PerformanceGraph()
             }
         }
-        .largeNavigationBar(titleView: Text("Hello"), leadingView: EmptyView(), trailingView: EmptyView(), backgroundView: Text("World"), showsDivider: false, transparentNavBarHeight: 0)
+        
+        .navigationBarTitle(dateSelected, displayMode: .large)
         .toolbar{
             ToolbarItem(placement:.principal){
-
+                
                 Picker(selection: $picker, label: Text("What is your favorite color?")) {
                     Text("Year")
                         .tag(2)
@@ -45,6 +53,31 @@ struct PerformanceView: View {
                 }.pickerStyle(SegmentedPickerStyle())
             }
         }
+        .background(Color(UIColor.systemGroupedBackground).edgesIgnoringSafeArea(.all))
+    }
+}
+
+struct PerformanceGraph: View {
+    
+    var body: some View{
+       
+        ZStack(alignment:.topLeading){
+            RoundedRectangle(cornerRadius: 12, style: .continuous)
+                .foregroundColor(Color(UIColor.secondarySystemGroupedBackground))
+            HStack{
+            VStack(alignment: .leading){
+                Text("Total RVUs")
+                    .font(.subheadline)
+                    .foregroundColor(.secondary)
+                Text("$2,000.00")
+                    .font(.title)
+                    .foregroundColor(.primary)
+                    .bold()
+            }
+                Spacer()
+            }.padding()
+        }.padding([.horizontal])
+//        .frame(width:200, height:60)
     }
 }
 

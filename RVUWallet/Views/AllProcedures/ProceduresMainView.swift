@@ -27,7 +27,6 @@ struct ProceduresMainView: View {
         .sheet(isPresented: $presentDateListFilterScreen){
             DateListFilterView()
         }
-        .background(Color(UIColor.systemGroupedBackground).edgesIgnoringSafeArea(.all))
     }
 }
 

@@ -7,85 +7,68 @@
 
 import SwiftUI
 
-struct CustomSummaryNavigationBarView: View {
-    
-    @State private var presentPhysicianProfileScreen = false
-    
-    var body: some View {
-        HStack{
-            VStack(alignment:.leading){
-                Text("April 2021").font(.subheadline).foregroundColor(.secondary)
-                Text("Summary").font(.largeTitle).bold()}.padding(.top)
-            Spacer()
-            
-            Button(action: {
-                print("User profile button pressed")
-                presentPhysicianProfileScreen.toggle()
-            },
-            label: {
-                
-                ZStack {
-                    Circle()
-                        .frame(width:35)
-                        .foregroundColor(.gray)
-                    Text("MB")
-                        .font(.system(size: 17.5))
-                        .foregroundColor(.white)
-                        .bold()
-                }
-                
-            })
-        }
-        .padding(EdgeInsets(top: 0, leading: 20, bottom: 5, trailing: 20))
-        .sheet(isPresented: $presentPhysicianProfileScreen){
-                            PhysicianProfileView()
-                        }
+public extension View {
+    func newNavigationBarLargeTitleItems<L>(trailing: L) -> some View where L : View {
+        overlay(NavigationBarLargeTitleItems(trailing: trailing).frame(width: 0, height: 0))
     }
 }
 
-struct RVUWalletTitleView: View {
-    @State private var presentPhysicianProfileScreen = false
+fileprivate struct NavigationBarLargeTitleItems<L : View>: UIViewControllerRepresentable {
+    typealias UIViewControllerType = Wrapper
     
-    var body: some View {
+    private let trailingItems: L
+    
+    init(trailing: L) {
+        self.trailingItems = trailing
+    }
+    
+    func makeUIViewController(context: Context) -> Wrapper {
+        Wrapper(representable: self)
+    }
+    
+    func updateUIViewController(_ uiViewController: Wrapper, context: Context) {
+    }
+    
+    class Wrapper: UIViewController {
+        private let representable: NavigationBarLargeTitleItems?
         
-        VStack(alignment:.leading, spacing:0){
-            Text("APRIL 2021")
-                .font(.title2)
-                .foregroundColor(.secondary)
-                .fontWeight(.bold)
-            HStack{
+        init(representable: NavigationBarLargeTitleItems) {
+            self.representable = representable
+            super.init(nibName: nil, bundle: nil)
+        }
+        
+        required init?(coder: NSCoder) {
+            self.representable = nil
+            super.init(coder: coder)
+        }
                 
-                Text("Summary").font(.largeTitle).bold().foregroundColor(.clear)
-                
-                Spacer()
-                
-                Button(action: {
-                    print("User profile button pressed")
-                    presentPhysicianProfileScreen.toggle()
-                },
-                label: {
+        override func viewWillAppear(_ animated: Bool) {
+            guard let representable = self.representable else { return }
+            guard let navigationBar = self.navigationController?.navigationBar else { return }
+            guard let UINavigationBarLargeTitleView = NSClassFromString("_UINavigationBarLargeTitleView") else { return }
+           
+            navigationBar.subviews.forEach { subview in
+                if subview.isKind(of: UINavigationBarLargeTitleView.self) {
+                    let controller = UIHostingController(rootView: representable.trailingItems)
+                    controller.view.translatesAutoresizingMaskIntoConstraints = false
+                    subview.addSubview(controller.view)
                     
-                    ZStack {
-                        Circle()
-                            .frame(width:35)
-                            .foregroundColor(.gray)
-                        Text("MB")
-                            .font(.system(size: 17.5))
-                            .foregroundColor(.white)
-                            .bold()
-                    }
-                    
-                })
-            }
-            
-            
-            .sheet(isPresented: $presentPhysicianProfileScreen){
-                PhysicianProfileView()
+                    NSLayoutConstraint.activate([
+                        controller.view.bottomAnchor.constraint(
+                            equalTo: subview.bottomAnchor,
+                            constant: -15
+                        ),
+                        controller.view.trailingAnchor.constraint(
+                            equalTo: subview.trailingAnchor,
+                            constant: -view.directionalLayoutMargins.trailing
+                        )
+                    ])
+                }
             }
         }
-        .padding(EdgeInsets(top: 20, leading: 20, bottom: -1, trailing: 20))
     }
 }
+
 
 struct menuButton: View {
     @State var userSelection = "This month"
@@ -149,6 +132,6 @@ struct menuButton: View {
 
 struct CustomSummaryNavigationBarView_Previews: PreviewProvider {
     static var previews: some View {
-        RVUWalletTitleView()
+        menuButton()
     }
 }
