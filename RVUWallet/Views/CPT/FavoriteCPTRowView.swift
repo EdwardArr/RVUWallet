@@ -13,6 +13,8 @@ struct FavoriteCPTRowView: View {
     
     @State var presentCPTCodeEditScreen = false
     
+    @ObservedObject var userVM = UserViewModel()
+    
     @Binding var selected: CPT?
     
     @Binding var isSelected:Bool
@@ -63,9 +65,10 @@ struct FavoriteCPTRowView: View {
                     .font(.title3)
                     .foregroundColor(.primary)
                     .fontWeight(.medium)
-//                Text("\(cpt.rvu, specifier: "%.2f") RVUs")
-//                    .font(.subheadline)
-//                    .foregroundColor(.secondary)
+                
+                Text("\(cpt.rvu, specifier: "%.2f") RVUs")
+                    .font(.subheadline)
+                    .foregroundColor(.secondary)
             }
             Spacer()
             if mode == .edit {
@@ -75,9 +78,8 @@ struct FavoriteCPTRowView: View {
                     Image(systemName: "info.circle").font(.title2).foregroundColor(.blue)
                 }).buttonStyle(BorderlessButtonStyle())
                 .sheet(isPresented: $presentCPTCodeEditScreen){
-                    CPTCodeEditView(cptColor:.blue, cptCodeEditMode:.edit)
+                    CPTCodeEditView(cptCodeEditMode:.edit, cpt: cpt)
                 }
-                
             }
         }
         .padding(.vertical,1)

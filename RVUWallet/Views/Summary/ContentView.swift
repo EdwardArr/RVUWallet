@@ -202,7 +202,6 @@ class UserInfo: ObservableObject {
             self.user_id = Auth.auth().currentUser?.uid ?? ""
             
             self.logged = true
-            
             print("Username and password for app is as follows:")
             print(self.stored_user)
             print(self.stored_password)
@@ -225,6 +224,8 @@ class UserInfo: ObservableObject {
         }
         return false
     }
+    
+    
 }
 
 struct ParentView: View {
@@ -238,6 +239,8 @@ struct ParentView: View {
     @ObservedObject var userVM = UserViewModel()
     
     @AppStorage("status") var logged = false
+    
+    @AppStorage("userID") var user_id = ""
     
     var body: some View{
         Group{
@@ -272,6 +275,7 @@ struct ParentView: View {
             let user_id = Auth.auth().currentUser?.uid
             proceduresVM.subscribe(user_id: user_id ?? "")
             userVM.fetchUser(documentId: user_id ?? "")
+            self.user_id = user_id ?? ""
         }
     }
 }
@@ -321,7 +325,7 @@ struct ContentView: View {
             .onAppear(perform: {
                 self.user_id = Auth.auth().currentUser?.uid ?? ""
                 self.proceduresVM.subscribe(user_id: user_id)
-                self.userVM.fetchUser(documentId: user_id)
+//                self.userVM.fetchUser(documentId: user_id)
                 self.userInfo.hideTrailingView = false
             })
             .onDisappear(perform: {

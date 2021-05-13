@@ -17,24 +17,32 @@ struct CPTCodeEditView: View {
     
     @ObservedObject var cptVM = CPTViewModel()
     
+    @StateObject var userVM = UserViewModel()
+    
+    @ObservedObject var userInfo = UserInfo()
+    
     @ObservedObject var physicianVM = PhysicianViewModel()
+    
+    @AppStorage("userID") var user_id = ""
     
     @State var physician:Physician = Physician(id: "dTsn2jWAdrtAMj4N1zYn", first_name: "Michael", last_name: "Blaney", phone_number: "+1(706)285-3186", email: "mike.blaney@bcofa.com", revenue_per_rvu: 54.19, favorite_cpts: [], procedures: [])
     
     @State var cptCode = ""
     @State var description = ""
     @State var rvu = ""
-    @State var cptColor: Color
+//    @State var cptColor: Color
     @State var isFavorite = true
     
-    var cptCodeEditMode: CPTCodeEditMode = .new
+    @State var cptCodeEditMode: CPTCodeEditMode = .new
+    
+    @State var cpt:CPT = CPT(id: "", code: "", description: "", rvu: 0.0)
     
     var navigationTitle: Text {
         switch(self.cptCodeEditMode) {
         case .new:
             return Text("New CPT Code")
         case .edit:
-                return Text(description)
+            return Text(cpt.description)
         }
     }
     
@@ -49,16 +57,16 @@ struct CPTCodeEditView: View {
     
     var body: some View {
         NavigationView {
-        List{
-            Section{
-                TextField("CPT Code", text: $cptVM.cpt.code)
-                    .keyboardType(.numberPad)
-            
-                TextField("Description", text: $cptVM.cpt.description)
-            
-                TextField("RVU", text: $rvu)
-                    .keyboardType(.decimalPad)
-            }
+            List{
+                Section{
+                    TextField("CPT Code", text: $cpt.code)
+                        .keyboardType(.numberPad)
+                    
+                    TextField("Description", text: $cpt.description)
+                    
+                    TextField("RVU", text: $rvu)
+                        .keyboardType(.decimalPad)
+                }
             
 //            Section{
 //                ColorPicker("Assign Color", selection: $cptColor)
@@ -78,9 +86,15 @@ struct CPTCodeEditView: View {
                     }
                 }).disabled(true)
             }
-        }
-        .listStyle(GroupedListStyle())
-        .navigationTitle(navigationTitle)
+            }
+            .listStyle(GroupedListStyle())
+            .navigationTitle(navigationTitle)
+            .onAppear(perform: {
+                userVM.fetchUser(documentId: self.user_id)
+                if userVM.user.revenue_per_rvu != nil {
+                    self.rvu = String(userVM.user.revenue_per_rvu)
+                }
+            })
         .navigationBarTitleDisplayMode(navDisplayMode)
         .navigationBarItems(leading: Button(
                                 action: {
@@ -99,14 +113,20 @@ struct CPTCodeEditView: View {
     func handleDoneTapped() {
         
         let id = UUID().uuidString
-        
-        cptVM.cpt.id = id
-        cptVM.cpt.rvu = Double(rvu) ?? 0.0
-        if isFavorite == true {
-            physicianVM.physician.favorite_cpts.append(id)
+        if userVM.cpt.id == ""{
+            userVM.cpt.id = id
         }
-        cptVM.save()
-        physicianVM.updateFavoriteCPTsList(physician: physician, cpt: id)
+        userVM.cpt.description = cpt.description
+        userVM.cpt.code = cpt.code
+        userVM.cpt.rvu = Double(rvu) ?? 0.0
+//                                  
+//        if isFavorite == true {
+//            physicianVM.physician.favorite_cpts.append(id)
+//        }
+//        cptVM.save()
+//        physicianVM.addCPTForPhysician(physician: physician)
+        userVM.saveCPT()
+//        physicianVM.updateFavoriteCPTsList(physician: physician, cpt: id)
     }
     
     func handleCancelTapped() {
@@ -120,6 +140,6 @@ struct CPTCodeEditView: View {
 
 struct AddNewCPTCode_Previews: PreviewProvider {
     static var previews: some View {
-        CPTCodeEditView(cptColor: .blue)
+        CPTCodeEditView(cpt: CPT(id: "", code: "", description: "", rvu: 0.0))
     }
 }

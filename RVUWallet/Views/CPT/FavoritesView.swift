@@ -14,9 +14,14 @@ enum FavoritesViewMode {
 struct FavoritesView: View {
     
     @ObservedObject var physiciansVM = PhysiciansViewModel()
+    
     @ObservedObject var cptsVM = CPTsViewModel()
     
-    @State var physician:Physician = Physician(id: "dTsn2jWAdrtAMj4N1zYn", first_name: "Michael", last_name: "Blaney", phone_number: "+1(706)285-3186", email: "mike.blaney@bcofa.com", revenue_per_rvu: 54.19, favorite_cpts: ["12","122"], procedures: [])
+    @ObservedObject var userVM = UserViewModel()
+    
+    @AppStorage("userID") var user_id = ""
+    
+//    @State var physician:Physician = Physician(id: "dTsn2jWAdrtAMj4N1zYn", first_name: "Michael", last_name: "Blaney", phone_number: "+1(706)285-3186", email: "mike.blaney@bcofa.com", revenue_per_rvu: 54.19, favorite_cpts: ["12","122"], procedures: [])
     
     @State var text = ""
     @State var isEditing = false
@@ -113,7 +118,7 @@ struct FavoritesView: View {
                     Text("Add New CPT Code").font(.body)
                 })
                 .sheet(isPresented: $presentAddCPTCodeScreen){
-                    CPTCodeEditView(cptColor: .blue)
+                    CPTCodeEditView()
                 }
             }
             
@@ -134,9 +139,9 @@ struct FavoritesView: View {
                                                                 
                             }}.padding(.top)
             ){
-                ForEach(cptsVM.cpts) {cpt in
+                ForEach(userVM.cpts) {cpt in
 //                    HStack{
-                    FavoriteCPTRowView(selected: $selection, isSelected: $isSelected, cpt: cpt, mode: mode)
+                    FavoriteCPTRowView(userVM: UserViewModel(cpt: cpt), selected: $selection, isSelected: $isSelected, cpt: cpt, mode: mode)
 //                    }
 //                    .padding(.vertical,5)
                 }
@@ -145,6 +150,7 @@ struct FavoritesView: View {
         }
         .navigationBarTitle(navigationTitle)
         .onAppear(perform: {
+            userVM.fetchCPTs(documentId: user_id)
             physiciansVM.subscribe()
             cptsVM.subscribe()
         })
@@ -169,7 +175,7 @@ struct FavoritesView: View {
         }, label: {
             trailingNavItem.font(.body)
 //            Text(mode == .view ? "Edit" : "Done")
-        }).disabled(true)
+        })
 //                                .sheet(isPresented: $presentFavoriteCPTCodeListScreen){
 //                                    FavoriteCPTCodeListView(mode:.edit)
 //                                                }

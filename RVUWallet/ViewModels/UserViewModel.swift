@@ -19,13 +19,18 @@ class UserViewModel: ObservableObject {
     
     @Published var user: User
     
+    @Published var cpt: CPT
+    
+    @Published var cpts = [CPT]()
+    
     @Published var id = ""
     
     @Published var errorMessage = ""
     
-    init(user : User = User(id: "", email: "", first_name:"",last_name:"",revenue_per_rvu:"", favorite_cpts:[])){
+    init(user : User = User(id: "", email: "", first_name:"",last_name:"",revenue_per_rvu:"", favorite_cpts:[]), cpt: CPT = CPT(id: "", code: "", description: "", rvu: 0.0)){
         
         self.user = user
+        self.cpt = cpt
     }
     
     private var db = Firestore.firestore()
@@ -110,6 +115,66 @@ class UserViewModel: ObservableObject {
         } catch {
           print("Sign out error")
         }
+    }
+    
+    // Anything to do with users/cpts subcollection
+    
+    private var listenerRegistration: ListenerRegistration?
+    
+    func fetchCPTs(documentId: String) {
+        
+        listenerRegistration = db.collection("users").document(documentId).collection("cpts")
+//            .whereField("first_name", isEqualTo: "Mike")
+//            .whereField("start_epoch_timestamp", isLessThanOrEqualTo: endTime!)
+            .addSnapshotListener { (QuerySnapshot, Error) in
+                guard let documents = QuerySnapshot?.documents else {
+                    print("No documents in the cpts collection")
+                    return
+                }
+                
+                self.cpts = documents.compactMap { (QuerySnapshot) -> CPT? in
+//                     self.fetchedOn = Date().timeIntervalSince1970
+                    return try? QuerySnapshot.data(as: CPT.self)
+                }
+//                Home.carsByHour(arrival: self.arrivals)
+                print("\(self.cpts.count) cpts were found.")
+                print("Subscribed to cpts collection.")
+            }
+    }
+    
+    func addCPTForUser(user: User) {
+        do{
+            let _ = try db.collection("users").document(user.id ?? "").collection("cpts").addDocument(from: cpt)
+        }
+        catch{
+            print(error)
+        }
+    }
+    
+    func updateUserCPT(_ user: User, cpt: CPT) {
+      if let documentId = user.id {
+        do {
+            print("Updated user: \(user.first_name)")
+            try db.collection("users").document(documentId).collection("cpts").document(cpt.id ?? "").setData(from: cpt)
+        }
+        catch {
+          print(error)
+        }
+      }
+    }
+    
+    func updateOrAddUserCPT() { // (1)
+        if let _ = user.id {
+            
+            self.updateUserCPT(self.user,cpt: self.cpt ) // (2)
+        }
+        else {
+            addCPTForUser(user:user) // (3)
+        }
+    }
+    
+    func saveCPT(){
+        updateOrAddUserCPT()
     }
     
 }

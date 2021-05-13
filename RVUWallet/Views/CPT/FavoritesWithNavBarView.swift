@@ -23,6 +23,10 @@ struct FavoritesWithNavBarView: View {
     @State private var presentAddCPTCodeScreen = false
     @State var presentFavoriteCPTCodeListScreen = false
     
+    @ObservedObject var userVM = UserViewModel()
+    
+    @AppStorage("userID") var user_id = ""
+    
     @State var mode: FavoritesViewMode = .edit
     
     var isBackButtonHidden: Bool {
@@ -109,11 +113,8 @@ struct FavoritesWithNavBarView: View {
                                                                 
                             }}.padding(.top)
             ){
-                ForEach(cptsVM.cpts) {cpt in
-//                    HStack{
+                ForEach(userVM.cpts) {cpt in
                     FavoriteCPTRowView(selected: $selection, isSelected: $isSelected, cpt: cpt, mode: mode)
-                        
-//                    }.padding(.vertical,5)
                 }
             }.textCase(nil)
         }
@@ -121,6 +122,9 @@ struct FavoritesWithNavBarView: View {
         .navigationBarTitleDisplayMode(.inline)
         .onAppear(perform: {
             cptsVM.subscribe()
+            print("-----------------")
+            print("Reached the page with nav bar")
+            userVM.fetchCPTs(documentId: self.user_id)
         })
         .navigationBarBackButtonHidden(isBackButtonHidden)
         .navigationBarItems(leading: Button(
@@ -142,7 +146,7 @@ struct FavoritesWithNavBarView: View {
         )
         .listStyle(InsetGroupedListStyle())
         .sheet(isPresented: $presentAddCPTCodeScreen){
-            CPTCodeEditView(cptColor: .blue)
+            CPTCodeEditView()
         }
     }
     }

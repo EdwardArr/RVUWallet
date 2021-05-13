@@ -38,7 +38,7 @@ struct SummaryView: View {
                 
             }
             .padding(.bottom,-1)
-            
+            VStack{
             GeometryReader{ geometry in
                 
                 HStack(){
@@ -67,7 +67,6 @@ struct SummaryView: View {
                             
                             Spacer()
                         }
-                        
                     }
                     .frame(width:geometry.size.width * 0.475, height:85)
                     
@@ -100,6 +99,7 @@ struct SummaryView: View {
                     }
                     .frame(width:geometry.size.width * 0.475, height:85)
                 }
+            }
             }
         }
         .frame(height:115)

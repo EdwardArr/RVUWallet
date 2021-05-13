@@ -13,15 +13,17 @@ class PhysicianViewModel: ObservableObject {
 
 //    @Published var date : Date().timeIntervalSince1970
     @Published var physician: Physician
+    @Published var cpt: CPT
     
     @Published var errorMessage = ""
     
     private var db = Firestore.firestore()
     private var listenerRegistration: ListenerRegistration?
     
-    init(physician: Physician = Physician(id: "dTsn2jWAdrtAMj4N1zYn", first_name: "Michael", last_name: "Blaney", phone_number: "+1(706)285-3186", email: "mike.blaney@bcofa.com", revenue_per_rvu: 54.19, favorite_cpts: [], procedures: [])) {
+    init(physician: Physician = Physician(id: "dTsn2jWAdrtAMj4N1zYn", first_name: "Michael", last_name: "Blaney", phone_number: "+1(706)285-3186", email: "mike.blaney@bcofa.com", revenue_per_rvu: 54.19, favorite_cpts: [], procedures: []), cpt: CPT = CPT(id: "", code: "", description: "", rvu: 0.0)) {
         
         self.physician = physician
+        self.cpt = cpt
     }
     
     deinit {
@@ -82,11 +84,20 @@ class PhysicianViewModel: ObservableObject {
         }
     }
     
+    func addCPTForPhysician(physician: Physician) {
+        do{
+            let _ = try db.collection("physicians").document(physician.id ?? "").collection("cpts").addDocument(from: cpt)
+        }
+        catch{
+            print(error)
+        }
+    }
+    
     func updateProceduresList(physician: Physician, procedure:String) {
         if let documentId = physician.id {
             do {
                 try
-                    db.collection("physicians").document(documentId)
+                    db.collection("users").document(documentId)
                     .updateData(["procedures": FieldValue.arrayUnion([procedure])
                     ])
             }

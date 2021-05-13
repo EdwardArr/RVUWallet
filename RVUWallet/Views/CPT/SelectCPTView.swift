@@ -13,6 +13,10 @@ struct SelectCPTView: View {
     
     @ObservedObject var cptsVM = CPTsViewModel()
     
+    @ObservedObject var userVM = UserViewModel()
+    
+    @AppStorage("userID") var user_id = ""
+    
     @State var presentAddCPTCodeScreen = false
     
     @State var presentEditFavoritesScreen = false
@@ -43,14 +47,15 @@ struct SelectCPTView: View {
                                     Text("Edit")
                                         .font(.body)
                                 })
-                                .disabled(true)
+//                                .disabled(true)
+
                                 .sheet(isPresented: $presentEditFavoritesScreen){
                                     FavoritesWithNavBarView(mode:.edit)
                                 }
                         })
             {
                 //        FavoritesView(mode:.select)
-                ForEach(cptsVM.cpts) {cpt in
+                ForEach(userVM.cpts) {cpt in
                     HStack{
                         FavoriteCPTRowView(selected: $selection, isSelected: $isSelected, cpt: cpt, mode: mode)
                     }.padding(.vertical,5)
@@ -78,12 +83,12 @@ struct SelectCPTView: View {
                                     Image(systemName: "plus").font(.body)
                                 })
         .onAppear(perform: {
-            cptsVM.subscribe()
+            userVM.fetchCPTs(documentId: self.user_id)
             print(isSelected)
 //            dismiss()
         })
         .sheet(isPresented: $presentAddCPTCodeScreen){
-            CPTCodeEditView(cptColor: .blue)
+            CPTCodeEditView()
         }
         
     }

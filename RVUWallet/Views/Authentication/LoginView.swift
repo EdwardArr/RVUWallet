@@ -14,8 +14,9 @@ struct LoginView: View {
     @StateObject var userInfo = UserInfo()
     
     @ObservedObject var physicianVM = PhysicianViewModel()
+    @StateObject var userVM = UserViewModel()
     
-    @State var user_id = ""
+    @AppStorage("user_ID") var user_id = ""
     @State var email = ""
     @State var password = ""
     
@@ -172,8 +173,10 @@ struct LoginView: View {
     func mergeUser() {
         physicianVM.physician.id = self.user_id
         physicianVM.physician.email = self.email
+        print("\(user_id)")
+        userVM.user.id = self.userInfo.user_id
+        userVM.user.email = self.userInfo.email
     }
-    
 }
 
 struct faceOrTouchIDButton: View {

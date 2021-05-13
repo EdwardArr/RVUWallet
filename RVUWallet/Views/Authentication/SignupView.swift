@@ -12,7 +12,7 @@ struct SignupView: View {
     
     @ObservedObject var physicianVM = PhysicianViewModel()
     
-    @ObservedObject var userVM = UserViewModel()
+    @ObservedObject var userVM = UserViewModel() 
     
     @State var first_name = ""
     @State var last_name = ""
