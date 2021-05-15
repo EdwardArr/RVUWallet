@@ -86,14 +86,26 @@ struct CPTCodeEditView: View {
                     }
                 }).disabled(true)
             }
+                
+                Section{
+                    Button {
+                        userVM.deleteUserCPT(userVM.user, cpt: userVM.cpt)
+                        dismiss()
+                    } label: {
+                        Text("Delete CPT")
+                            .foregroundColor(.red)
+                    }
+
+                }
             }
             .listStyle(GroupedListStyle())
             .navigationTitle(navigationTitle)
             .onAppear(perform: {
                 userVM.fetchUser(documentId: self.user_id)
-                if userVM.user.revenue_per_rvu != nil {
-                    self.rvu = String(userVM.user.revenue_per_rvu)
+                if cpt.rvu != 0.0 {
+                    self.rvu = "\(cpt.rvu)"
                 }
+                print(rvu)
             })
         .navigationBarTitleDisplayMode(navDisplayMode)
         .navigationBarItems(leading: Button(
@@ -113,13 +125,16 @@ struct CPTCodeEditView: View {
     func handleDoneTapped() {
         
         let id = UUID().uuidString
-        if userVM.cpt.id == ""{
+        if cpt.id == ""{
             userVM.cpt.id = id
+        }else{
+            userVM.cpt.id = cpt.id
         }
+        
         userVM.cpt.description = cpt.description
         userVM.cpt.code = cpt.code
         userVM.cpt.rvu = Double(rvu) ?? 0.0
-//                                  
+                                  
 //        if isFavorite == true {
 //            physicianVM.physician.favorite_cpts.append(id)
 //        }

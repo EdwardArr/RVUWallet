@@ -132,6 +132,18 @@ struct ProcedureEditView: View {
                     }
                     
                 }.textCase(nil)
+                
+                Section{
+                    if procedureVM.procedure.id != "" {
+                        Button {
+                            procedureVM.deleteProcedure(procedureVM.procedure)
+                            dismiss()
+                        } label: {
+                            Text("Delete case")
+                                .foregroundColor(.red)
+                        }
+                    }
+                }
             }
             
             .navigationBarTitle(mode == .new ? "New Procedure" : procedureVM.procedure.hospital_barcode)
@@ -148,6 +160,11 @@ struct ProcedureEditView: View {
                 }).disabled(areVariablesEmpty())
             )
             .listStyle(GroupedListStyle())
+            .onAppear {
+                if mode == .new{
+                    procedureVM.procedure.id = ""
+                }
+            }
         }
     }
     
@@ -162,7 +179,6 @@ struct ProcedureEditView: View {
             guard details.count == 2 else{ return}
             print(details[0])
             print("Scanned successfully")
-
         case .failure(let error):
             print("Scanning failed")
         }

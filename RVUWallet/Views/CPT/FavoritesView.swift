@@ -141,7 +141,7 @@ struct FavoritesView: View {
             ){
                 ForEach(userVM.cpts) {cpt in
 //                    HStack{
-                    FavoriteCPTRowView(userVM: UserViewModel(cpt: cpt), selected: $selection, isSelected: $isSelected, cpt: cpt, mode: mode)
+                    FavoriteCPTRowView(userVM: UserViewModel(cpt: cpt), selected: $selection, isSelected: $isSelected, cpt: cpt, user: userVM.user, mode: mode)
 //                    }
 //                    .padding(.vertical,5)
                 }
@@ -151,8 +151,7 @@ struct FavoritesView: View {
         .navigationBarTitle(navigationTitle)
         .onAppear(perform: {
             userVM.fetchCPTs(documentId: user_id)
-            physiciansVM.subscribe()
-            cptsVM.subscribe()
+            userVM.fetchUser(documentId: user_id)
         })
         .navigationBarBackButtonHidden(isBackButtonHidden)
         .navigationBarTitleDisplayMode(navDisplayMode)

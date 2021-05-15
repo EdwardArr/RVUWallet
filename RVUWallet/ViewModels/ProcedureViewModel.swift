@@ -64,4 +64,16 @@ class ProcedureViewModel: ObservableObject {
     func save(){
         updateOrAddIncident()
     }
+    
+    func deleteProcedure(_ procedure: Procedure) {
+        if let _ = procedure.id {
+            db.collection("procedures").document(procedure.id ?? "").delete() { err in
+                if let err = err {
+                    print("Error removing document: \(err)")
+                } else {
+                    print("Document successfully removed!")
+                }
+            }
+        }
+    }
 }

@@ -57,7 +57,7 @@ struct SelectCPTView: View {
                 //        FavoritesView(mode:.select)
                 ForEach(userVM.cpts) {cpt in
                     HStack{
-                        FavoriteCPTRowView(selected: $selection, isSelected: $isSelected, cpt: cpt, mode: mode)
+                        FavoriteCPTRowView(userVM:userVM,selected: $selection, isSelected: $isSelected, cpt: cpt, user: userVM.user,mode: mode)
                     }.padding(.vertical,5)
                 }
                 
@@ -84,7 +84,8 @@ struct SelectCPTView: View {
                                 })
         .onAppear(perform: {
             userVM.fetchCPTs(documentId: self.user_id)
-            print(isSelected)
+            userVM.fetchUser(documentId: self.user_id)
+            print("User \(userVM.user) cpts pulled")
 //            dismiss()
         })
         .sheet(isPresented: $presentAddCPTCodeScreen){

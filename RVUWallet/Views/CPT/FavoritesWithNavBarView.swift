@@ -114,16 +114,13 @@ struct FavoritesWithNavBarView: View {
                             }}.padding(.top)
             ){
                 ForEach(userVM.cpts) {cpt in
-                    FavoriteCPTRowView(selected: $selection, isSelected: $isSelected, cpt: cpt, mode: mode)
+                    FavoriteCPTRowView(selected: $selection, isSelected: $isSelected, cpt: cpt, user: userVM.user, mode: mode)
                 }
             }.textCase(nil)
         }
         .navigationBarTitle(navigationTitle)
         .navigationBarTitleDisplayMode(.inline)
         .onAppear(perform: {
-            cptsVM.subscribe()
-            print("-----------------")
-            print("Reached the page with nav bar")
             userVM.fetchCPTs(documentId: self.user_id)
         })
         .navigationBarBackButtonHidden(isBackButtonHidden)

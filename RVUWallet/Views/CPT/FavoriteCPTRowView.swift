@@ -13,13 +13,17 @@ struct FavoriteCPTRowView: View {
     
     @State var presentCPTCodeEditScreen = false
     
-    @ObservedObject var userVM = UserViewModel()
+    @StateObject var userVM = UserViewModel()
     
     @Binding var selected: CPT?
     
     @Binding var isSelected:Bool
     
+    @State var showDelete = false
+    
     var cpt:CPT
+    
+    var user:User
     
     var mode:FavoritesViewMode
     
@@ -28,7 +32,8 @@ struct FavoriteCPTRowView: View {
             
             if mode == .edit {
                 Button(action:{
-                    print("\(cpt.description) is in process to be deleted.")
+                    showDelete.toggle()
+                    
                 }, label:{
                 Image(systemName: "minus.circle.fill").font(.body).foregroundColor(.red)
                 }).buttonStyle(BorderlessButtonStyle())
@@ -80,6 +85,18 @@ struct FavoriteCPTRowView: View {
                 .sheet(isPresented: $presentCPTCodeEditScreen){
                     CPTCodeEditView(cptCodeEditMode:.edit, cpt: cpt)
                 }
+            }
+            if showDelete{
+                Button(action:{
+                    userVM.deleteUserCPT(user, cpt: cpt)
+                }, label:{
+                    ZStack{
+                        Rectangle()
+                            .foregroundColor(.red)
+                        Text("Delete")
+                            .foregroundColor(.white)
+                    }
+                })
             }
         }
         .padding(.vertical,1)

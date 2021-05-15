@@ -177,6 +177,18 @@ class UserViewModel: ObservableObject {
         updateOrAddUserCPT()
     }
     
+    func deleteUserCPT(_  user: User, cpt: CPT) {
+        if let documentId = user.id {
+            db.collection("users").document(documentId).collection("cpts").document(cpt.id ?? "").delete() { err in
+                if let err = err {
+                    print("Error removing document: \(err)")
+                } else {
+                    print("Document successfully removed!")
+                }
+            }
+        }
+    }
+    
 }
 
 
