@@ -43,16 +43,16 @@ struct SummaryView: View {
                 
                 HStack(){
                     
-                    ZStack(alignment: .center){
+                    ZStack(alignment: .leading){
                         
                         RoundedRectangle(cornerRadius: 12, style: .continuous)
                             .foregroundColor(Color(UIColor.secondarySystemGroupedBackground))
-                        
+                            .frame(width:geometry.size.width * 0.475, height:85)
                         HStack{
                             
                             VStack(alignment:.leading){
                                 Text("Total RVUs")
-                                    .font(.subheadline)
+                                    .font(.system(size: 15))
                                     .foregroundColor(.primary)
                                 Text("\(totalRVU, specifier: "%.2f")")
                                     .font(.title)
@@ -63,21 +63,21 @@ struct SummaryView: View {
                                     .foregroundColor(.secondary)
                                     .fontWeight(.medium)
                             }
-                            .padding(.leading)
+                            .padding([.leading,.vertical])
                             
                             Spacer()
                         }
                     }
-                    .frame(width:geometry.size.width * 0.475, height:85)
+                    
                     
                     Spacer()
                     
-                    ZStack{
+                    ZStack(alignment:.leading){
                         RoundedRectangle(cornerRadius: 12, style: .continuous)
                             .foregroundColor(Color(UIColor.secondarySystemGroupedBackground))
-                            
+                            .frame(width:geometry.size.width * 0.475, height:85)
+//                            .fixedSize(horizontal: true, vertical: false)
                         
-                        HStack{
                             VStack(alignment:.leading){
                                 Text("Performed")
                                     .font(.subheadline)
@@ -92,12 +92,9 @@ struct SummaryView: View {
                                         .foregroundColor(.primary)
                                 }
                             }
-                            .padding(.leading)
-                            
-                            Spacer()
-                        }
+                            .padding([.leading,.vertical])
                     }
-                    .frame(width:geometry.size.width * 0.475, height:85)
+                    
                 }
             }
             }

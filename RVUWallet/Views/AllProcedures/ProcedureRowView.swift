@@ -26,6 +26,7 @@ struct ProcedureRowView: View {
         ZStack(alignment:.leading){
             RoundedRectangle(cornerRadius: 12, style: .continuous)
                 .foregroundColor(Color(UIColor.secondarySystemGroupedBackground))
+                
             HStack(alignment: .top) {
                 VStack(alignment:.leading, spacing:1){
                     Text(procedure.cpt_description)
@@ -41,7 +42,9 @@ struct ProcedureRowView: View {
                     Image(systemName: "chevron.right").font(.footnote).foregroundColor(.secondary)
                 }
             }.padding(EdgeInsets(top: 10, leading: 20, bottom: 10, trailing: 20))
-        }.frame(height:55)
+        }
+//        .frame(height:55)
+//        .padding(.vertical,20)
     }
 }
 
