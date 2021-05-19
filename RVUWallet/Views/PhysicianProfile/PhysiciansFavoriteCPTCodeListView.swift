@@ -20,10 +20,10 @@ struct PhysiciansFavoriteCPTCodeListView: View {
                     Text("Add New CPT Code")
                 })
 .sheet(isPresented: $presentAddCPTCodeScreen){
-AddCPTCodeView(cptColor: .blue)
+    CPTCodeEditView()
                 }
             }
-        FavoriteCPTCodeListView()
+            FavoritesView(mode:.view)
         }
             .navigationBarTitle("Favorite CPT Codes")
             .navigationBarItems(trailing: Button(action: {}, label: {

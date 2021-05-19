@@ -1,0 +1,25 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "CodeScanner",
+        "repositoryURL": "http://github.com/twostraws/CodeScanner",
+        "state": {
+          "branch": null,
+          "revision": "a2144ddaa7c43a6ee00873edd4cc7815ad97942f",
+          "version": "1.0.7"
+        }
+      },
+      {
+        "package": "SwiftUIPlus",
+        "repositoryURL": "https://github.com/rebeloper/SwiftUIPlus.git",
+        "state": {
+          "branch": null,
+          "revision": "fb901975f4987d720e79a12928551244538d4b1f",
+          "version": "0.0.163"
+        }
+      }
+    ]
+  },
+  "version": 1
+}

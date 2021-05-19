@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		5910E8DD2616BEC9003C3ACA /* FavoriteCPTCodeListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5910E8DC2616BEC9003C3ACA /* FavoriteCPTCodeListView.swift */; };
+		5910E8DD2616BEC9003C3ACA /* FavoritesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5910E8DC2616BEC9003C3ACA /* FavoritesView.swift */; };
 		5910E8E22617612E003C3ACA /* UINavigationExtenions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5910E8E12617612E003C3ACA /* UINavigationExtenions.swift */; };
 		5910E8E72618D5FC003C3ACA /* RecentProceduresList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5910E8E62618D5FC003C3ACA /* RecentProceduresList.swift */; };
 		5910E8EF2618DEC0003C3ACA /* ProcedureTypeGalleryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5910E8EE2618DEC0003C3ACA /* ProcedureTypeGalleryView.swift */; };
@@ -17,36 +17,60 @@
 		5910E906261900A7003C3ACA /* SearchICD10CodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5910E905261900A7003C3ACA /* SearchICD10CodeView.swift */; };
 		5910E90B261906DB003C3ACA /* FavoriteICD10CodesList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5910E90A261906DB003C3ACA /* FavoriteICD10CodesList.swift */; };
 		5910E91126192998003C3ACA /* CodeScanner in Frameworks */ = {isa = PBXBuildFile; productRef = 5910E91026192998003C3ACA /* CodeScanner */; };
-		5910E916261B4F99003C3ACA /* SwiftUIwithUIKitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5910E915261B4F98003C3ACA /* SwiftUIwithUIKitView.swift */; };
-		5910E91E261B59EA003C3ACA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5910E91D261B59EA003C3ACA /* ViewController.swift */; };
-		5910E923261B5A07003C3ACA /* VisionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5910E922261B5A07003C3ACA /* VisionViewController.swift */; };
-		5910E928261B5A23003C3ACA /* StringUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5910E927261B5A23003C3ACA /* StringUtils.swift */; };
-		5910E936261B5BA9003C3ACA /* PreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5910E935261B5BA8003C3ACA /* PreviewView.swift */; };
 		5910E993261CAE4F003C3ACA /* PersonalPhysicianDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5910E992261CAE4F003C3ACA /* PersonalPhysicianDetails.swift */; };
 		5910E9B2261CBE6D003C3ACA /* SelectCPTView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5910E9B1261CBE6D003C3ACA /* SelectCPTView.swift */; };
-		5910E9CB261E1825003C3ACA /* AddPatientRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5910E9CA261E1825003C3ACA /* AddPatientRowView.swift */; };
-		5910E9D0261E4443003C3ACA /* AddCPTCodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5910E9CF261E4442003C3ACA /* AddCPTCodeView.swift */; };
+		5910E9D0261E4443003C3ACA /* CPTCodeEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5910E9CF261E4442003C3ACA /* CPTCodeEditView.swift */; };
 		5910E9D8261E4C39003C3ACA /* FavoriteCPTRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5910E9D7261E4C39003C3ACA /* FavoriteCPTRowView.swift */; };
 		5910E9DD261E6129003C3ACA /* SummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5910E9DC261E6129003C3ACA /* SummaryView.swift */; };
 		5910E9E8261EA66A003C3ACA /* PhysiciansFavoriteCPTCodeListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5910E9E7261EA66A003C3ACA /* PhysiciansFavoriteCPTCodeListView.swift */; };
 		592609722615181900083303 /* CPT.swift in Sources */ = {isa = PBXBuildFile; fileRef = 592609712615181900083303 /* CPT.swift */; };
-		592609772616066600083303 /* ProcedureListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 592609762616066600083303 /* ProcedureListView.swift */; };
-		5926097F261606AB00083303 /* ProcedureRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5926097E261606AB00083303 /* ProcedureRowView.swift */; };
+		5938966326287A3A002E4F32 /* AddPatientRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5938965A26287A3A002E4F32 /* AddPatientRowView.swift */; };
+		5938966426287A3A002E4F32 /* ProcedureRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5938965B26287A3A002E4F32 /* ProcedureRowView.swift */; };
+		5938966526287A3A002E4F32 /* DateListFilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5938965C26287A3A002E4F32 /* DateListFilterView.swift */; };
+		5938966626287A3A002E4F32 /* ProcedureListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5938965D26287A3A002E4F32 /* ProcedureListView.swift */; };
+		5938966726287A3A002E4F32 /* ProcedureEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5938965E26287A3A002E4F32 /* ProcedureEditView.swift */; };
+		5938966826287A3A002E4F32 /* ProcedureDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5938965F26287A3A002E4F32 /* ProcedureDetailView.swift */; };
+		5938966926287A3A002E4F32 /* ExportDataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5938966026287A3A002E4F32 /* ExportDataView.swift */; };
+		5938966A26287A3A002E4F32 /* ProceduresMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5938966126287A3A002E4F32 /* ProceduresMainView.swift */; };
+		5938966B26287A3A002E4F32 /* DateSegementedControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5938966226287A3A002E4F32 /* DateSegementedControlView.swift */; };
+		593896BE26289F9C002E4F32 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 593896BD26289F9C002E4F32 /* GoogleService-Info.plist */; };
+		593896E12628A6B0002E4F32 /* CPTViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 593896E02628A6B0002E4F32 /* CPTViewModel.swift */; };
+		593897012628B400002E4F32 /* ProcedureViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 593897002628B400002E4F32 /* ProcedureViewModel.swift */; };
+		593897062628CADE002E4F32 /* ProceduresViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 593897052628CADE002E4F32 /* ProceduresViewModel.swift */; };
+		593897262629EE19002E4F32 /* PhysicianViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 593897252629EE18002E4F32 /* PhysicianViewModel.swift */; };
+		5938972B2629EE50002E4F32 /* Physician.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5938972A2629EE50002E4F32 /* Physician.swift */; };
+		593897302629F48E002E4F32 /* PhysiciansViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5938972F2629F48E002E4F32 /* PhysiciansViewModel.swift */; };
+		59389735262A0A89002E4F32 /* CPTsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59389734262A0A89002E4F32 /* CPTsViewModel.swift */; };
 		593ED85225FD5193008BCCF9 /* RVUWalletApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 593ED85125FD5193008BCCF9 /* RVUWalletApp.swift */; };
 		593ED85425FD5193008BCCF9 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 593ED85325FD5193008BCCF9 /* ContentView.swift */; };
 		593ED85625FD5195008BCCF9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 593ED85525FD5195008BCCF9 /* Assets.xcassets */; };
 		593ED85925FD5195008BCCF9 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 593ED85825FD5195008BCCF9 /* Preview Assets.xcassets */; };
 		593ED86425FD5196008BCCF9 /* RVUWalletTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 593ED86325FD5196008BCCF9 /* RVUWalletTests.swift */; };
 		593ED86F25FD5196008BCCF9 /* RVUWalletUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 593ED86E25FD5196008BCCF9 /* RVUWalletUITests.swift */; };
-		593ED88025FD78A9008BCCF9 /* ProcedureEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 593ED87F25FD78A9008BCCF9 /* ProcedureEditView.swift */; };
-		593ED88525FD9E57008BCCF9 /* ProcedureDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 593ED88425FD9E57008BCCF9 /* ProcedureDetailView.swift */; };
 		593ED89225FDAEFC008BCCF9 /* SearchBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 593ED89125FDAEFC008BCCF9 /* SearchBarView.swift */; };
 		593ED89725FDDA41008BCCF9 /* SearchCPTView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 593ED89625FDDA41008BCCF9 /* SearchCPTView.swift */; };
 		593ED8C82600FC55008BCCF9 /* Procedure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 593ED8C72600FC55008BCCF9 /* Procedure.swift */; };
 		59639178261FE4A1005A0AED /* SwiftUIPlus in Frameworks */ = {isa = PBXBuildFile; productRef = 59639177261FE4A1005A0AED /* SwiftUIPlus */; };
-		59639180261FF52A005A0AED /* ProceduresMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5963917F261FF52A005A0AED /* ProceduresMainView.swift */; };
-		59639188261FF7E9005A0AED /* DateSegementedControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59639187261FF7E9005A0AED /* DateSegementedControlView.swift */; };
+		596391B7262407E4005A0AED /* FavoritesWithNavBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 596391B6262407E4005A0AED /* FavoritesWithNavBarView.swift */; };
+		596391BF2624B748005A0AED /* PhysicianPersonalDetailRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 596391BE2624B748005A0AED /* PhysicianPersonalDetailRow.swift */; };
+		59821B3F263A69B4000C3EC7 /* Auth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59821B3E263A69B4000C3EC7 /* Auth.swift */; };
 		598F98A026143F6F0063EFB0 /* PhysicianProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 598F989F26143F6F0063EFB0 /* PhysicianProfileView.swift */; };
+		59CE0002263D893C0082B220 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59CE0001263D893C0082B220 /* LoadingView.swift */; };
+		59CE0004263DEE660082B220 /* SetupFavoriteCPTCodesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59CE0003263DEE660082B220 /* SetupFavoriteCPTCodesView.swift */; };
+		59CE0006263DF1EC0082B220 /* SetupRevenuePerRVUView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59CE0005263DF1EC0082B220 /* SetupRevenuePerRVUView.swift */; };
+		59CE000826402C060082B220 /* PerformanceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59CE000726402C060082B220 /* PerformanceView.swift */; };
+		59E43EAC262F6F0A00352F15 /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59E43EAB262F6F0A00352F15 /* WelcomeView.swift */; };
+		59E43EDB2630D38B00352F15 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59E43EDA2630D38B00352F15 /* LoginView.swift */; };
+		59E43EE32631056100352F15 /* SignupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59E43EE22631056100352F15 /* SignupView.swift */; };
+		59E43EE82631172400352F15 /* MainAuthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59E43EE72631172400352F15 /* MainAuthView.swift */; };
+		59E43EED26311C0A00352F15 /* ResetPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59E43EEC26311C0A00352F15 /* ResetPasswordView.swift */; };
+		59E43EF326313E6400352F15 /* NavigationBarLargeTitleItems in Frameworks */ = {isa = PBXBuildFile; productRef = 59E43EF226313E6400352F15 /* NavigationBarLargeTitleItems */; };
+		59E43EF826324A8000352F15 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59E43EF726324A7E00352F15 /* User.swift */; };
+		59E43EFE26336C5B00352F15 /* FinishSetupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59E43EFD26336C5900352F15 /* FinishSetupView.swift */; };
+		59E43F032633CD6C00352F15 /* UserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59E43F022633CD6C00352F15 /* UserViewModel.swift */; };
+		BDA52DD240FF7E99BD4318F6 /* Pods_RVUWallet.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DF8BD671E3F1BE7002757BC /* Pods_RVUWallet.framework */; };
+		D0A9E8C5D47126EA7639FD9A /* Pods_RVUWalletTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 39EC9E4979FE8661A375C738 /* Pods_RVUWalletTests.framework */; };
+		F5B03EDC76DA268C22DF24D0 /* Pods_RVUWallet_RVUWalletUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B78DA5A132E4716CFD99B888 /* Pods_RVUWallet_RVUWalletUITests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,30 +91,43 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		5910E8DC2616BEC9003C3ACA /* FavoriteCPTCodeListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteCPTCodeListView.swift; sourceTree = "<group>"; };
+		12F88FBED74FD2874AE10923 /* Pods-RVUWallet-RVUWalletUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RVUWallet-RVUWalletUITests.release.xcconfig"; path = "Target Support Files/Pods-RVUWallet-RVUWalletUITests/Pods-RVUWallet-RVUWalletUITests.release.xcconfig"; sourceTree = "<group>"; };
+		2FEA02C35B9F0DCB53D5EFA4 /* Pods-RVUWalletTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RVUWalletTests.debug.xcconfig"; path = "Target Support Files/Pods-RVUWalletTests/Pods-RVUWalletTests.debug.xcconfig"; sourceTree = "<group>"; };
+		39EC9E4979FE8661A375C738 /* Pods_RVUWalletTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RVUWalletTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3DF8BD671E3F1BE7002757BC /* Pods_RVUWallet.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RVUWallet.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5910E8DC2616BEC9003C3ACA /* FavoritesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesView.swift; sourceTree = "<group>"; };
 		5910E8E12617612E003C3ACA /* UINavigationExtenions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UINavigationExtenions.swift; sourceTree = "<group>"; };
 		5910E8E62618D5FC003C3ACA /* RecentProceduresList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentProceduresList.swift; sourceTree = "<group>"; };
 		5910E8EE2618DEC0003C3ACA /* ProcedureTypeGalleryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProcedureTypeGalleryView.swift; sourceTree = "<group>"; };
 		5910E8F32618E692003C3ACA /* CustomSummaryNavigationBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSummaryNavigationBarView.swift; sourceTree = "<group>"; };
 		5910E8F82618F64C003C3ACA /* RecentCPTCodesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentCPTCodesView.swift; sourceTree = "<group>"; };
-		5910E9002618FABC003C3ACA /* RecentICD10CodesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentICD10CodesView.swift; sourceTree = "<group>"; };
-		5910E905261900A7003C3ACA /* SearchICD10CodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchICD10CodeView.swift; sourceTree = "<group>"; };
-		5910E90A261906DB003C3ACA /* FavoriteICD10CodesList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteICD10CodesList.swift; sourceTree = "<group>"; };
-		5910E915261B4F98003C3ACA /* SwiftUIwithUIKitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIwithUIKitView.swift; sourceTree = "<group>"; };
-		5910E91D261B59EA003C3ACA /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		5910E922261B5A07003C3ACA /* VisionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VisionViewController.swift; sourceTree = "<group>"; };
-		5910E927261B5A23003C3ACA /* StringUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringUtils.swift; sourceTree = "<group>"; };
-		5910E935261B5BA8003C3ACA /* PreviewView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreviewView.swift; sourceTree = "<group>"; };
+		5910E9002618FABC003C3ACA /* RecentICD10CodesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RecentICD10CodesView.swift; path = RVUWallet/Views/FutureFeatures/RecentICD10CodesView.swift; sourceTree = SOURCE_ROOT; };
+		5910E905261900A7003C3ACA /* SearchICD10CodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SearchICD10CodeView.swift; path = RVUWallet/Views/FutureFeatures/SearchICD10CodeView.swift; sourceTree = SOURCE_ROOT; };
+		5910E90A261906DB003C3ACA /* FavoriteICD10CodesList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FavoriteICD10CodesList.swift; path = RVUWallet/Views/FutureFeatures/FavoriteICD10CodesList.swift; sourceTree = SOURCE_ROOT; };
 		5910E992261CAE4F003C3ACA /* PersonalPhysicianDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalPhysicianDetails.swift; sourceTree = "<group>"; };
 		5910E9B1261CBE6D003C3ACA /* SelectCPTView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectCPTView.swift; sourceTree = "<group>"; };
-		5910E9CA261E1825003C3ACA /* AddPatientRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPatientRowView.swift; sourceTree = "<group>"; };
-		5910E9CF261E4442003C3ACA /* AddCPTCodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCPTCodeView.swift; sourceTree = "<group>"; };
+		5910E9CF261E4442003C3ACA /* CPTCodeEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CPTCodeEditView.swift; sourceTree = "<group>"; };
 		5910E9D7261E4C39003C3ACA /* FavoriteCPTRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteCPTRowView.swift; sourceTree = "<group>"; };
 		5910E9DC261E6129003C3ACA /* SummaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryView.swift; sourceTree = "<group>"; };
-		5910E9E7261EA66A003C3ACA /* PhysiciansFavoriteCPTCodeListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhysiciansFavoriteCPTCodeListView.swift; sourceTree = "<group>"; };
+		5910E9E7261EA66A003C3ACA /* PhysiciansFavoriteCPTCodeListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PhysiciansFavoriteCPTCodeListView.swift; path = RVUWallet/Views/PhysicianProfile/PhysiciansFavoriteCPTCodeListView.swift; sourceTree = SOURCE_ROOT; };
 		592609712615181900083303 /* CPT.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CPT.swift; sourceTree = "<group>"; };
-		592609762616066600083303 /* ProcedureListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProcedureListView.swift; sourceTree = "<group>"; };
-		5926097E261606AB00083303 /* ProcedureRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProcedureRowView.swift; sourceTree = "<group>"; };
+		5938965A26287A3A002E4F32 /* AddPatientRowView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddPatientRowView.swift; sourceTree = "<group>"; };
+		5938965B26287A3A002E4F32 /* ProcedureRowView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProcedureRowView.swift; sourceTree = "<group>"; };
+		5938965C26287A3A002E4F32 /* DateListFilterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateListFilterView.swift; sourceTree = "<group>"; };
+		5938965D26287A3A002E4F32 /* ProcedureListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProcedureListView.swift; sourceTree = "<group>"; };
+		5938965E26287A3A002E4F32 /* ProcedureEditView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProcedureEditView.swift; sourceTree = "<group>"; };
+		5938965F26287A3A002E4F32 /* ProcedureDetailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProcedureDetailView.swift; sourceTree = "<group>"; };
+		5938966026287A3A002E4F32 /* ExportDataView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExportDataView.swift; sourceTree = "<group>"; };
+		5938966126287A3A002E4F32 /* ProceduresMainView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProceduresMainView.swift; sourceTree = "<group>"; };
+		5938966226287A3A002E4F32 /* DateSegementedControlView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateSegementedControlView.swift; sourceTree = "<group>"; };
+		593896BD26289F9C002E4F32 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		593896E02628A6B0002E4F32 /* CPTViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CPTViewModel.swift; sourceTree = "<group>"; };
+		593897002628B400002E4F32 /* ProcedureViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProcedureViewModel.swift; sourceTree = "<group>"; };
+		593897052628CADE002E4F32 /* ProceduresViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProceduresViewModel.swift; sourceTree = "<group>"; };
+		593897252629EE18002E4F32 /* PhysicianViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhysicianViewModel.swift; sourceTree = "<group>"; };
+		5938972A2629EE50002E4F32 /* Physician.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Physician.swift; sourceTree = "<group>"; };
+		5938972F2629F48E002E4F32 /* PhysiciansViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhysiciansViewModel.swift; sourceTree = "<group>"; };
+		59389734262A0A89002E4F32 /* CPTsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CPTsViewModel.swift; sourceTree = "<group>"; };
 		593ED84E25FD5193008BCCF9 /* RVUWallet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RVUWallet.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		593ED85125FD5193008BCCF9 /* RVUWalletApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RVUWalletApp.swift; sourceTree = "<group>"; };
 		593ED85325FD5193008BCCF9 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -103,14 +140,30 @@
 		593ED86A25FD5196008BCCF9 /* RVUWalletUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RVUWalletUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		593ED86E25FD5196008BCCF9 /* RVUWalletUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RVUWalletUITests.swift; sourceTree = "<group>"; };
 		593ED87025FD5196008BCCF9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		593ED87F25FD78A9008BCCF9 /* ProcedureEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProcedureEditView.swift; sourceTree = "<group>"; };
-		593ED88425FD9E57008BCCF9 /* ProcedureDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProcedureDetailView.swift; sourceTree = "<group>"; };
-		593ED89125FDAEFC008BCCF9 /* SearchBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBarView.swift; sourceTree = "<group>"; };
+		593ED89125FDAEFC008BCCF9 /* SearchBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SearchBarView.swift; path = RVUWallet/Views/FutureFeatures/SearchBarView.swift; sourceTree = SOURCE_ROOT; };
 		593ED89625FDDA41008BCCF9 /* SearchCPTView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCPTView.swift; sourceTree = "<group>"; };
 		593ED8C72600FC55008BCCF9 /* Procedure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Procedure.swift; sourceTree = "<group>"; };
-		5963917F261FF52A005A0AED /* ProceduresMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProceduresMainView.swift; sourceTree = "<group>"; };
-		59639187261FF7E9005A0AED /* DateSegementedControlView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateSegementedControlView.swift; sourceTree = "<group>"; };
+		596391B6262407E4005A0AED /* FavoritesWithNavBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesWithNavBarView.swift; sourceTree = "<group>"; };
+		596391BE2624B748005A0AED /* PhysicianPersonalDetailRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhysicianPersonalDetailRow.swift; sourceTree = "<group>"; };
+		59821B3E263A69B4000C3EC7 /* Auth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Auth.swift; sourceTree = "<group>"; };
 		598F989F26143F6F0063EFB0 /* PhysicianProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhysicianProfileView.swift; sourceTree = "<group>"; };
+		59CE0001263D893C0082B220 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
+		59CE0003263DEE660082B220 /* SetupFavoriteCPTCodesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupFavoriteCPTCodesView.swift; sourceTree = "<group>"; };
+		59CE0005263DF1EC0082B220 /* SetupRevenuePerRVUView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupRevenuePerRVUView.swift; sourceTree = "<group>"; };
+		59CE000726402C060082B220 /* PerformanceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PerformanceView.swift; sourceTree = "<group>"; };
+		59E43EAB262F6F0A00352F15 /* WelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeView.swift; sourceTree = "<group>"; };
+		59E43EDA2630D38B00352F15 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		59E43EE22631056100352F15 /* SignupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupView.swift; sourceTree = "<group>"; };
+		59E43EE72631172400352F15 /* MainAuthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainAuthView.swift; sourceTree = "<group>"; };
+		59E43EEC26311C0A00352F15 /* ResetPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordView.swift; sourceTree = "<group>"; };
+		59E43EF726324A7E00352F15 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		59E43EFD26336C5900352F15 /* FinishSetupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinishSetupView.swift; sourceTree = "<group>"; };
+		59E43F022633CD6C00352F15 /* UserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewModel.swift; sourceTree = "<group>"; };
+		85809D78DF490377008DA796 /* Pods-RVUWallet-RVUWalletUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RVUWallet-RVUWalletUITests.debug.xcconfig"; path = "Target Support Files/Pods-RVUWallet-RVUWalletUITests/Pods-RVUWallet-RVUWalletUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		9106831E87BD3D8FE3720C9C /* Pods-RVUWallet.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RVUWallet.debug.xcconfig"; path = "Target Support Files/Pods-RVUWallet/Pods-RVUWallet.debug.xcconfig"; sourceTree = "<group>"; };
+		B5A7A835480AB75A2FF853A5 /* Pods-RVUWallet.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RVUWallet.release.xcconfig"; path = "Target Support Files/Pods-RVUWallet/Pods-RVUWallet.release.xcconfig"; sourceTree = "<group>"; };
+		B78DA5A132E4716CFD99B888 /* Pods_RVUWallet_RVUWalletUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RVUWallet_RVUWalletUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E94DEE5B5747ADD96998B90A /* Pods-RVUWalletTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RVUWalletTests.release.xcconfig"; path = "Target Support Files/Pods-RVUWalletTests/Pods-RVUWalletTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,8 +171,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				59E43EF326313E6400352F15 /* NavigationBarLargeTitleItems in Frameworks */,
 				59639178261FE4A1005A0AED /* SwiftUIPlus in Frameworks */,
 				5910E91126192998003C3ACA /* CodeScanner in Frameworks */,
+				BDA52DD240FF7E99BD4318F6 /* Pods_RVUWallet.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -127,6 +182,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D0A9E8C5D47126EA7639FD9A /* Pods_RVUWalletTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -134,29 +190,22 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F5B03EDC76DA268C22DF24D0 /* Pods_RVUWallet_RVUWalletUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		5910E99A261CB16D003C3ACA /* Models */ = {
-			isa = PBXGroup;
-			children = (
-				593ED8C72600FC55008BCCF9 /* Procedure.swift */,
-				592609712615181900083303 /* CPT.swift */,
-			);
-			path = Models;
-			sourceTree = "<group>";
-		};
 		5910E9A1261CB18A003C3ACA /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				59E43EFC26336BDA00352F15 /* OnBoarding */,
+				59E43ED92630D35E00352F15 /* Authentication */,
+				5938965926287905002E4F32 /* AllProcedures */,
 				5910E9BA261CDA65003C3ACA /* Summary */,
-				5910E9C2261E0946003C3ACA /* All Procedures */,
 				5910E9A9261CB2CE003C3ACA /* CPT */,
 				5910E9AD261CB312003C3ACA /* PhysicianProfile */,
-				5910E9C6261E1334003C3ACA /* TextRecognition */,
 				5910E9C1261E0909003C3ACA /* FutureFeatures */,
 			);
 			path = Views;
@@ -167,12 +216,13 @@
 			children = (
 				5910E8F82618F64C003C3ACA /* RecentCPTCodesView.swift */,
 				593ED89625FDDA41008BCCF9 /* SearchCPTView.swift */,
-				5910E8DC2616BEC9003C3ACA /* FavoriteCPTCodeListView.swift */,
+				5910E8DC2616BEC9003C3ACA /* FavoritesView.swift */,
+				596391B6262407E4005A0AED /* FavoritesWithNavBarView.swift */,
 				5910E9D7261E4C39003C3ACA /* FavoriteCPTRowView.swift */,
 				5910E9B1261CBE6D003C3ACA /* SelectCPTView.swift */,
-				5910E9CF261E4442003C3ACA /* AddCPTCodeView.swift */,
+				5910E9CF261E4442003C3ACA /* CPTCodeEditView.swift */,
 			);
-			name = CPT;
+			path = CPT;
 			sourceTree = "<group>";
 		};
 		5910E9AD261CB312003C3ACA /* PhysicianProfile */ = {
@@ -180,6 +230,7 @@
 			children = (
 				598F989F26143F6F0063EFB0 /* PhysicianProfileView.swift */,
 				5910E992261CAE4F003C3ACA /* PersonalPhysicianDetails.swift */,
+				596391BE2624B748005A0AED /* PhysicianPersonalDetailRow.swift */,
 				5910E9E7261EA66A003C3ACA /* PhysiciansFavoriteCPTCodeListView.swift */,
 			);
 			path = PhysicianProfile;
@@ -192,14 +243,17 @@
 				5910E8F32618E692003C3ACA /* CustomSummaryNavigationBarView.swift */,
 				5910E9DC261E6129003C3ACA /* SummaryView.swift */,
 				5910E8EE2618DEC0003C3ACA /* ProcedureTypeGalleryView.swift */,
+				59E43EAB262F6F0A00352F15 /* WelcomeView.swift */,
+				59CE000726402C060082B220 /* PerformanceView.swift */,
 			);
 			name = Summary;
-			path = ..;
-			sourceTree = "<group>";
+			path = RVUWallet/Views/Summary;
+			sourceTree = SOURCE_ROOT;
 		};
 		5910E9C1261E0909003C3ACA /* FutureFeatures */ = {
 			isa = PBXGroup;
 			children = (
+				5910E8E12617612E003C3ACA /* UINavigationExtenions.swift */,
 				5910E905261900A7003C3ACA /* SearchICD10CodeView.swift */,
 				5910E90A261906DB003C3ACA /* FavoriteICD10CodesList.swift */,
 				593ED89125FDAEFC008BCCF9 /* SearchBarView.swift */,
@@ -207,32 +261,37 @@
 				5910E8E62618D5FC003C3ACA /* RecentProceduresList.swift */,
 			);
 			name = FutureFeatures;
-			sourceTree = "<group>";
+			path = RVUWallet/Views/FutureFeatures;
+			sourceTree = SOURCE_ROOT;
 		};
-		5910E9C2261E0946003C3ACA /* All Procedures */ = {
+		5938965926287905002E4F32 /* AllProcedures */ = {
 			isa = PBXGroup;
 			children = (
-				5963917F261FF52A005A0AED /* ProceduresMainView.swift */,
-				592609762616066600083303 /* ProcedureListView.swift */,
-				5926097E261606AB00083303 /* ProcedureRowView.swift */,
-				593ED87F25FD78A9008BCCF9 /* ProcedureEditView.swift */,
-				593ED88425FD9E57008BCCF9 /* ProcedureDetailView.swift */,
-				5910E9CA261E1825003C3ACA /* AddPatientRowView.swift */,
-				59639187261FF7E9005A0AED /* DateSegementedControlView.swift */,
+				5938965A26287A3A002E4F32 /* AddPatientRowView.swift */,
+				5938965C26287A3A002E4F32 /* DateListFilterView.swift */,
+				5938966226287A3A002E4F32 /* DateSegementedControlView.swift */,
+				5938966026287A3A002E4F32 /* ExportDataView.swift */,
+				5938965F26287A3A002E4F32 /* ProcedureDetailView.swift */,
+				5938965E26287A3A002E4F32 /* ProcedureEditView.swift */,
+				5938965D26287A3A002E4F32 /* ProcedureListView.swift */,
+				5938965B26287A3A002E4F32 /* ProcedureRowView.swift */,
+				5938966126287A3A002E4F32 /* ProceduresMainView.swift */,
 			);
-			name = "All Procedures";
+			path = AllProcedures;
 			sourceTree = "<group>";
 		};
-		5910E9C6261E1334003C3ACA /* TextRecognition */ = {
+		593896BC26289E2E002E4F32 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
-				5910E927261B5A23003C3ACA /* StringUtils.swift */,
-				5910E935261B5BA8003C3ACA /* PreviewView.swift */,
-				5910E91D261B59EA003C3ACA /* ViewController.swift */,
-				5910E922261B5A07003C3ACA /* VisionViewController.swift */,
-				5910E915261B4F98003C3ACA /* SwiftUIwithUIKitView.swift */,
+				593896E02628A6B0002E4F32 /* CPTViewModel.swift */,
+				593897002628B400002E4F32 /* ProcedureViewModel.swift */,
+				593897052628CADE002E4F32 /* ProceduresViewModel.swift */,
+				593897252629EE18002E4F32 /* PhysicianViewModel.swift */,
+				5938972F2629F48E002E4F32 /* PhysiciansViewModel.swift */,
+				59389734262A0A89002E4F32 /* CPTsViewModel.swift */,
+				59E43F022633CD6C00352F15 /* UserViewModel.swift */,
 			);
-			name = TextRecognition;
+			path = ViewModels;
 			sourceTree = "<group>";
 		};
 		593ED84525FD5193008BCCF9 = {
@@ -242,6 +301,8 @@
 				593ED86225FD5196008BCCF9 /* RVUWalletTests */,
 				593ED86D25FD5196008BCCF9 /* RVUWalletUITests */,
 				593ED84F25FD5193008BCCF9 /* Products */,
+				A68660C76928F0177A4E1F96 /* Pods */,
+				C65BA25C8E100063CC6E8B92 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -258,11 +319,13 @@
 		593ED85025FD5193008BCCF9 /* RVUWallet */ = {
 			isa = PBXGroup;
 			children = (
+				59821B3D263A691E000C3EC7 /* Auth */,
+				593896BC26289E2E002E4F32 /* ViewModels */,
 				593ED85125FD5193008BCCF9 /* RVUWalletApp.swift */,
-				5910E8E12617612E003C3ACA /* UINavigationExtenions.swift */,
-				5910E99A261CB16D003C3ACA /* Models */,
+				596391952620E32F005A0AED /* Models */,
 				5910E9A1261CB18A003C3ACA /* Views */,
 				593ED85525FD5195008BCCF9 /* Assets.xcassets */,
+				593896BD26289F9C002E4F32 /* GoogleService-Info.plist */,
 				593ED85A25FD5195008BCCF9 /* Info.plist */,
 				593ED85725FD5195008BCCF9 /* Preview Content */,
 			);
@@ -295,6 +358,70 @@
 			path = RVUWalletUITests;
 			sourceTree = "<group>";
 		};
+		596391952620E32F005A0AED /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				593ED8C72600FC55008BCCF9 /* Procedure.swift */,
+				592609712615181900083303 /* CPT.swift */,
+				5938972A2629EE50002E4F32 /* Physician.swift */,
+				59E43EF726324A7E00352F15 /* User.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		59821B3D263A691E000C3EC7 /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				59821B3E263A69B4000C3EC7 /* Auth.swift */,
+			);
+			path = Auth;
+			sourceTree = "<group>";
+		};
+		59E43ED92630D35E00352F15 /* Authentication */ = {
+			isa = PBXGroup;
+			children = (
+				59E43EDA2630D38B00352F15 /* LoginView.swift */,
+				59E43EE22631056100352F15 /* SignupView.swift */,
+				59E43EE72631172400352F15 /* MainAuthView.swift */,
+				59E43EEC26311C0A00352F15 /* ResetPasswordView.swift */,
+				59CE0001263D893C0082B220 /* LoadingView.swift */,
+			);
+			path = Authentication;
+			sourceTree = "<group>";
+		};
+		59E43EFC26336BDA00352F15 /* OnBoarding */ = {
+			isa = PBXGroup;
+			children = (
+				59E43EFD26336C5900352F15 /* FinishSetupView.swift */,
+				59CE0003263DEE660082B220 /* SetupFavoriteCPTCodesView.swift */,
+				59CE0005263DF1EC0082B220 /* SetupRevenuePerRVUView.swift */,
+			);
+			path = OnBoarding;
+			sourceTree = "<group>";
+		};
+		A68660C76928F0177A4E1F96 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				9106831E87BD3D8FE3720C9C /* Pods-RVUWallet.debug.xcconfig */,
+				B5A7A835480AB75A2FF853A5 /* Pods-RVUWallet.release.xcconfig */,
+				85809D78DF490377008DA796 /* Pods-RVUWallet-RVUWalletUITests.debug.xcconfig */,
+				12F88FBED74FD2874AE10923 /* Pods-RVUWallet-RVUWalletUITests.release.xcconfig */,
+				2FEA02C35B9F0DCB53D5EFA4 /* Pods-RVUWalletTests.debug.xcconfig */,
+				E94DEE5B5747ADD96998B90A /* Pods-RVUWalletTests.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		C65BA25C8E100063CC6E8B92 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				3DF8BD671E3F1BE7002757BC /* Pods_RVUWallet.framework */,
+				B78DA5A132E4716CFD99B888 /* Pods_RVUWallet_RVUWalletUITests.framework */,
+				39EC9E4979FE8661A375C738 /* Pods_RVUWalletTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -302,9 +429,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 593ED87325FD5196008BCCF9 /* Build configuration list for PBXNativeTarget "RVUWallet" */;
 			buildPhases = (
+				2B20F0D318D6DCE4DE750603 /* [CP] Check Pods Manifest.lock */,
 				593ED84A25FD5193008BCCF9 /* Sources */,
 				593ED84B25FD5193008BCCF9 /* Frameworks */,
 				593ED84C25FD5193008BCCF9 /* Resources */,
+				33B6354A4F75528156277888 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -314,6 +443,7 @@
 			packageProductDependencies = (
 				5910E91026192998003C3ACA /* CodeScanner */,
 				59639177261FE4A1005A0AED /* SwiftUIPlus */,
+				59E43EF226313E6400352F15 /* NavigationBarLargeTitleItems */,
 			);
 			productName = RVUWallet;
 			productReference = 593ED84E25FD5193008BCCF9 /* RVUWallet.app */;
@@ -323,6 +453,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 593ED87625FD5196008BCCF9 /* Build configuration list for PBXNativeTarget "RVUWalletTests" */;
 			buildPhases = (
+				E0ABCCCEB84AAE1F24ED6AFE /* [CP] Check Pods Manifest.lock */,
 				593ED85B25FD5196008BCCF9 /* Sources */,
 				593ED85C25FD5196008BCCF9 /* Frameworks */,
 				593ED85D25FD5196008BCCF9 /* Resources */,
@@ -341,9 +472,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 593ED87925FD5196008BCCF9 /* Build configuration list for PBXNativeTarget "RVUWalletUITests" */;
 			buildPhases = (
+				2BB14E1CB746C69673A1181F /* [CP] Check Pods Manifest.lock */,
 				593ED86625FD5196008BCCF9 /* Sources */,
 				593ED86725FD5196008BCCF9 /* Frameworks */,
 				593ED86825FD5196008BCCF9 /* Resources */,
+				A281FF01CB47869933CB9986 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -389,6 +522,7 @@
 			packageReferences = (
 				5910E90F26192998003C3ACA /* XCRemoteSwiftPackageReference "CodeScanner" */,
 				59639176261FE4A0005A0AED /* XCRemoteSwiftPackageReference "SwiftUIPlus" */,
+				59E43EF126313E6300352F15 /* XCRemoteSwiftPackageReference "NavigationBarLargeTitleItems" */,
 			);
 			productRefGroup = 593ED84F25FD5193008BCCF9 /* Products */;
 			projectDirPath = "";
@@ -408,6 +542,7 @@
 			files = (
 				593ED85925FD5195008BCCF9 /* Preview Assets.xcassets in Resources */,
 				593ED85625FD5195008BCCF9 /* Assets.xcassets in Resources */,
+				593896BE26289F9C002E4F32 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -427,45 +562,167 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		2B20F0D318D6DCE4DE750603 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-RVUWallet-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		2BB14E1CB746C69673A1181F /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-RVUWallet-RVUWalletUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		33B6354A4F75528156277888 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-RVUWallet/Pods-RVUWallet-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-RVUWallet/Pods-RVUWallet-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-RVUWallet/Pods-RVUWallet-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A281FF01CB47869933CB9986 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-RVUWallet-RVUWalletUITests/Pods-RVUWallet-RVUWalletUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-RVUWallet-RVUWalletUITests/Pods-RVUWallet-RVUWalletUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-RVUWallet-RVUWalletUITests/Pods-RVUWallet-RVUWalletUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E0ABCCCEB84AAE1F24ED6AFE /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-RVUWalletTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		593ED84A25FD5193008BCCF9 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				593896E12628A6B0002E4F32 /* CPTViewModel.swift in Sources */,
 				5910E9012618FABC003C3ACA /* RecentICD10CodesView.swift in Sources */,
+				5938966526287A3A002E4F32 /* DateListFilterView.swift in Sources */,
 				593ED89225FDAEFC008BCCF9 /* SearchBarView.swift in Sources */,
+				59E43EE32631056100352F15 /* SignupView.swift in Sources */,
 				5910E90B261906DB003C3ACA /* FavoriteICD10CodesList.swift in Sources */,
 				598F98A026143F6F0063EFB0 /* PhysicianProfileView.swift in Sources */,
-				5910E91E261B59EA003C3ACA /* ViewController.swift in Sources */,
+				59E43EFE26336C5B00352F15 /* FinishSetupView.swift in Sources */,
 				5910E993261CAE4F003C3ACA /* PersonalPhysicianDetails.swift in Sources */,
+				59CE0006263DF1EC0082B220 /* SetupRevenuePerRVUView.swift in Sources */,
 				593ED85425FD5193008BCCF9 /* ContentView.swift in Sources */,
+				593897012628B400002E4F32 /* ProcedureViewModel.swift in Sources */,
+				5938966B26287A3A002E4F32 /* DateSegementedControlView.swift in Sources */,
+				593897262629EE19002E4F32 /* PhysicianViewModel.swift in Sources */,
+				59E43EED26311C0A00352F15 /* ResetPasswordView.swift in Sources */,
 				5910E8F92618F64C003C3ACA /* RecentCPTCodesView.swift in Sources */,
-				592609772616066600083303 /* ProcedureListView.swift in Sources */,
 				5910E9B2261CBE6D003C3ACA /* SelectCPTView.swift in Sources */,
-				5910E9D0261E4443003C3ACA /* AddCPTCodeView.swift in Sources */,
-				5910E916261B4F99003C3ACA /* SwiftUIwithUIKitView.swift in Sources */,
+				5910E9D0261E4443003C3ACA /* CPTCodeEditView.swift in Sources */,
 				593ED89725FDDA41008BCCF9 /* SearchCPTView.swift in Sources */,
 				5910E8EF2618DEC0003C3ACA /* ProcedureTypeGalleryView.swift in Sources */,
-				5910E923261B5A07003C3ACA /* VisionViewController.swift in Sources */,
-				59639180261FF52A005A0AED /* ProceduresMainView.swift in Sources */,
+				5938966426287A3A002E4F32 /* ProcedureRowView.swift in Sources */,
+				593897302629F48E002E4F32 /* PhysiciansViewModel.swift in Sources */,
+				5938966826287A3A002E4F32 /* ProcedureDetailView.swift in Sources */,
 				5910E9DD261E6129003C3ACA /* SummaryView.swift in Sources */,
+				59E43EF826324A8000352F15 /* User.swift in Sources */,
+				59389735262A0A89002E4F32 /* CPTsViewModel.swift in Sources */,
+				59E43F032633CD6C00352F15 /* UserViewModel.swift in Sources */,
+				5938966326287A3A002E4F32 /* AddPatientRowView.swift in Sources */,
 				5910E9D8261E4C39003C3ACA /* FavoriteCPTRowView.swift in Sources */,
-				5910E928261B5A23003C3ACA /* StringUtils.swift in Sources */,
+				5938966626287A3A002E4F32 /* ProcedureListView.swift in Sources */,
+				596391BF2624B748005A0AED /* PhysicianPersonalDetailRow.swift in Sources */,
 				5910E8E22617612E003C3ACA /* UINavigationExtenions.swift in Sources */,
-				5910E8DD2616BEC9003C3ACA /* FavoriteCPTCodeListView.swift in Sources */,
+				59E43EE82631172400352F15 /* MainAuthView.swift in Sources */,
+				59821B3F263A69B4000C3EC7 /* Auth.swift in Sources */,
+				59CE0004263DEE660082B220 /* SetupFavoriteCPTCodesView.swift in Sources */,
+				596391B7262407E4005A0AED /* FavoritesWithNavBarView.swift in Sources */,
+				59CE000826402C060082B220 /* PerformanceView.swift in Sources */,
+				593897062628CADE002E4F32 /* ProceduresViewModel.swift in Sources */,
+				5910E8DD2616BEC9003C3ACA /* FavoritesView.swift in Sources */,
 				5910E8F42618E692003C3ACA /* CustomSummaryNavigationBarView.swift in Sources */,
-				5926097F261606AB00083303 /* ProcedureRowView.swift in Sources */,
-				59639188261FF7E9005A0AED /* DateSegementedControlView.swift in Sources */,
 				5910E9E8261EA66A003C3ACA /* PhysiciansFavoriteCPTCodeListView.swift in Sources */,
-				593ED88025FD78A9008BCCF9 /* ProcedureEditView.swift in Sources */,
+				59E43EAC262F6F0A00352F15 /* WelcomeView.swift in Sources */,
 				592609722615181900083303 /* CPT.swift in Sources */,
+				5938966726287A3A002E4F32 /* ProcedureEditView.swift in Sources */,
 				593ED85225FD5193008BCCF9 /* RVUWalletApp.swift in Sources */,
-				5910E936261B5BA9003C3ACA /* PreviewView.swift in Sources */,
-				5910E9CB261E1825003C3ACA /* AddPatientRowView.swift in Sources */,
-				593ED88525FD9E57008BCCF9 /* ProcedureDetailView.swift in Sources */,
+				5938966926287A3A002E4F32 /* ExportDataView.swift in Sources */,
+				59CE0002263D893C0082B220 /* LoadingView.swift in Sources */,
+				59E43EDB2630D38B00352F15 /* LoginView.swift in Sources */,
 				593ED8C82600FC55008BCCF9 /* Procedure.swift in Sources */,
 				5910E8E72618D5FC003C3ACA /* RecentProceduresList.swift in Sources */,
 				5910E906261900A7003C3ACA /* SearchICD10CodeView.swift in Sources */,
+				5938972B2629EE50002E4F32 /* Physician.swift in Sources */,
+				5938966A26287A3A002E4F32 /* ProceduresMainView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -619,10 +876,12 @@
 		};
 		593ED87425FD5196008BCCF9 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9106831E87BD3D8FE3720C9C /* Pods-RVUWallet.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 7;
 				DEVELOPMENT_ASSET_PATHS = "\"RVUWallet/Preview Content\"";
 				DEVELOPMENT_TEAM = 683TFS9M7K;
 				ENABLE_PREVIEWS = YES;
@@ -632,6 +891,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 0.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.prototype.RVUWallet;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -641,10 +901,12 @@
 		};
 		593ED87525FD5196008BCCF9 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B5A7A835480AB75A2FF853A5 /* Pods-RVUWallet.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 7;
 				DEVELOPMENT_ASSET_PATHS = "\"RVUWallet/Preview Content\"";
 				DEVELOPMENT_TEAM = 683TFS9M7K;
 				ENABLE_PREVIEWS = YES;
@@ -654,6 +916,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 0.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.prototype.RVUWallet;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -663,6 +926,7 @@
 		};
 		593ED87725FD5196008BCCF9 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2FEA02C35B9F0DCB53D5EFA4 /* Pods-RVUWalletTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -685,6 +949,7 @@
 		};
 		593ED87825FD5196008BCCF9 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E94DEE5B5747ADD96998B90A /* Pods-RVUWalletTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -707,6 +972,7 @@
 		};
 		593ED87A25FD5196008BCCF9 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 85809D78DF490377008DA796 /* Pods-RVUWallet-RVUWalletUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -727,6 +993,7 @@
 		};
 		593ED87B25FD5196008BCCF9 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 12F88FBED74FD2874AE10923 /* Pods-RVUWallet-RVUWalletUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -803,6 +1070,14 @@
 				minimumVersion = 0.0.163;
 			};
 		};
+		59E43EF126313E6300352F15 /* XCRemoteSwiftPackageReference "NavigationBarLargeTitleItems" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/markvanwijnen/NavigationBarLargeTitleItems.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -815,6 +1090,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 59639176261FE4A0005A0AED /* XCRemoteSwiftPackageReference "SwiftUIPlus" */;
 			productName = SwiftUIPlus;
+		};
+		59E43EF226313E6400352F15 /* NavigationBarLargeTitleItems */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 59E43EF126313E6300352F15 /* XCRemoteSwiftPackageReference "NavigationBarLargeTitleItems" */;
+			productName = NavigationBarLargeTitleItems;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

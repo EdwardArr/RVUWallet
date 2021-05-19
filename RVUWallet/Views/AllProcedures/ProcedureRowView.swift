@@ -7,93 +7,88 @@
 
 import SwiftUI
 
+enum timeFormat {
+    case today, yesterday, this_week
+}
+
 struct ProcedureRowView: View {
     var procedure: Procedure
+    
     var body: some View {
         
+        let date = Date(timeIntervalSince1970: procedure.procedure_date)
+        let calendar = Calendar.current
+        let month = String(calendar.component(.month, from: date))
+        let day = String(calendar.component(.day, from: date))
+        let year = String(calendar.component(.year, from: date)).dropFirst(2)
+        
         ZStack(alignment:.leading){
-            Rectangle().foregroundColor(Color(UIColor.secondarySystemGroupedBackground)).cornerRadius(8)
+            RoundedRectangle(cornerRadius: 12, style: .continuous)
+                .foregroundColor(Color(UIColor.secondarySystemGroupedBackground))
+                
             HStack(alignment: .top) {
-                VStack(alignment:.leading){
-                    
-                    Text(procedure.description)
-//                        .foregroundColor(.secondary)
+                VStack(alignment:.leading, spacing:1){
+                    Text(procedure.cpt_description)
                         .foregroundColor(.primary)
-//                    .foregroundColor(fontColorDescription(procedure: procedure))
-//                        .font(.subheadline).bold()
-                    Spacer()
-                    Text(procedure.diagnosis)
+                    Text(procedure.hospital_barcode)
                         .font(.title3)
-                        .foregroundColor(fontColorDescription(procedure: procedure))
-                        
-                    //                    Text(procedure.idc).font(.footnote)
+                        .fontWeight(.medium)
+                        .foregroundColor(.primary)
                 }
                 Spacer()
-                HStack{
-                    Text(procedure.date).font(.footnote).foregroundColor(.secondary)
+                HStack(spacing:1){
+                    Text("\(month)/\(day)/\(String(year))").font(.footnote).foregroundColor(.secondary)
                     Image(systemName: "chevron.right").font(.footnote).foregroundColor(.secondary)
                 }
-            }.padding()
-        }.frame(height:44)
-    }
-    
-    func fontColorDescription(procedure: Procedure) -> Color {
-        let cpt = cptList.filter{$0.code == procedure.cpt}.first
-        let color: Color = cpt!.color
-//        if let cpt = cptList.filter{$0.code == procedure.cpt}.first {
-//            let color = cpt.color
-//        }
-        return color
+            }.padding(EdgeInsets(top: 10, leading: 20, bottom: 10, trailing: 20))
+        }
+//        .frame(height:55)
+//        .padding(.vertical,20)
+
     }
 }
 
 
 struct ProcedureRowWithoutBackgroundView: View {
+   
     var procedure: Procedure
+    
     var body: some View {
         
+        let date = Date(timeIntervalSince1970: procedure.procedure_date)
+        let calendar = Calendar.current
+        let month = String(calendar.component(.month, from: date))
+        let day = String(calendar.component(.day, from: date))
+        let year = String(calendar.component(.year, from: date))
+
    
             HStack(alignment: .top) {
                 VStack(alignment:.leading, spacing:5){
                     
-                    Text(procedure.description)
-
-                    .foregroundColor(fontColorDescription(procedure: procedure))
+                    Text(procedure.cpt_description)
                         .font(.subheadline)
                         .fontWeight(.medium)
-//                    Spacer()
-                    Text(procedure.diagnosis)
+                    Text(procedure.hospital_barcode)
                         .font(.title3)
                         .fontWeight(.medium)
                         .foregroundColor(.primary)
-//                        .foregroundColor(fontColorDescription(procedure: procedure))
-                        
-                    //                    Text(procedure.idc).font(.footnote)
                 }
                 Spacer()
-                HStack{
-                    Text(procedure.date).font(.footnote).foregroundColor(.secondary)
+                HStack(spacing:0){
+                    Text("\(month)/\(day)/\(year)").font(.footnote).foregroundColor(.secondary)
                     Image(systemName: "chevron.right")
                         .font(.footnote)
                         .foregroundColor(.secondary)
+                        .font(Font.footnote.weight(.medium))
                         
                 }
-            }.padding(.vertical,5)
-      
-    }
-    
-    func fontColorDescription(procedure: Procedure) -> Color {
-        let cpt = cptList.filter{$0.code == procedure.cpt}.first
-        let color: Color = cpt!.color
-//        if let cpt = cptList.filter{$0.code == procedure.cpt}.first {
-//            let color = cpt.color
-//        }
-        return color
+            }.padding(.vertical,1)
     }
 }
 
-struct ProcedureRowView_Previews: PreviewProvider {
-    static var previews: some View {
-        ProcedureRowView(procedure: proceduresList[0])
-    }
-}
+//struct ProcedureRowView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        ProcedureRowView(procedure: proceduresList[0])
+//    }
+//}
+

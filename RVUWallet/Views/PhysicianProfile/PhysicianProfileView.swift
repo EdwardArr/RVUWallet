@@ -6,9 +6,19 @@
 //
 
 import SwiftUI
+import Firebase
 
 struct PhysicianProfileView: View {
+    
     @Environment(\.presentationMode) var presentationMode
+    
+    @ObservedObject var proceduresVM = ProceduresViewModel()
+    
+    @ObservedObject var userVM = UserViewModel()
+    
+    @State var user_id = ""
+    
+    @AppStorage("status") var logged = false
     
     var body: some View {
         
@@ -27,13 +37,26 @@ struct PhysicianProfileView: View {
                             Circle()
                                 .frame(width:100,height: 100)
                                 .foregroundColor(.gray)
-                            Text("MB")
+                            
+                            HStack(spacing:-1){
+                                Text(userVM.user.first_name.prefix(1))
                                 .font(.system(size: 50))
                                 .foregroundColor(.white)
                                 .bold()
+                                Text(userVM.user.last_name.prefix(1))
+                                .font(.system(size: 50))
+                                .foregroundColor(.white)
+                                .bold()
+                            }
                         }
-                        Text("Mike Blaney").font(.title).bold()
-                            
+                            HStack(spacing:5){
+                                Text(userVM.user.first_name)
+                                    .font(.title)
+                                    .bold()
+                                Text(userVM.user.last_name)
+                                    .font(.title)
+                                    .bold()
+                            }
                     }
                         Spacer()
                     }.listRowBackground(Color(UIColor.systemGroupedBackground))
@@ -43,30 +66,65 @@ struct PhysicianProfileView: View {
                         destination: PersonalPhysicianDetails(),
                         label: {
                             Text("Personal Details")
+                                .font(.body)
                         })
                     }
                     Section(header:
-                                Text("Favorites").foregroundColor(.primary).font(.title3).bold())
+                                Text("Favorites")
+                                .foregroundColor(.primary)
+                                .font(.title3)
+                                .bold())
                     {
                         NavigationLink(
-                            destination: PhysiciansFavoriteCPTCodeListView()
+                            destination: FavoritesView(mode:.view)
                             ,label: {
                                 Text("CPT Codes")
+                                    .font(.body)
                             })
                     }
                     .textCase(nil)
                     
-                    Section(header:Text("Privacy").foregroundColor(.primary).font(.title3).bold()){
+                    Section(header:Text("Privacy")
+                                .foregroundColor(.primary)
+                                .font(.title3)
+                                .bold()){
+                        NavigationLink("Privacy Policy", destination: Text("Privacy Policy"))
+                        
                         Button(action: {
                             print("User pressed on export prcoedure data button")
                         }, label: {
-                            Text("Export Procedure Data")
-                        })
+                            Text("Export Procedure Data").font(.body)
+                        }).disabled(true)
                     }.textCase(nil)
-                
+                    
+                    Button(action: {
+                        print("User pressed on sign out button")
+                        self.presentationMode.wrappedValue.dismiss()
+                        signOut()
+                        logged = false
+                        
+                    }, label: {
+                        Text("Sign out")
+                            .font(.body)
+                    })
+                    
+                    
+                    
                 }
             }
-            .navigationBarTitle("", displayMode: .inline)
+            .navigationBarTitle("Profile", displayMode: .inline)
+        .onAppear(perform: {
+            let userInfo = Auth.auth().currentUser
+            self.user_id = userInfo?.uid ?? ""
+            userVM.fetchUser(documentId: self.user_id)
+        })
+        .toolbar{
+            ToolbarItem(placement:.principal){
+                Text("")
+                    .font(.body)
+                    .fontWeight(.medium)
+            }
+        }
             .navigationBarBackButtonHidden(true)
             .navigationBarItems(trailing:
                                     Button("Done", action: {
@@ -80,7 +138,18 @@ struct PhysicianProfileView: View {
     }
     
     func dismiss(){
-        presentationMode.wrappedValue.dismiss()
+        self.presentationMode.wrappedValue.dismiss()
+    }
+    
+    func signOut() {
+        do {
+          try Auth.auth().signOut()
+            print("User signed out.")
+            proceduresVM.unsubscribe()
+            
+        } catch {
+          print("Sign out error")
+        }
     }
 }
 

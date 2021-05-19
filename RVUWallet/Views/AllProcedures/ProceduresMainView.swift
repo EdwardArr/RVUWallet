@@ -8,34 +8,32 @@
 import SwiftUI
 
 struct ProceduresMainView: View {
+    @State private var presentDateListFilterScreen = false
     
-    var body: some View {
-  
-        ProcedureMainBackgroundView(dateSelected: 1)
-            .navigationBarTitle("All Procedures", displayMode: .automatic)
-        .navigationBarItems(trailing: Text("This Month").font(.body).foregroundColor(.blue))
-        
-    }
-}
-
-
-struct ProcedureMainBackgroundView: View {
-    @State var dateSelected: Int
+    var proceduresList: [Procedure]
+    
+    var totalRVU:Double
+    
+    var revenuePerRVU:Double
     
     var body: some View {
         ZStack(alignment:.bottom){
-            AllProceduresListView()
-//            SegmentedPicker(items: ["Years","Months", "Days"], selection: $dateSelected)
-//                            .padding(EdgeInsets(top: 0, leading: 10, bottom: 40, trailing: 10))
+            ScrollView{
+                ProcedureListView(proceduresList: proceduresList, totalRVU:totalRVU, revenuePerRVU:revenuePerRVU)
+            }  
         }
-        .listStyle(InsetGroupedListStyle())
-//        .background(Color(UIColor.systemGroupedBackground))
-//        .ignoresSafeArea()
+        .navigationBarTitle("All Procedures", displayMode: .inline)
+        .background(Color(UIColor.systemGroupedBackground).edgesIgnoringSafeArea(.all))
+        .sheet(isPresented: $presentDateListFilterScreen){
+            DateListFilterView()
+        }
+
     }
 }
 
 struct ProceduresMainView_Previews: PreviewProvider {
     static var previews: some View {
-        ProceduresMainView()
+        ProceduresMainView(proceduresList: proceduresList, totalRVU: 200.1, revenuePerRVU: 54.19)
+
     }
 }

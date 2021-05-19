@@ -27,7 +27,10 @@ struct ProcedureTypeGalleryView: View {
                         destination:
                             ScrollView{
                                 HStack{
-                                    Text(procedure.description).foregroundColor(procedure.color)
+
+                                    Text(procedure.description)
+//                                    .foregroundColor(procedure.color)
+
                                 .font(.largeTitle)
                                     Spacer()
                                 }
@@ -35,13 +38,20 @@ struct ProcedureTypeGalleryView: View {
 //                            .padding(.horizontal)
                         ,
                         label: {
-                            SingleStat(procedure: procedure)
+
+                            SingleStat(width: 140, procedure: procedure)
+
                         })
                 }.padding(.all, 10)
             }
 
            NavigationLink(
-            destination: ProcedureListView(),
+
+            destination:
+//                ProcedureListView(proceduresList: <#[Procedure]#>)
+            Text("Hello World")
+            ,
+
             label: {
                 SeeAllProcedureDataButton()
             })
@@ -61,33 +71,46 @@ struct ProcedureTypeHGridView: View {
                     .font(.title2)
                     .bold()
                 Spacer()
-                Button(action: {
-                    print("User filtered top procedures ")
-                }, label: {
-                    Text("See All")
-                })
+
+//                Button(action: {
+//                    print("User filtered top procedures ")
+//                }, label: {
+//                    Text("Show More")
+//                })
                 
             }.padding(EdgeInsets(top: 0, leading: 20, bottom: -1, trailing: 20))
-            
+            GeometryReader { geometry in
             ScrollView(.horizontal, showsIndicators: false){
+             
                 LazyHGrid(rows: rows, spacing: 10) {
                     ForEach(cptList.sorted{$0.rvu > $1.rvu}){procedure in
-                        NavigationLink(
-                            destination:
-                                HStack{
-                                    Text(procedure.description)
-                                        .foregroundColor(procedure.color)
-                                        .font(.title)
-                                        .fontWeight(.medium)
-                                    Spacer()
-                                }
-                            ,label: {
-                                SingleStat(procedure: procedure)
-                            })
+//                        NavigationLink(
+//                            destination:
+//                                HStack{
+//                                    Text(procedure.description)
+//                                        .foregroundColor(procedure.color)
+//                                        .font(.title)
+//                                        .fontWeight(.medium)
+//                                    Spacer()
+//                                }
+//                            ,label: {
+                                
+                                SingleStat(
+//                                    width:150, procedure: procedure
+                                    width: geometry.size.width * 0.50 - 25, procedure: procedure
+                                )
+                                    
+                                    
+//                            })
+//                            .frame(maxWidth: geometry.size.width * 0.50)
                     }
-                }.frame(height:230)
+                }
+                
                 .padding(.horizontal, 20)
+            
             }
+            }.frame(height:230)
+
         }
     }
 }
@@ -96,10 +119,16 @@ struct ProcedureTypeHGridView: View {
 
 struct SingleStat: View {
     
+
+    var width:CGFloat
+
     var procedure: CPT
     
     var body: some View {
         
+
+        
+
         ZStack {
             Rectangle().foregroundColor(Color(UIColor.secondarySystemGroupedBackground)).cornerRadius(8)
             HStack(alignment: .center, spacing:1){
@@ -110,7 +139,9 @@ struct SingleStat: View {
                     Text(procedure.description)
                         .font(.subheadline)
                         .fontWeight(.medium)
-                        .foregroundColor(procedure.color)
+
+//                        .foregroundColor(procedure.color)
+
                         //                        .foregroundColor(procedure.color)
                         .padding(EdgeInsets(top: 5, leading: 0, bottom: 0, trailing: 0))
                     HStack(alignment:.lastTextBaseline, spacing:1){
@@ -129,7 +160,8 @@ struct SingleStat: View {
                 
                 Spacer()
             }.padding(.leading,10)
-        }.frame(width:180, height: 70)
+        }.frame(width:width, height: 70)
+
     }
 }
 
@@ -138,9 +170,10 @@ struct SeeAllProcedureDataButton: View{
         ZStack{
             Rectangle().foregroundColor(Color(UIColor.secondarySystemGroupedBackground)).cornerRadius(8)
             HStack{
-            Button("See All Procedure Data") {
-                print("See all procedure data button pressed")
-            }
+
+                Text("See All Procedure Data")
+            
+
                 Spacer()
             }.padding(.leading)
         }

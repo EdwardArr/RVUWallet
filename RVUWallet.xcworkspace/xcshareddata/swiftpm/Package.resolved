@@ -1,0 +1,34 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "CodeScanner",
+        "repositoryURL": "http://github.com/twostraws/CodeScanner",
+        "state": {
+          "branch": null,
+          "revision": "a2144ddaa7c43a6ee00873edd4cc7815ad97942f",
+          "version": "1.0.7"
+        }
+      },
+      {
+        "package": "NavigationBarLargeTitleItems",
+        "repositoryURL": "https://github.com/markvanwijnen/NavigationBarLargeTitleItems.git",
+        "state": {
+          "branch": "master",
+          "revision": "b475956395b3188bd77a003a8b0f8d7753d9f9ea",
+          "version": null
+        }
+      },
+      {
+        "package": "SwiftUIPlus",
+        "repositoryURL": "https://github.com/rebeloper/SwiftUIPlus.git",
+        "state": {
+          "branch": null,
+          "revision": "7ae24919cc07b11926107f04b01c1786a3c66fd1",
+          "version": "0.0.178"
+        }
+      }
+    ]
+  },
+  "version": 1
+}

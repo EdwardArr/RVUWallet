@@ -18,17 +18,12 @@ struct AddPatientRowView: View {
             
             if addPatient == true{
                 HStack{
-                    
                     Button(action:{
                         addPatient.toggle()
                     }, label:{
-                       
                             Image(systemName: "minus.circle.fill").foregroundColor(.red).font(.title3)
-                            
-                        
                     })
-                    
-                
+
                     TextField("Name", text: $patientName).padding(.vertical,1)
                     
                     Spacer()
@@ -48,28 +43,28 @@ struct AddPatientRowView: View {
                             }
                         })
                 }.padding(.vertical,1)
-//                Divider()
-//                TextField("Last Name", text: $patientName).padding(.vertical,1)
             }else{
-            HStack{
-            Button(action:{
-                addPatient.toggle()
-            }, label:{
                 HStack{
-                    Image(systemName: "plus.circle.fill").foregroundColor(.green).font(.title3)
-                    Text("add patient name")
+                    Button(action:{
+                        addPatient.toggle()
+                    }, label:{
+                        HStack{
+                            Image(systemName: "plus.circle.fill")
+                                .foregroundColor(.secondaryLabel)
+                                .font(.title3)
+                            Text("add patient name")
+                        }
+                    })
+                    Spacer()
                 }
-            })
-                Spacer()
+                
             }
-            
-        }
         }
         .sheet(isPresented: $isShowingTextScanner, content: {
-            TextScanner(delegate: TextScanner.Delegate(didClassify: { (patientName) in
-                self.patientName = patientName
+//            TextScanner(delegate: TextScanner.Delegate(didClassify: { (patientName) in
+//                self.patientName = patientName
                 
-            }))
+//            }))
            
         })
     }

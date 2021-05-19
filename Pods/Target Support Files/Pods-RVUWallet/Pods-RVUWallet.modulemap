@@ -1,0 +1,6 @@
+framework module Pods_RVUWallet {
+  umbrella header "Pods-RVUWallet-umbrella.h"
+
+  export *
+  module * { export * }
+}

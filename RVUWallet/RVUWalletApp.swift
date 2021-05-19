@@ -6,29 +6,32 @@
 //
 
 import SwiftUI
+import Firebase
 
 @main
 struct RVUWalletApp: App {
-    @Environment(\.scenePhase) private var scenePhase
+    
+    // call FirebaseApp.configure()
+    @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
+    
+    var userInfo = UserInfo()
+//    var proceduresVM = ProceduresViewModel()
+//    var userVM = UserViewModel()
+    
     var body: some Scene {
         WindowGroup() {
-//            RootView{
-            ParentView()
-//            }
+            ParentView().environmentObject(userInfo)
+//                .environmentObject(proceduresVM)
         }
+    }
+}
+
+class AppDelegate: NSObject, UIApplicationDelegate {
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
         
-        .onChange(of: scenePhase) { (newScenePhase) in
-            switch newScenePhase {
-            case .active:
-                print("scene is now active!")
-            case .inactive:
-                print("scene is now inactive!")
-            case .background:
-                print("scene is now in the background!")
-            @unknown default:
-                print("Apple must have added something new!")
-            }
-        }
+        FirebaseApp.configure()
+        
+        return true
     }
 }
 
