@@ -108,6 +108,7 @@ struct SummaryView: View {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "MMMM yyyy"
         return dateFormatter.string(from: now)
+=
     }
 }
 
@@ -115,6 +116,7 @@ struct SummaryView_Previews: PreviewProvider {
     static var previews: some View {
         SummaryView(proceduresList: proceduresList, totalRVU: 201.35, revenuePerRVU: 54.19)
             .padding()
+
             .background(Color(UIColor.systemGroupedBackground)).ignoresSafeArea(.all)
     }
 }

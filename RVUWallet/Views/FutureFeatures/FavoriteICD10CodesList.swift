@@ -16,6 +16,7 @@ struct FavoriteICD10CodesList: View {
                     Text(cpt.description)
                         .font(.subheadline)
 //                        .foregroundColor(cpt.color)
+
                 }.padding(.vertical,10)
             }
         }

@@ -75,18 +75,23 @@ struct ProcedureDetailView: View {
         .navigationBarItems(trailing: Button(action: {
             print("Editing procedure")
             presentEditProcedureScreen.toggle()
+
         }, label: {
             Text("Edit").font(.body)
         }))
         .listStyle(InsetGroupedListStyle())
+
         .sheet(isPresented: $presentEditProcedureScreen){
             ProcedureEditView(procedureVM: ProcedureViewModel(procedure: procedure), date: Date(timeIntervalSince1970:procedure.procedure_date), selection: CPT(id: procedure.cpt_id, code: procedure.cpt_code, description: procedure.cpt_description, rvu: procedure.cpt_rvu),mode: .edit)
         }  
+
     }
 }
 
 struct ProcedureDetailView_Previews: PreviewProvider {
     static var previews: some View {
+
         ProcedureDetailView(procedure: proceduresList[0], cpt: cptList[0])
+
     }
 }

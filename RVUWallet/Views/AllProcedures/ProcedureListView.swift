@@ -44,6 +44,7 @@ struct ProcedureListView: View {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "MMMM yyyy"
         return dateFormatter.string(from: now)
+
     }
 }
 
@@ -71,10 +72,12 @@ struct AllProceduresListView: View{
             .textCase(nil)
         }
     }  
+
 }
 
 struct ProcedureList_Previews: PreviewProvider {
     static var previews: some View {
         ProcedureListView(proceduresList: proceduresList, totalRVU: 200.1, revenuePerRVU: 54.19)
+
     }
 }

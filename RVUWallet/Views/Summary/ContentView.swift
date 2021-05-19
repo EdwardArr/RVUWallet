@@ -276,6 +276,7 @@ struct ParentView: View {
             proceduresVM.subscribe(user_id: user_id ?? "")
             userVM.fetchUser(documentId: user_id ?? "")
             self.user_id = user_id ?? ""
+
         }
     }
 }
@@ -421,8 +422,10 @@ struct ProfileIcon: View {
 }
 
 struct AddNewProcedureButton: View {
+
   
     @State private var presentNewProcedureScreen = false
+
 
     var body: some View {
         HStack{
@@ -434,12 +437,14 @@ struct AddNewProcedureButton: View {
                     Image(systemName: "plus.circle.fill").font(.system(size: 25))
                     Text("New Procedure").font(.title3).bold()
                     
+
                 }
             }).padding(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
             Spacer()
         }
         .sheet(isPresented: $presentNewProcedureScreen){
             ProcedureEditView()
+
         }
     }
 }

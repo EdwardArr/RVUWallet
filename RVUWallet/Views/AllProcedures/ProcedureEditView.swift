@@ -8,7 +8,9 @@
 import SwiftUI
 import UniformTypeIdentifiers
 import CodeScanner
+
 import Firebase
+
 
 struct TextFile: FileDocument {
     
@@ -43,6 +45,7 @@ struct TextFile: FileDocument {
         fileWrapper = FileWrapper(regularFileWithContents: data)
     }
 }
+
 
 enum ProcedureViewMode {
   case new, edit
@@ -98,11 +101,14 @@ struct ProcedureEditView: View {
                                 }
                             }).padding(.vertical,1)
                     }
+
                 }.textCase(nil)
+
                 .sheet(isPresented: $isShowingScanner, content: {
                     CodeScannerView(codeTypes: [.code39], simulatedData: "Edward Arribasplata\n770-298-9996", completion: self.handleScan)
                 })
                 
+
                 Section{
                     DatePicker("Procedure Date", selection: $date, displayedComponents: .date)
                 }.textCase(nil)
@@ -165,6 +171,7 @@ struct ProcedureEditView: View {
                     procedureVM.procedure.id = ""
                 }
             }
+
         }
     }
     
@@ -175,6 +182,7 @@ struct ProcedureEditView: View {
         case  .success(let code):
             let details = code.components(separatedBy: "\n")
             self.procedureVM.procedure.hospital_barcode = details[0]
+
             print(details[0])
             guard details.count == 2 else{ return}
             print(details[0])
@@ -184,6 +192,7 @@ struct ProcedureEditView: View {
         }
     }
     
+
     func handleDoneTapped() {
         
         let userInfo = Auth.auth().currentUser
@@ -203,6 +212,7 @@ struct ProcedureEditView: View {
         procedureVM.save()
     }
     
+
     func handleCancelTapped() {
         dismiss()
     }
@@ -210,6 +220,7 @@ struct ProcedureEditView: View {
     func dismiss(){
         presentationMode.wrappedValue.dismiss()
     }
+
     
     func areVariablesEmpty() -> Bool {
         if procedureVM.procedure.hospital_barcode != "" && self.selection?.code != "" {
@@ -228,10 +239,12 @@ struct ProcedureEditView: View {
             return true
         }
     }
+
 }
 
 //struct ProcedureEditView_Previews: PreviewProvider {
 //    static var previews: some View {
 //        ProcedureEditView(selection: cptList[0])
+
 //    }
 //}

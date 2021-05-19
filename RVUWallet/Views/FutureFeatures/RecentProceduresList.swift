@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct RecentProceduresList: View {
-    
+   
     var proceduresList:[Procedure]
     
     var totalRVU:Double
@@ -49,6 +49,7 @@ struct RecentProceduresList: View {
                     }
                 )
             }
+
         }
     }
 }
@@ -59,3 +60,4 @@ struct RecentProceduresList: View {
 //            .background(Color(UIColor.systemGroupedBackground)).ignoresSafeArea(.all)
 //    }
 //}
+

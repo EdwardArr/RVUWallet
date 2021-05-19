@@ -7,7 +7,6 @@
 
 import SwiftUI
 
-
 enum timeFormat {
     case today, yesterday, this_week
 }
@@ -45,6 +44,7 @@ struct ProcedureRowView: View {
         }
 //        .frame(height:55)
 //        .padding(.vertical,20)
+
     }
 }
 
@@ -60,6 +60,7 @@ struct ProcedureRowWithoutBackgroundView: View {
         let month = String(calendar.component(.month, from: date))
         let day = String(calendar.component(.day, from: date))
         let year = String(calendar.component(.year, from: date))
+
    
             HStack(alignment: .top) {
                 VStack(alignment:.leading, spacing:5){
@@ -90,3 +91,4 @@ struct ProcedureRowWithoutBackgroundView: View {
 //        ProcedureRowView(procedure: proceduresList[0])
 //    }
 //}
+

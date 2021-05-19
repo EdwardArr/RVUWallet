@@ -27,11 +27,13 @@ struct ProceduresMainView: View {
         .sheet(isPresented: $presentDateListFilterScreen){
             DateListFilterView()
         }
+
     }
 }
 
 struct ProceduresMainView_Previews: PreviewProvider {
     static var previews: some View {
         ProceduresMainView(proceduresList: proceduresList, totalRVU: 200.1, revenuePerRVU: 54.19)
+
     }
 }

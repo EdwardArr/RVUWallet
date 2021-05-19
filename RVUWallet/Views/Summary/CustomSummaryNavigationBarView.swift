@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+
 public extension View {
     func newNavigationBarLargeTitleItems<L>(trailing: L) -> some View where L : View {
         overlay(NavigationBarLargeTitleItems(trailing: trailing).frame(width: 0, height: 0))
@@ -65,6 +66,7 @@ fileprivate struct NavigationBarLargeTitleItems<L : View>: UIViewControllerRepre
                     ])
                 }
             }
+
         }
     }
 }
@@ -133,5 +135,6 @@ struct menuButton: View {
 struct CustomSummaryNavigationBarView_Previews: PreviewProvider {
     static var previews: some View {
         menuButton()
+
     }
 }

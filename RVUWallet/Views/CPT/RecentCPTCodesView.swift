@@ -13,6 +13,7 @@ struct RecentCPTCodesView: View {
             List{
                 
                 Section(header:Text("Recent CPT Codes")){
+
                     ForEach(cptList){ cpt in
                         ZStack{
                             Rectangle()

@@ -13,6 +13,7 @@ struct SearchCPTView: View {
     @State var locationsSelection: [String] = ["43644", "43675"]//Your Array
     @State var locationSelection: Int = 0
 //    @State var bgColor: Color = Color(red: .random(in: 0...1), green:  .random(in: 0...1), blue:  .random(in: 0...1))
+
     
     var body: some View {
         ZStack{

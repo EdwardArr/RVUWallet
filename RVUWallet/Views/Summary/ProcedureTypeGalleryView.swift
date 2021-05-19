@@ -27,8 +27,10 @@ struct ProcedureTypeGalleryView: View {
                         destination:
                             ScrollView{
                                 HStack{
+
                                     Text(procedure.description)
 //                                    .foregroundColor(procedure.color)
+
                                 .font(.largeTitle)
                                     Spacer()
                                 }
@@ -36,16 +38,20 @@ struct ProcedureTypeGalleryView: View {
 //                            .padding(.horizontal)
                         ,
                         label: {
+
                             SingleStat(width: 140, procedure: procedure)
+
                         })
                 }.padding(.all, 10)
             }
 
            NavigationLink(
+
             destination:
 //                ProcedureListView(proceduresList: <#[Procedure]#>)
             Text("Hello World")
             ,
+
             label: {
                 SeeAllProcedureDataButton()
             })
@@ -65,6 +71,7 @@ struct ProcedureTypeHGridView: View {
                     .font(.title2)
                     .bold()
                 Spacer()
+
 //                Button(action: {
 //                    print("User filtered top procedures ")
 //                }, label: {
@@ -103,6 +110,7 @@ struct ProcedureTypeHGridView: View {
             
             }
             }.frame(height:230)
+
         }
     }
 }
@@ -111,12 +119,16 @@ struct ProcedureTypeHGridView: View {
 
 struct SingleStat: View {
     
+
     var width:CGFloat
+
     var procedure: CPT
     
     var body: some View {
         
+
         
+
         ZStack {
             Rectangle().foregroundColor(Color(UIColor.secondarySystemGroupedBackground)).cornerRadius(8)
             HStack(alignment: .center, spacing:1){
@@ -127,7 +139,9 @@ struct SingleStat: View {
                     Text(procedure.description)
                         .font(.subheadline)
                         .fontWeight(.medium)
+
 //                        .foregroundColor(procedure.color)
+
                         //                        .foregroundColor(procedure.color)
                         .padding(EdgeInsets(top: 5, leading: 0, bottom: 0, trailing: 0))
                     HStack(alignment:.lastTextBaseline, spacing:1){
@@ -147,6 +161,7 @@ struct SingleStat: View {
                 Spacer()
             }.padding(.leading,10)
         }.frame(width:width, height: 70)
+
     }
 }
 
@@ -155,8 +170,10 @@ struct SeeAllProcedureDataButton: View{
         ZStack{
             Rectangle().foregroundColor(Color(UIColor.secondarySystemGroupedBackground)).cornerRadius(8)
             HStack{
+
                 Text("See All Procedure Data")
             
+
                 Spacer()
             }.padding(.leading)
         }
